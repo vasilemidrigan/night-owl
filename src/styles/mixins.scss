@@ -1,0 +1,49 @@
+// Mixins
+
+// typography
+@mixin font-heading-l {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+@mixin font-heading-m {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+@mixin font-heading-s {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+@mixin font-heading-xs {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+@mixin font-body-s {
+  font-size: 0.9375rem;
+  font-weight: 300;
+}
+
+@mixin font-body-s {
+  font-size: 0.8125rem;
+  font-weight: 300;
+}
+
+// display-flex
+@mixin display-flex($j-c, $a-i, $flx-dir) {
+  display: flex;
+  justify-content: $j-c;
+  align-items: $a-i;
+  flex-direction: $flx-dir;
+}
+
+// position: absolute
+@mixin position-absolute($t, $r, $b, $l) {
+  position: absolute;
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+}

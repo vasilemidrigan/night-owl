@@ -1,0 +1,27 @@
+// Outfit font
+
+// general
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Cancel 'x' sign when search input is active
+[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap");
+
+// tags
+img {
+  height: 100%;
+}
+
+// margins
+.wrppr-mrgn-mob {
+  margin: 1.5rem 1rem;
+}

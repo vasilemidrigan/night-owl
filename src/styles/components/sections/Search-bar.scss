@@ -1,0 +1,27 @@
+// Search bar styles
+
+.SearchBar {
+  position: relative;
+  height: 1.5rem;
+  background-color: $dark-blue;
+  &__icon {
+    height: 100%;
+    width: 1.5625rem;
+  }
+
+  &__input {
+    @include position-absolute(0, unset, unset, 2.5rem);
+    font-size: 16px;
+    font-weight: 300;
+    width: 16.0625rem;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: $dark-blue;
+    color: $white;
+    caret-color: $red;
+    &::placeholder {
+      font-size: 1rem;
+    }
+  }
+}

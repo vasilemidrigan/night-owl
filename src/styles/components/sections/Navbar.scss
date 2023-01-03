@@ -1,0 +1,21 @@
+// Nabvbar styles
+
+.Navbar {
+  @include display-flex(space-between, center, row);
+  background-color: $semi-dark-blue;
+  padding: 18px;
+  &__logo {
+    height: 1.5rem;
+  }
+  &__pages {
+    height: 1rem;
+    img:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+  &__account {
+    border: 1.5px solid $white;
+    border-radius: 50%;
+    height: 1.5rem;
+  }
+}

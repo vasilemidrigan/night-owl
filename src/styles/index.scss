@@ -1,0 +1,15 @@
+// Main style file
+
+// imports
+// general
+@import "./globals.scss";
+@import "./variables.scss";
+@import "./mixins.scss";
+
+// App
+@import "./App.scss"; 
+
+// sections
+@import "./components/sections/Navbar.scss";
+@import "./components/sections/Search-bar.scss";
+@import "./components/pages/Home-page.scss";
