@@ -8,9 +8,15 @@
     height: 1.5rem;
   }
   &__pages {
-    height: 1rem;
-    img:not(:last-child) {
-      margin-right: 1.5rem;
+    a {
+      img {
+        height: 1rem;
+      }
+    }
+    a:not(:last-child) {
+      img {
+        margin-right: 1.5rem;
+      }
     }
   }
   &__account {

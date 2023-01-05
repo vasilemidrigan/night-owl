@@ -7,9 +7,14 @@
 @import "./mixins.scss";
 
 // App
-@import "./App.scss"; 
+@import "./App.scss";
 
 // sections
 @import "./components/sections/Navbar.scss";
 @import "./components/sections/Search-bar.scss";
+@import "./components/sections/Trending-bar.scss";
 @import "./components/pages/Home-page.scss";
+
+// ui
+@import "./components/ui/BookmarkIcon.scss";
+@import "./components/ui/MediaDataWrapper.scss";

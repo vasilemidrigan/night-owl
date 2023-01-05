@@ -1,0 +1,13 @@
+// Trending Bar Styles
+
+.TrendingBar {
+  @include display-flex(space-between, start, row);
+  overflow-x: scroll;
+  &__element {
+    position: relative; // for MovieDataWrapper child
+    margin-right: 1rem;
+    &__img {
+      border-radius: 0.4375rem;
+    }
+  }
+}

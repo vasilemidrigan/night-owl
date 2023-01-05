@@ -1,0 +1,17 @@
+// Bookmark Icon Styles
+
+.BookmarkIcon {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: transparent;
+  &__img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.6875rem;
+    height: 0.875rem;
+  }
+}

@@ -1,0 +1,20 @@
+// Media Info Wrapper
+
+.MediaDataWrapper {
+  border-radius: 7px;
+}
+
+// MediaDataWrapper inside TrendingBar__element
+.TrendingBar__element {
+  .MediaDataWrapper {
+    @include display-flex(center, center, unset);
+    text-align: center;
+    background-color: $semi-dark-blue;
+
+    height: 50px;
+    color: $grey;
+    &__mediaType {
+      @include position-absolute(10px, unset, unset, 10px);
+    }
+  }
+}
