@@ -10,17 +10,23 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/movies",
-    element: <MoviePage />,
-  },
-  {
-    path: "/tv",
-    element: <TvPage />,
-  },
-  {
-    path: "/bookmarks",
-    element: <BookmarksPage />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "movies",
+        element: <MoviePage />,
+      },
+      {
+        path: "tv",
+        element: <TvPage />,
+      },
+      {
+        path: "bookmarks",
+        element: <BookmarksPage />,
+      },
+    ],
   },
 ]);

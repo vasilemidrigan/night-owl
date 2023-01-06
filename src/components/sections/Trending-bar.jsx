@@ -13,9 +13,6 @@ export default function TrendingBar() {
   const trendingData = useContext(TrendingDataContext);
   const configs = useContext(ConfigsDataContext);
 
-  console.log(trendingData);
-  console.log(configs);
-
   return (
     <div className="TrendingBar">
       {trendingData.map((el) => {

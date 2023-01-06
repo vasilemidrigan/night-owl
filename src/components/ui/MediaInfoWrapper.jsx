@@ -4,8 +4,6 @@ import movieIcon from "../../assets/img/icon-category-movie.svg";
 import tvIcon from "../../assets/img/icon-category-tv.svg";
 
 export default function MediaDataWrapper(props) {
-  console.log(props);
-
   return (
     <div className="MediaDataWrapper">
       <div className="MediaDataWrapper__mediaType">
