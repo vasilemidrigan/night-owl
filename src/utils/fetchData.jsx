@@ -1,4 +1,8 @@
-// Fetch data utils
+// Fetch data utility functions
+
+// firestore database
+import { db } from "../firebase-config";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 import { MAP_URL } from "../data/global-constants";
 
@@ -10,6 +14,72 @@ export async function fetchData(url) {
     .catch((err) => console.error(err));
   return data;
 }
+
+// get data from api and save it into db
+export async function saveIntoDB(
+  getDataFunc,
+  base_url,
+  media_type,
+  time_window,
+  api_key,
+  lang_and_page,
+  collectionRef,
+  documentRef
+) {
+  let data;
+  // fetch data
+  if (getDataFunc == "getConfigs") {
+    data = await getConfigs(base_url, api_key);
+  } else if (getDataFunc == "getGenres") {
+    data = await getGenres(base_url, media_type, api_key);
+  } else if (getDataFunc == "getTrendingData") {
+    data = await getTrendingData(base_url, media_type, time_window, api_key);
+  } else if (getDataFunc == "getMovies") {
+    data = await getMovies(base_url, api_key, lang_and_page);
+  } else if (getDataFunc == "getTv") {
+    data = await getTv(base_url, api_key, lang_and_page);
+  }
+  // push it into db
+  await setDoc(doc(db, collectionRef, documentRef), {
+    ...data,
+  });
+}
+
+// put our saveIntoDB() function under the condition
+// to run only once on start.
+export async function onStartIntoDB(
+  ref,
+  getDataFunc,
+  base_url,
+  media_type,
+  time_window,
+  api_key,
+  lang_and_page,
+  collectionRef,
+  documentRef
+) {
+  const docRef = doc(db, collectionRef, documentRef);
+  const docSnap = await getDoc(docRef);
+  if (!docSnap.exists()) {
+    if (ref.current === true) {
+      saveIntoDB(
+        getDataFunc,
+        base_url,
+        media_type,
+        time_window,
+        api_key,
+        lang_and_page,
+        collectionRef,
+        documentRef
+      );
+      return () => {
+        ref.current = false;
+      };
+    }
+  }
+}
+
+// get data requests
 
 // get configs
 export async function getConfigs(base_url, api_key) {

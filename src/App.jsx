@@ -1,21 +1,25 @@
-// imports
-import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+// App
 
+// imports
+// from packages
+import { useState, useEffect, useRef } from "react";
+import { Outlet } from "react-router-dom";
+// sections
 import Navbar from "./components/sections/Navbar";
 import SearchBar from "./components/sections/Search-bar";
 import TrendingBar from "./components/sections/Trending-bar";
-
+// context
 import ContextProviders from "./context-config";
-
+// utils
 import {
   getConfigs,
   getGenres,
   getTrendingData,
   getMovies,
   getTv,
+  onStartIntoDB,
 } from "./utils/fetchData";
-
+// global constants
 import { MAP_URL } from "./data/global-constants";
 
 export default function App() {
@@ -37,7 +41,104 @@ export default function App() {
   const [popularTvData, setPopularTvData] = useState([]);
   const [topRatedTvData, setTopRatedTvData] = useState([]);
 
-  // ----------------------------------
+  // Refs
+  const preventEffect = useRef(true);
+
+  // Fetch data from api and push it into db
+
+  // configs
+  useEffect(() => {
+    onStartIntoDB(
+      preventEffect,
+      "getConfigs",
+      MAP_URL.configuration.base_url,
+      null,
+      null,
+      process.env.REACT_APP_API_KEY,
+      null,
+      "relating-data",
+      "configs"
+    );
+  }, []);
+
+  // genres for movies
+  useEffect(() => {
+    onStartIntoDB(
+      preventEffect,
+      "getGenres",
+      MAP_URL.genres.base_url,
+      MAP_URL.genres.media_type.movie,
+      null,
+      process.env.REACT_APP_API_KEY,
+      null,
+      "relating-data",
+      "genres-movie"
+    );
+  }, []);
+
+  // genres for tv
+  useEffect(() => {
+    onStartIntoDB(
+      preventEffect,
+      "getGenres",
+      MAP_URL.genres.base_url,
+      MAP_URL.genres.media_type.tv,
+      null,
+      process.env.REACT_APP_API_KEY,
+      null,
+      "relating-data",
+      "genres-tv"
+    );
+  }, []);
+
+  // trending movies
+  useEffect(() => {
+    onStartIntoDB(
+      preventEffect,
+      "getTrendingData",
+      MAP_URL.trendingMovies.base_url,
+      MAP_URL.trendingMovies.media_type.all,
+      MAP_URL.trendingMovies.time_window.week,
+      process.env.REACT_APP_API_KEY,
+      null,
+      "media",
+      "trending-movies"
+    );
+  }, []);
+
+  // movies
+  useEffect(() => {
+    onStartIntoDB(
+      preventEffect,
+      "getMovies",
+      MAP_URL.movies.base_url,
+      null,
+      null,
+      process.env.REACT_APP_API_KEY,
+      MAP_URL.movies.lang_and_page,
+      "media",
+      "movies"
+    );
+  }, []);
+
+  // tv
+  useEffect(() => {
+    onStartIntoDB(
+      preventEffect,
+      "getTv",
+      MAP_URL.tv.base_url,
+      null,
+      null,
+      process.env.REACT_APP_API_KEY,
+      MAP_URL.tv.lang_and_page,
+      "media",
+      "tv"
+    );
+  }, []);
+
+  // 'Fetching data from api' code bellow
+  // will be deleted as we'll get data from
+  // db and save it into our states
 
   // Fetching data from api
   // configs
@@ -50,6 +151,7 @@ export default function App() {
       setConfigs(data);
     };
   }, []);
+
   // genres
   useEffect(() => {
     return async function () {
@@ -84,6 +186,7 @@ export default function App() {
       setMoviesData(data);
     };
   }, []);
+
   // tv
   useEffect(() => {
     return async function () {
@@ -95,8 +198,6 @@ export default function App() {
       setTvData(data);
     };
   }, []);
-
-  console.log(tvData);
 
   // ----------------------------------
   // set popular movies
