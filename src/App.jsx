@@ -1,8 +1,18 @@
 // App
 
 // imports
+import { db } from "./firebase-config";
+import {
+  query,
+  doc,
+  collection,
+  onSnapshot,
+  getDocs,
+  getDoc,
+  Firestore,
+} from "firebase/firestore";
 // from packages
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Outlet } from "react-router-dom";
 // sections
 import Navbar from "./components/sections/Navbar";
@@ -12,21 +22,25 @@ import TrendingBar from "./components/sections/Trending-bar";
 import ContextProviders from "./context-config";
 // utils
 import {
-  getConfigs,
   getGenres,
   getTrendingData,
   getMovies,
   getTv,
   onStartIntoDB,
+  getDataFromDB,
 } from "./utils/fetchData";
 // global constants
 import { MAP_URL } from "./data/global-constants";
+import { FirebaseError } from "firebase/app";
 
 export default function App() {
   // States
   // genres and configs
   const [genres, setGenres] = useState([]);
+
+  const [loading, setLoading] = useState("true");
   const [configs, setConfigs] = useState([]);
+
   // movies data
   const [trendingData, setTrendingData] = useState([]);
   const [moviesData, setMoviesData] = useState([]);
@@ -44,7 +58,9 @@ export default function App() {
   // Refs
   const preventEffect = useRef(true);
 
+  // ---------------------------------------
   // Fetch data from api and push it into db
+  // ---------------------------------------
 
   // configs
   useEffect(() => {
@@ -136,33 +152,55 @@ export default function App() {
     );
   }, []);
 
-  // 'Fetching data from api' code bellow
-  // will be deleted as we'll get data from
-  // db and save it into our states
+  // -------------------------------
+  // Get data from db and set states
+  // -------------------------------
 
-  // Fetching data from api
-  // configs
   useEffect(() => {
-    return async function () {
-      const data = await getConfigs(
-        MAP_URL.configuration.base_url,
-        process.env.REACT_APP_API_KEY
-      );
-      setConfigs(data);
-    };
+    async function getDataFromDB() {
+      const docRef = doc(db, "relating-data", "configs");
+      const docSnap = await getDoc(docRef);
+      const dataArr = [];
+
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        dataArr.push(docSnap.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+
+      if (dataArr.length > 0) {
+        console.log("dataArr has data from db", dataArr);
+        setConfigs((prevData) => {
+          console.log("Running setConfigs!!!!!!!!!!!!!!!!!");
+          prevData = {
+            ...prevData,
+            ...dataArr,
+          };
+        });
+      }
+    }
+    getDataFromDB();
   }, []);
+
+  // ===========================
+  console.log(configs);
+  // ===========================
 
   // genres
   useEffect(() => {
-    return async function () {
+    async function g() {
       const data = await getGenres(
         MAP_URL.genres.base_url,
         MAP_URL.genres.media_type.movie,
         process.env.REACT_APP_API_KEY
       );
       setGenres(data);
-    };
+    }
+    g();
   }, []);
+
   // trending movies
   useEffect(() => {
     return async function () {

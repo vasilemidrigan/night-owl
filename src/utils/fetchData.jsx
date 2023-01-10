@@ -2,7 +2,14 @@
 
 // firestore database
 import { db } from "../firebase-config";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  collection,
+  getDb,
+} from "firebase/firestore";
 
 import { MAP_URL } from "../data/global-constants";
 
