@@ -9,6 +9,7 @@ import {
   getDocs,
   collection,
   getDb,
+  QuerySnapshot,
 } from "firebase/firestore";
 
 import { MAP_URL } from "../data/global-constants";
@@ -86,6 +87,18 @@ export async function onStartIntoDB(
   }
 }
 
+// get data from database and save it into states
+
+export async function getDataFromDB(setState, collection_name) {
+  await getDocs(collection(db, collection_name)).then((querySnapshot) => {
+    const newData = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    setState(newData);
+  });
+}
+
 // get data requests
 
 // get configs
@@ -120,7 +133,7 @@ export async function getMovies(base_url, api_key, lang_and_page) {
   for (let [key, value] of Object.entries(MAP_URL.movies.rating_category)) {
     const url = `${base_url}${value}${api_key}${lang_and_page}`;
     const data = await fetchData(url);
-    dataArr.push({ data: data.results, category: key });
+    dataArr.push({ data: data.results, category: `${key}_movies` });
   }
   return dataArr;
 }
@@ -131,7 +144,7 @@ export async function getTv(base_url, api_key, lang_and_page) {
   for (let [key, value] of Object.entries(MAP_URL.tv.rating_category)) {
     const url = `${base_url}${value}${api_key}${lang_and_page}`;
     const data = await fetchData(url);
-    dataArr.push({ data: data.results, category: key });
+    dataArr.push({ data: data.results, category: `${key}_tv` });
   }
   return dataArr;
 }

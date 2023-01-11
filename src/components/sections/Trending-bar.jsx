@@ -19,7 +19,7 @@ export default function TrendingBar() {
         return (
           <div className="TrendingBar__element" key={el.id}>
             <img
-              src={`${configs.images.secure_base_url}${configs.images.profile_sizes[1]}${el.poster_path}`}
+              src={`${configs[0]?.images.secure_base_url}${configs[0]?.images.profile_sizes[1]}${el.poster_path}`}
               className="TrendingBar__element__img"
               alt="Trending element image"
             />
