@@ -1,18 +1,8 @@
 // App
 
 // imports
-import { db } from "./firebase-config";
-import {
-  query,
-  doc,
-  collection,
-  onSnapshot,
-  getDocs,
-  getDoc,
-  Firestore,
-} from "firebase/firestore";
 // from packages
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 // sections
 import Navbar from "./components/sections/Navbar";
@@ -21,14 +11,7 @@ import TrendingBar from "./components/sections/Trending-bar";
 // context
 import ContextProviders from "./context-config";
 // utils
-import {
-  getGenres,
-  getTrendingData,
-  getMovies,
-  getTv,
-  onStartIntoDB,
-  getDataFromDB,
-} from "./utils/fetchData";
+import { onStartIntoDB, getDataFromDB } from "./utils/fetchData";
 // global constants
 import { MAP_URL } from "./data/global-constants";
 
@@ -42,13 +25,11 @@ export default function App() {
   const [media, setMedia] = useState([]);
   // movies data
   const [trendingData, setTrendingData] = useState([]);
-  const [moviesData, setMoviesData] = useState([]);
   const [popularMoviesData, setPopularMoviesData] = useState([]);
   const [topRatedMoviesData, setTopRatedMoviesData] = useState([]);
   const [upcomingMoviesData, setUpcomingMoviesData] = useState([]);
   const [nowPlayingMoviesData, setNowPlayingMoviesData] = useState([]);
   // tv data
-  const [tvData, setTvData] = useState([]);
   const [airingTodayTvData, setAiringTodayTvData] = useState([]);
   const [onTheAirTvData, setOnTheAirTvData] = useState([]);
   const [popularTvData, setPopularTvData] = useState([]);
@@ -150,6 +131,21 @@ export default function App() {
     getDataFromDB(setMedia, "media");
     getDataFromDB(setGenres, "genres");
   }, []);
+
+  // ----------------------------
+  // Set default values of states
+  // ----------------------------
+
+  useEffect(() => {
+    setTrendingData((prevValue) => {
+      const nextValue = {
+        ...prevValue,
+        movies: [media[1]?.results],
+        id: media[1]?.id,
+      };
+      return nextValue;
+    });
+  }, [media[1]?.results, media[1]?.id]);
 
   return (
     <ContextProviders configs={configs} trendingData={trendingData}>

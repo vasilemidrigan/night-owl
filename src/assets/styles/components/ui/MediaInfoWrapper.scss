@@ -1,12 +1,12 @@
 // Media Info Wrapper
 
-.MediaDataWrapper {
+.MediaInfoWrapper {
   border-radius: 7px;
 }
 
 // MediaDataWrapper inside TrendingBar__element
 .TrendingBar__element {
-  .MediaDataWrapper {
+  .MediaInfoWrapper {
     @include display-flex(center, center, unset);
     text-align: center;
     background-color: $semi-dark-blue;
