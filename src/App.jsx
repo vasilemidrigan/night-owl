@@ -19,6 +19,7 @@ import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
 import { allUrls } from "./data/allUrls";
 // fetch
 import { fetchData } from "./utils/fetchData";
+import HomePage from "./components/pages/Home-page";
 
 export default function App() {
   // States
@@ -73,6 +74,7 @@ export default function App() {
           getDataFromDB("popular_movies", setPopularMovies),
           getDataFromDB("top_rated_movies", setTopRatedMovies),
           getDataFromDB("now_playing_movies", setNowPlayingMovies),
+          getDataFromDB("upcoming_movies", setUpcomingMovies),
           getDataFromDB("popular_tv", setPopularTv),
           getDataFromDB("top_rated_tv", setTopRatedTv),
           getDataFromDB("on_the_air_tv", setOnTheAirTv),
@@ -106,11 +108,19 @@ export default function App() {
   }, []);
 
   return (
-    <ContextProviders configs={configs} trendingMovies={trendingMovies}>
+    <ContextProviders
+      configs={configs}
+      movies={{
+        trendingMovies,
+        popularMovies,
+        topRatedMovies,
+        upcomingMovies,
+        nowPlayingMovies,
+      }}
+    >
       <div className="App">
         <Navbar />
         <SearchBar />
-        <TrendingBar />
         <Outlet />
       </div>
     </ContextProviders>

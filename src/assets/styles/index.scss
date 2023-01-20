@@ -13,8 +13,12 @@
 @import "./components/sections/Navbar.scss";
 @import "./components/sections/Search-bar.scss";
 @import "./components/sections/Trending-bar.scss";
+
+// pages
 @import "./components/pages/Home-page.scss";
+@import "./components/pages/Movie-page.scss";
 
 // ui
 @import "./components/ui/BookmarkIcon.scss";
 @import "./components/ui/MediaInfoWrapper.scss";
+@import "./components/ui/ShowsRow.scss";

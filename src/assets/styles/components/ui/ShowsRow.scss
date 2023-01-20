@@ -1,0 +1,9 @@
+// Shows row styles
+
+.ShowsRow {
+  @include display-flex(unset, unset, row);
+  overflow-x: scroll;
+
+  &_show {
+  }
+}

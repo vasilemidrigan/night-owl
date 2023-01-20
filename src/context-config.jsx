@@ -4,18 +4,14 @@
 import { createContext } from "react";
 
 export const ConfigsDataContext = createContext(null);
-export const TrendingDataContext = createContext(null);
+export const MoviesDataContext = createContext(null);
 
-export default function ContextProviders({
-  children,
-  configs,
-  trendingMovies,
-}) {
+export default function ContextProviders({ children, configs, movies }) {
   return (
     <ConfigsDataContext.Provider value={configs}>
-      <TrendingDataContext.Provider value={trendingMovies}>
+      <MoviesDataContext.Provider value={movies}>
         {children}
-      </TrendingDataContext.Provider>
+      </MoviesDataContext.Provider>
     </ConfigsDataContext.Provider>
   );
 }

@@ -1,9 +1,12 @@
 // Homepage
 
-export default function HomePage() {
+import TrendingBar from "../sections/Trending-bar";
+
+export default function HomePage(props) {
   return (
     <div className="HomePage">
-      <h1>homepage</h1>
+      <TrendingBar />
+      <h1>Recommended for you</h1>
     </div>
   );
 }

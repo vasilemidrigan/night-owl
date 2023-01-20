@@ -6,15 +6,17 @@ import { db } from "../../firebase-config";
 // - react hooks
 import { useContext } from "react";
 // - context
-import { ConfigsDataContext, TrendingDataContext } from "../../context-config";
+import { ConfigsDataContext, MoviesDataContext } from "../../context-config";
 // - ui
 import BookmarkIcon from "../ui/BookmarkIcon";
 import MediaInfoWrapper from "../ui/MediaInfoWrapper";
 
 export default function TrendingBar() {
   // context
-  const trendingMovies = useContext(TrendingDataContext);
+  const movies = useContext(MoviesDataContext);
+  const trendingMovies = movies.trendingMovies;
   const configs = useContext(ConfigsDataContext);
+
   // update bookmark function
   const updateBookmark = async function (docID) {
     const docRef = doc(db, "trending_movies", docID);
