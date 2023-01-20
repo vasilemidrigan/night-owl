@@ -5,14 +5,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 // firestore
-import {
-  onSnapshot,
-  doc,
-  collection,
-  query,
-  refEqual,
-} from "firebase/firestore";
 import { db } from "./firebase-config";
+import { query, collection, onSnapshot } from "firebase/firestore";
 // sections
 import Navbar from "./components/sections/Navbar";
 import SearchBar from "./components/sections/Search-bar";
@@ -20,83 +14,99 @@ import TrendingBar from "./components/sections/Trending-bar";
 // context
 import ContextProviders from "./context-config";
 // utils
-import {
-  onStartIntoDB,
-  getDataFromDB,
-  onStartIntoDBTemp,
-} from "./utils/fetchData";
+import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
 // global constants
 import { allUrls } from "./data/allUrls";
+// fetch
 import { fetchData } from "./utils/fetchData";
 
 export default function App() {
   // States
   // genres and configs
-  const [genres, setGenres] = useState([]);
+  const [genresTv, setGenresTv] = useState([]);
+  const [genresMovie, setGenresMovie] = useState([]);
   const [configs, setConfigs] = useState([]);
 
   // movies data
-  const [trendingData, setTrendingData] = useState([]);
-  const [popularMoviesData, setPopularMoviesData] = useState([]);
-  const [topRatedMoviesData, setTopRatedMoviesData] = useState([]);
-  const [upcomingMoviesData, setUpcomingMoviesData] = useState([]);
-  const [nowPlayingMoviesData, setNowPlayingMoviesData] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   // tv data
-  const [airingTodayTvData, setAiringTodayTvData] = useState([]);
-  const [onTheAirTvData, setOnTheAirTvData] = useState([]);
-  const [popularTvData, setPopularTvData] = useState([]);
-  const [topRatedTvData, setTopRatedTvData] = useState([]);
+  const [airingTodayTv, setAiringTodayTv] = useState([]);
+  const [onTheAirTv, setOnTheAirTv] = useState([]);
+  const [popularTv, setPopularTv] = useState([]);
+  const [topRatedTv, setTopRatedTv] = useState([]);
 
   // Refs
   const preventEffect = useRef(true);
   const preventReRun = useRef(false);
 
-  // ---------------------------------------------
-  // Fetch data from api and push it into database
-  // -------------------------------------------------------------
-  // configs, genres_movie, genres_tv, trending_movies, movies, tv
-  // -------------------------------------------------------------
+  const effectRan = useRef(false);
 
+  // ---------------------------------------
+  // Fetch data from API and save it into db
+  // ---------------------------------------
   // Run and prevent re-run if there is already data in db saved
   useEffect(() => {
-    if (preventReRun.current === false) {
-      onStartIntoDB(preventReRun);
+    if (effectRan.current === false) {
+      onStartIntoDB(fetchData, allUrls);
+      return () => {
+        effectRan.current = true;
+      };
     }
   }, []);
-  // prevent re-run
-  preventReRun.current = true;
 
   // ----------------------
   // Get data from database
   // ----------------------
 
   useEffect(() => {
-    // getDataFromDB(setGenres, "genres");
+    if (effectRan.current === false) {
+      async function getData() {
+        const data = Promise.all([
+          getDataFromDB("configs", setConfigs),
+          getDataFromDB("genres_tv", setGenresTv),
+          getDataFromDB("genres_movies", setGenresMovie),
+          getDataFromDB("trending_movies", setTrendingMovies),
+          getDataFromDB("popular_movies", setPopularMovies),
+          getDataFromDB("top_rated_movies", setTopRatedMovies),
+          getDataFromDB("now_playing_movies", setNowPlayingMovies),
+          getDataFromDB("popular_tv", setPopularTv),
+          getDataFromDB("top_rated_tv", setTopRatedTv),
+          getDataFromDB("on_the_air_tv", setOnTheAirTv),
+          getDataFromDB("airing_today_tv", setOnTheAirTv),
+        ]);
+        return data;
+      }
+      getData();
+      return () => {
+        effectRan.current = true;
+      };
+    }
   }, []);
 
   // ----------------------------
   // Set default values of states
   // ----------------------------
 
-  // useEffect(() => {
-  //   function getRTUpdates() {
-  //     const q = query(collection(db, "trending_movies"));
-  //     const updates = onSnapshot(q, (querySnapshot) => {
-  //       const updArr = [];
-  //       querySnapshot.forEach((doc) => {
-  //         updArr.push(doc.data());
-  //       });
-  //       setTrendingData(updArr);
-  //     });
-  //   }
-  //   getRTUpdates();
-  // }, []);
+  useEffect(() => {
+    function getRTUpdates() {
+      const q = query(collection(db, "trending_movies"));
+      onSnapshot(q, (querySnapshot) => {
+        const updArr = [];
+        querySnapshot.forEach((doc) => {
+          updArr.push(doc.data());
+        });
+        setTrendingMovies(updArr);
+      });
+    }
+    getRTUpdates();
+  }, []);
 
   return (
-    <ContextProviders
-      configs={configs}
-      trendingData={{ trendingData, setTrendingData }}
-    >
+    <ContextProviders configs={configs} trendingMovies={trendingMovies}>
       <div className="App">
         <Navbar />
         <SearchBar />

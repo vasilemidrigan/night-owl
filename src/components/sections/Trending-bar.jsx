@@ -1,10 +1,8 @@
 // Trending Bar
 
 // imports
-import { onSnapshot, doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase-config";
-
-import { useState, useEffect } from "react";
 // - react hooks
 import { useContext } from "react";
 // - context
@@ -14,17 +12,14 @@ import BookmarkIcon from "../ui/BookmarkIcon";
 import MediaInfoWrapper from "../ui/MediaInfoWrapper";
 
 export default function TrendingBar() {
-  const { trendingData, setTrendingData } = useContext(TrendingDataContext);
+  // context
+  const trendingMovies = useContext(TrendingDataContext);
   const configs = useContext(ConfigsDataContext);
-
+  // update bookmark function
   const updateBookmark = async function (docID) {
     const docRef = doc(db, "trending_movies", docID);
     const docSnap = await getDoc(docRef);
     const data = docSnap.data();
-
-    console.log(data);
-
-    // set bookmark
 
     if (data.bookmark === undefined) {
       await updateDoc(docRef, {
@@ -43,7 +38,7 @@ export default function TrendingBar() {
 
   return (
     <div className="TrendingBar">
-      {trendingData.map((el) => {
+      {trendingMovies.map((el) => {
         return (
           <div className="TrendingBar__element" key={el.id}>
             {configs[0]?.images && (
@@ -53,12 +48,7 @@ export default function TrendingBar() {
                 alt="Trending element image"
               />
             )}
-            <BookmarkIcon
-              updateBookmark={updateBookmark}
-              el={el}
-              trendingData={trendingData}
-              setTrendingData={setTrendingData}
-            />
+            <BookmarkIcon updateBookmark={updateBookmark} el={el} />
             <MediaInfoWrapper
               title={el.title ? el.title : el.original_name}
               mediaType={el.media_type}
