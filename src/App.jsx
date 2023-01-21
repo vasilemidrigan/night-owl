@@ -10,7 +10,6 @@ import { query, collection, onSnapshot } from "firebase/firestore";
 // sections
 import Navbar from "./components/sections/Navbar";
 import SearchBar from "./components/sections/Search-bar";
-import TrendingBar from "./components/sections/Trending-bar";
 // context
 import ContextProviders from "./context-config";
 // utils
@@ -19,7 +18,6 @@ import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
 import { allUrls } from "./data/allUrls";
 // fetch
 import { fetchData } from "./utils/fetchData";
-import HomePage from "./components/pages/Home-page";
 
 export default function App() {
   // States
@@ -49,7 +47,6 @@ export default function App() {
   // ---------------------------------------
   // Fetch data from API and save it into db
   // ---------------------------------------
-  // Run and prevent re-run if there is already data in db saved
   useEffect(() => {
     if (effectRan.current === false) {
       onStartIntoDB(fetchData, allUrls);
@@ -59,9 +56,9 @@ export default function App() {
     }
   }, []);
 
-  // ----------------------
-  // Get data from database
-  // ----------------------
+  // --------------------------------------------------
+  // Get data from database and save it into our states
+  // --------------------------------------------------
 
   useEffect(() => {
     if (effectRan.current === false) {
@@ -89,9 +86,23 @@ export default function App() {
     }
   }, []);
 
-  // ----------------------------
-  // Set default values of states
-  // ----------------------------
+  // --------------------------------------------------------
+  // Get Real Time Updates from db and save them into our app
+  // --------------------------------------------------------
+
+  useEffect(() => {
+    function getRTUpdates() {
+      const q = query(collection(db, "popular_movies"));
+      onSnapshot(q, (querySnapshot) => {
+        const updArr = [];
+        querySnapshot.forEach((doc) => {
+          updArr.push(doc.data());
+        });
+        setPopularMovies(updArr);
+      });
+    }
+    getRTUpdates();
+  }, []);
 
   useEffect(() => {
     function getRTUpdates() {

@@ -64,7 +64,6 @@ export async function getDataFromDB(collection_name, set_state) {
   await getDocs(collection(db, collection_name)).then((querySnapshot) => {
     const newData = querySnapshot.docs.map((doc) => ({
       ...doc.data(),
-      id: doc.id,
     }));
     set_state(newData);
   });

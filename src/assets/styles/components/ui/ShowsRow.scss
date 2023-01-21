@@ -1,9 +1,22 @@
 // Shows row styles
 
-.ShowsRow {
-  @include display-flex(unset, unset, row);
-  overflow-x: scroll;
-
-  &_show {
+.ShowsTemplate {
+  border: 1px solid red;
+  height: 400px;
+  margin: 10px;
+  overflow-y: hidden;
+  h2 {
+  }
+  &_ShowsRow {
+    @include display-flex(space-between, start, row);
+    overflow-x: scroll;
+    &_show {
+      height: 100%;
+      padding: 10px;
+      border: 1px solid grey;
+      margin: 5px;
+      & img {
+      }
+    }
   }
 }

@@ -1,8 +1,7 @@
 // Trending Bar
 
 // imports
-import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase-config";
+import { updateBookmark } from "../../utils/functionalities";
 // - react hooks
 import { useContext } from "react";
 // - context
@@ -17,27 +16,6 @@ export default function TrendingBar() {
   const trendingMovies = movies.trendingMovies;
   const configs = useContext(ConfigsDataContext);
 
-  // update bookmark function
-  const updateBookmark = async function (docID) {
-    const docRef = doc(db, "trending_movies", docID);
-    const docSnap = await getDoc(docRef);
-    const data = docSnap.data();
-
-    if (data.bookmark === undefined) {
-      await updateDoc(docRef, {
-        bookmark: true,
-      });
-    } else if (data.bookmark === true) {
-      await updateDoc(docRef, {
-        bookmark: false,
-      });
-    } else if (data.bookmark === false) {
-      await updateDoc(docRef, {
-        bookmark: true,
-      });
-    }
-  };
-
   return (
     <div className="TrendingBar">
       {trendingMovies.map((el) => {
@@ -50,7 +28,7 @@ export default function TrendingBar() {
                 alt="Trending element image"
               />
             )}
-            <BookmarkIcon updateBookmark={updateBookmark} el={el} />
+            <BookmarkIcon el={el} collectionID={"trending_movies"} />
             <MediaInfoWrapper
               title={el.title ? el.title : el.original_name}
               mediaType={el.media_type}
