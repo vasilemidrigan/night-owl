@@ -43,10 +43,7 @@ export default function MediaInfoWrapper(props) {
   return (
     <div className="MediaInfoWrapper">
       <div className="MediaInfoWrapper__media-type">
-        <img
-          src={props.el.mediaType === "movie" ? movieIcon : tvIcon}
-          alt={props.el.mediaType === "movie" ? "Movie Icon" : "TV Icon"}
-        />
+        <img src={props.el.media_type === "movie" ? movieIcon : tvIcon} />
       </div>
       <div className="MediaInfoWrapper__title fnt-xs">{formatTitle()}</div>
       <div className="MediaInfoWrapper__genres">{getGenres()}</div>
