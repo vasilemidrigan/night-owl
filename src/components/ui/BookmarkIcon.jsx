@@ -11,16 +11,10 @@ export default function BookmarkIcon(props) {
   // update bookmark function
   // ------------------------
 
-  console.log(props);
-
   const updateBookmark = async function (docID, collectionID) {
     const docRef = doc(db, collectionID, docID);
     const docSnap = await getDoc(docRef);
     const data = docSnap.data();
-
-    console.log(docID);
-    console.log(props);
-    console.log(props.el);
 
     if (data.bookmark === undefined) {
       await updateDoc(docRef, {

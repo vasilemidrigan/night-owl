@@ -1,21 +1,21 @@
 // Shows row styles
 
 .ShowsTemplate {
-  border: 1px solid red;
-  height: 400px;
-  margin: 10px;
-  overflow-y: hidden;
-  h2 {
+  margin-bottom: 50px;
+  &__hdr {
   }
-  &_ShowsRow {
-    @include display-flex(space-between, start, row);
+  &__row {
     overflow-x: scroll;
-    &_show {
-      height: 100%;
-      padding: 10px;
-      border: 1px solid grey;
-      margin: 5px;
-      & img {
+    @include display-flex(space-between, center, row);
+    &__card {
+      max-width: 190px;
+      position: relative;
+      margin: 10px;
+      border-radius: 7px;
+      box-shadow: 0px 0px 15px $dark-red;
+      &__img {
+        border-radius: 7px 7px 0px 0px;
+        min-width: 100%;
       }
     }
   }

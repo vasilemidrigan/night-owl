@@ -17,7 +17,7 @@ export default function TrendingBar() {
   const configs = useContext(ConfigsDataContext);
 
   return (
-    <div className="TrendingBar">
+    <div className="TrendingBar wrppr-mrgn-mob">
       {trendingMovies.map((el) => {
         return (
           <div className="TrendingBar__element" key={el.id}>
@@ -29,14 +29,7 @@ export default function TrendingBar() {
               />
             )}
             <BookmarkIcon el={el} collectionID={"trending_movies"} />
-            <MediaInfoWrapper
-              title={el.title ? el.title : el.original_name}
-              mediaType={el.media_type}
-              popularity={el.popularity}
-              releaseDate={
-                el.release_date ? el.release_date : el.first_air_date
-              }
-            />
+            <MediaInfoWrapper el={el} />
           </div>
         );
       })}

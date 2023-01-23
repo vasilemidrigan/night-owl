@@ -1,33 +1,9 @@
 // Mixins
 
 // typography
-@mixin font-heading-l {
-  font-size: 2rem;
-  font-weight: 300;
-}
 
 @mixin font-heading-m {
   font-size: 1.5rem;
-  font-weight: 300;
-}
-
-@mixin font-heading-s {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-@mixin font-heading-xs {
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
-@mixin font-body-s {
-  font-size: 0.9375rem;
-  font-weight: 300;
-}
-
-@mixin font-body-s {
-  font-size: 0.8125rem;
   font-weight: 300;
 }
 

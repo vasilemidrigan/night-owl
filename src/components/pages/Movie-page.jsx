@@ -15,8 +15,8 @@ export default function MoviePage() {
   const nowPlayingMovies = movies.nowPlayingMovies;
 
   return (
-    <div className="MoviePage">
-      <h1>Movies</h1>
+    <div className="MoviePage wrppr-mrgn-mob">
+      <h1 className="pg-hdr fnt-hdr-l">Movies</h1>
       <ShowsRow
         configs={configs}
         shows={popularMovies}

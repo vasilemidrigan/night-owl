@@ -1,20 +1,37 @@
 // Media Info Wrapper
 
 .MediaInfoWrapper {
-  border-radius: 7px;
-}
+  height: 9.75rem;
+  width: 100%;
+  margin-top: -0.1875rem;
+  line-height: 1.875rem;
+  text-align: center;
+  color: $grey;
+  border-radius: 0px 0px 7px 7px;
+  background: linear-gradient($dark-blue-2, $black);
+  &__media-type {
+    @include position-absolute(10px, unset, unset, 10px);
+  }
 
-// MediaDataWrapper inside TrendingBar__element
-.TrendingBar__element {
-  .MediaInfoWrapper {
-    @include display-flex(center, center, unset);
-    text-align: center;
-    background-color: $semi-dark-blue;
-
-    height: 50px;
-    color: $grey;
-    &__mediaType {
-      @include position-absolute(10px, unset, unset, 10px);
+  &__title {
+    height: 3.75rem;
+    @include display-flex(center, center, row);
+  }
+  &__genres {
+  }
+  &__release-date {
+  }
+  &__vote-average {
+    position: relative;
+    @include display-flex(center, center, row);
+    &__icon {
+      width: 1.4375rem;
+      height: 1.4375rem;
+      margin-right: 0.625rem;
+      mask-image: url("../../../img/star.svg");
+      mask-size: 1.4375rem 1.4375rem;
+      background: $yellow-lime;
+      mask-repeat: no-repeat;
     }
   }
 }

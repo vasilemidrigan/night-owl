@@ -66,7 +66,7 @@ export default function App() {
         const data = Promise.all([
           getDataFromDB("configs", setConfigs),
           getDataFromDB("genres_tv", setGenresTv),
-          getDataFromDB("genres_movies", setGenresMovie),
+          getDataFromDB("genres_movie", setGenresMovie),
           getDataFromDB("trending_movies", setTrendingMovies),
           getDataFromDB("popular_movies", setPopularMovies),
           getDataFromDB("top_rated_movies", setTopRatedMovies),
@@ -75,7 +75,7 @@ export default function App() {
           getDataFromDB("popular_tv", setPopularTv),
           getDataFromDB("top_rated_tv", setTopRatedTv),
           getDataFromDB("on_the_air_tv", setOnTheAirTv),
-          getDataFromDB("airing_today_tv", setOnTheAirTv),
+          getDataFromDB("airing_today_tv", setAiringTodayTv),
         ]);
         return data;
       }
@@ -121,12 +121,22 @@ export default function App() {
   return (
     <ContextProviders
       configs={configs}
+      genres={{
+        genresMovie,
+        genresTv,
+      }}
       movies={{
         trendingMovies,
         popularMovies,
         topRatedMovies,
         upcomingMovies,
         nowPlayingMovies,
+      }}
+      tv={{
+        popularTv,
+        topRatedTv,
+        airingTodayTv,
+        onTheAirTv,
       }}
     >
       <div className="App">

@@ -11,13 +11,14 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 0.6875rem;
-    height: 0.875rem;
+    width: 15px;
+    height: 15px;
   }
 }
 
 //  inside the trending bar
-.TrendingBar__element {
+.TrendingBar__element,
+.ShowsTemplate {
   .BookmarkIcon {
     @include position-absolute(5px, 10px, unset, unset);
 
