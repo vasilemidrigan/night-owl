@@ -18,7 +18,8 @@
 
 //  inside the trending bar
 .Trend__TrendingBar__element,
-.ShowsTemplate {
+.ShowsTemplate,
+.ShowsGrid {
   .BookmarkIcon {
     @include position-absolute(5px, 10px, unset, unset);
 

@@ -1,0 +1,22 @@
+// ShowsGrid styles
+
+.ShowsGrid {
+  &__hdr {
+  }
+  &__grid {
+    padding: 5px;
+    @include display-flex(center, unset, unset);
+    flex-wrap: wrap;
+    gap: 20px;
+
+    &__card {
+      position: relative;
+      max-width: 45%;
+      &__img {
+        border-radius: 7px 7px 0px 0px;
+        max-height: 60%;
+        max-width: 100%;
+      }
+    }
+  }
+}

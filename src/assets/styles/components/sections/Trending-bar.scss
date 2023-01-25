@@ -1,17 +1,17 @@
 // Trending Bar Styles
 
 .Trend {
+  
   &__TrendingBar {
     @include display-flex(space-between, start, row);
     overflow-x: scroll;
-
     &__element {
       box-shadow: 0px 0px 15px $dark-red;
       border-radius: 7px;
       position: relative; // for MovieDataWrapper child
       margin: 10px;
       &__img {
-        border-radius: 7px;
+        border-radius: 7px 7px 0px 0px;
       }
     }
   }

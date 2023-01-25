@@ -17,9 +17,9 @@ export default function TrendingBar() {
   const configs = useContext(ConfigsDataContext);
 
   return (
-    <div className="Trend">
+    <div className="Trend wrppr-mrgn-mob">
       <h1 className="pg-hdr fnt-hdr-l">Trending</h1>
-      <div className="Trend__TrendingBar wrppr-mrgn-mob">
+      <div className="Trend__TrendingBar">
         {trendingMovies.map((el) => {
           return (
             <div className="Trend__TrendingBar__element" key={el.id}>

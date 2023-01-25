@@ -22,9 +22,10 @@ import { fetchData } from "./utils/fetchData";
 export default function App() {
   // States
   // genres and configs
+  const [configs, setConfigs] = useState([]);
   const [genresTv, setGenresTv] = useState([]);
   const [genresMovie, setGenresMovie] = useState([]);
-  const [configs, setConfigs] = useState([]);
+  const [bookmarkShows, setBookmarkShows] = useState([]);
 
   // movies data
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -67,6 +68,7 @@ export default function App() {
           getDataFromDB("configs", setConfigs),
           getDataFromDB("genres_tv", setGenresTv),
           getDataFromDB("genres_movie", setGenresMovie),
+          getDataFromDB("bookmarks", setBookmarkShows),
           getDataFromDB("trending_movies", setTrendingMovies),
           getDataFromDB("popular_movies", setPopularMovies),
           getDataFromDB("top_rated_movies", setTopRatedMovies),
@@ -125,6 +127,7 @@ export default function App() {
         genresMovie,
         genresTv,
       }}
+      bookmarkShows={{ bookmarkShows, setBookmarkShows }}
       movies={{
         trendingMovies,
         popularMovies,
