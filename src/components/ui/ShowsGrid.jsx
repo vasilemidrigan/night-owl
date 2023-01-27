@@ -1,11 +1,11 @@
-// Shows Grid (for Recommended section in the homepage and
-//             Bookmarks page)
+// Shows Grid
 
-import BookmarkIcon from "./BookmarkIcon";
+// imports
+// - ui
 import MediaInfoWrapper from "./MediaInfoWrapper";
+import BookmarkIcon from "./BookmarkIcon";
 
 export default function ShowsGrid(props) {
-  console.log(props);
   return (
     <div className="ShowsGrid wrppr-mrgn-mob">
       <h2 className="ShowsGrid__hdr shw-rw-hdr fnt-hdr-s">

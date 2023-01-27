@@ -1,23 +1,20 @@
 // App
 
 // imports
-// from packages
+// - npms
 import { useState, useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
-// firestore
-import { db } from "./firebase-config";
-import { query, collection, onSnapshot } from "firebase/firestore";
-// sections
+// - sections
 import Navbar from "./components/sections/Navbar";
 import SearchBar from "./components/sections/Search-bar";
-// context
+// - context
 import ContextProviders from "./context-config";
-// utils
-import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
-// global constants
-import { allUrls } from "./data/allUrls";
-// fetch
+// - utils
 import { fetchData } from "./utils/fetchData";
+import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
+import { getRTUpdates } from "./utils/functionalities";
+// - global constants
+import { allUrls } from "./data/allUrls";
 
 export default function App() {
   // States
@@ -26,7 +23,7 @@ export default function App() {
   const [genresTv, setGenresTv] = useState([]);
   const [genresMovie, setGenresMovie] = useState([]);
   const [bookmarkShows, setBookmarkShows] = useState([]);
-
+  const [bookmarksTrace, setBookmarksTrace] = useState([]);
   // movies data
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
@@ -40,9 +37,6 @@ export default function App() {
   const [topRatedTv, setTopRatedTv] = useState([]);
 
   // Refs
-  const preventEffect = useRef(true);
-  const preventReRun = useRef(false);
-
   const effectRan = useRef(false);
 
   // ---------------------------------------
@@ -60,7 +54,6 @@ export default function App() {
   // --------------------------------------------------
   // Get data from database and save it into our states
   // --------------------------------------------------
-
   useEffect(() => {
     if (effectRan.current === false) {
       async function getData() {
@@ -69,6 +62,7 @@ export default function App() {
           getDataFromDB("genres_tv", setGenresTv),
           getDataFromDB("genres_movie", setGenresMovie),
           getDataFromDB("bookmarks", setBookmarkShows),
+          getDataFromDB("bookmarksTrace", setBookmarksTrace),
           getDataFromDB("trending_movies", setTrendingMovies),
           getDataFromDB("popular_movies", setPopularMovies),
           getDataFromDB("top_rated_movies", setTopRatedMovies),
@@ -91,33 +85,16 @@ export default function App() {
   // --------------------------------------------------------
   // Get Real Time Updates from db and save them into our app
   // --------------------------------------------------------
-
   useEffect(() => {
-    function getRTUpdates() {
-      const q = query(collection(db, "popular_movies"));
-      onSnapshot(q, (querySnapshot) => {
-        const updArr = [];
-        querySnapshot.forEach((doc) => {
-          updArr.push(doc.data());
-        });
-        setPopularMovies(updArr);
-      });
-    }
-    getRTUpdates();
-  }, []);
-
-  useEffect(() => {
-    function getRTUpdates() {
-      const q = query(collection(db, "trending_movies"));
-      onSnapshot(q, (querySnapshot) => {
-        const updArr = [];
-        querySnapshot.forEach((doc) => {
-          updArr.push(doc.data());
-        });
-        setTrendingMovies(updArr);
-      });
-    }
-    getRTUpdates();
+    getRTUpdates(setTrendingMovies, "trending_movies");
+    getRTUpdates(setPopularMovies, "popular_movies");
+    getRTUpdates(setTopRatedMovies, "top_rated_movies");
+    getRTUpdates(setUpcomingMovies, "upcoming_movies");
+    getRTUpdates(setNowPlayingMovies, "upcoming_movies");
+    getRTUpdates(setPopularTv, "popular_tv");
+    getRTUpdates(setTopRatedTv, "top_rated_tv");
+    getRTUpdates(setAiringTodayTv, "airing_today_tv");
+    getRTUpdates(setOnTheAirTv, "on_the_air_tv");
   }, []);
 
   return (
@@ -127,7 +104,12 @@ export default function App() {
         genresMovie,
         genresTv,
       }}
-      bookmarkShows={{ bookmarkShows, setBookmarkShows }}
+      bookmarkShows={{
+        bookmarkShows,
+        setBookmarkShows,
+        bookmarksTrace,
+        setBookmarksTrace,
+      }}
       movies={{
         trendingMovies,
         popularMovies,
