@@ -1,12 +1,15 @@
 // Bookmark Icon
 
+// imports
+// - context
 import { useContext } from "react";
-import { BookmarkShowsContext } from "../../context-config";
-// icons
-import emptyBookmarkIcon from "../../assets/img/icon-bookmark-empty.svg";
-import fullBookmarkIcon from "../../assets/img/icon-bookmark-full.svg";
+import { BookmarkShowsContext } from "../../context/Context-Config";
+// - db
 import { db } from "../../firebase-config";
 import { doc, getDoc, updateDoc, setDoc, deleteDoc } from "firebase/firestore";
+// - icons
+import emptyBookmarkIcon from "../../assets/img/icon-bookmark-empty.svg";
+import fullBookmarkIcon from "../../assets/img/icon-bookmark-full.svg";
 
 export default function BookmarkIcon(props) {
   const { bookmarkShows, setBookmarkShows, bookmarksTrace, setBookmarksTrace } =
@@ -15,7 +18,6 @@ export default function BookmarkIcon(props) {
   // ------------------------
   // update bookmark function
   // ------------------------
-
   const updateBookmark = async function (docID, collectionID) {
     // docs data
     const docRef = doc(db, collectionID, docID);
@@ -40,11 +42,10 @@ export default function BookmarkIcon(props) {
         bookmark: true,
         collection_id: collectionID,
       });
-
       // else if there is bookmark property and it is setted to true,
       // then delete the doc from 'bookmarks' collection, and as well
-      // we'll set the bookmark property of the show back to false by
-      // using the trace reference that we used above.
+      // we'll set the bookmark property of the show, back to false by
+      // using the trace reference that we already setted above.
     } else if (data.bookmark === true) {
       if (props.collectionID !== "bookmarks") {
         await updateDoc(docRef, {
@@ -53,21 +54,16 @@ export default function BookmarkIcon(props) {
         await deleteDoc(doc(db, "bookmarks", `show_${props.el.id}`));
       } else if (props.collectionID === "bookmarks") {
         const target = bookmarksTrace.filter((show) => {
-          console.log(show);
-          console.log(show.id === props.el.id);
           return show.id === props.el.id;
         });
-        console.log(bookmarksTrace);
         const targetDocRef = doc(
           db,
           target[0]?.collection_id,
           `show_${props.el.id}`
         );
-
         await updateDoc(targetDocRef, {
           bookmark: false,
         });
-
         await deleteDoc(doc(db, "bookmarks", `show_${props.el.id}`));
         await deleteDoc(doc(db, "bookmarksTrace", `show_${props.el.id}`));
       }

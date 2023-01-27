@@ -3,8 +3,8 @@
 // imports
 // - context
 import { useContext } from "react";
-import { ConfigsDataContext } from "../../context-config";
-import { BookmarkShowsContext } from "../../context-config";
+import { ConfigsDataContext } from "../../context/Context-Config";
+import { BookmarkShowsContext } from "../../context/Context-Config";
 // - ui
 import ShowsGrid from "../ui/ShowsGrid";
 

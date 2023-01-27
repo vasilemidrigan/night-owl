@@ -1,7 +1,7 @@
 // Media info wrapper
 
 import { useContext } from "react";
-import { GenresDataContext } from "../../context-config";
+import { GenresDataContext } from "../../context/Context-Config";
 
 import movieIcon from "../../assets/img/icon-category-movie.svg";
 import tvIcon from "../../assets/img/icon-category-tv.svg";

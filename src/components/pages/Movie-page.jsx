@@ -1,8 +1,8 @@
 // Movie page
 
 import { useContext } from "react";
-import { MoviesDataContext } from "../../context-config";
-import { ConfigsDataContext } from "../../context-config";
+import { MoviesDataContext } from "../../context/Context-Config";
+import { ConfigsDataContext } from "../../context/Context-Config";
 
 import ShowsRow from "../ui/ShowsRow";
 

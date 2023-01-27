@@ -5,7 +5,10 @@ import { updateBookmark } from "../../utils/functionalities";
 // - react hooks
 import { useContext } from "react";
 // - context
-import { ConfigsDataContext, MoviesDataContext } from "../../context-config";
+import {
+  ConfigsDataContext,
+  MoviesDataContext,
+} from "../../context/Context-Config";
 // - ui
 import BookmarkIcon from "../ui/BookmarkIcon";
 import MediaInfoWrapper from "../ui/MediaInfoWrapper";

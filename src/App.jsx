@@ -8,7 +8,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/sections/Navbar";
 import SearchBar from "./components/sections/Search-bar";
 // - context
-import ContextProviders from "./context-config";
+import ContextProviders from "./context/Context-Config";
 // - utils
 import { fetchData } from "./utils/fetchData";
 import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
@@ -86,6 +86,8 @@ export default function App() {
   // Get Real Time Updates from db and save them into our app
   // --------------------------------------------------------
   useEffect(() => {
+    getRTUpdates(setBookmarkShows, "bookmarks");
+    getRTUpdates(setBookmarksTrace, "bookmarksTrace");
     getRTUpdates(setTrendingMovies, "trending_movies");
     getRTUpdates(setPopularMovies, "popular_movies");
     getRTUpdates(setTopRatedMovies, "top_rated_movies");

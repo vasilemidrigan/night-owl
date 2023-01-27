@@ -1,8 +1,8 @@
 // Tv page
 
 import { useContext } from "react";
-import { TvDataContext } from "../../context-config";
-import { ConfigsDataContext } from "../../context-config";
+import { TvDataContext } from "../../context/Context-Config";
+import { ConfigsDataContext } from "../../context/Context-Config";
 
 import ShowsRow from "../ui/ShowsRow";
 
