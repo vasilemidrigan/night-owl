@@ -1,16 +1,24 @@
 {
   "files": {
-    "main.css": "/night-owl/static/css/main.073c9b0a.css",
-    "main.js": "/night-owl/static/js/main.fc36fce3.js",
-    "static/js/787.cdd87a9e.chunk.js": "/night-owl/static/js/787.cdd87a9e.chunk.js",
-    "static/media/logo.svg": "/night-owl/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/night-owl/static/css/main.fd3a32d8.css",
+    "main.js": "/night-owl/static/js/main.e3b80ff4.js",
+    "static/media/star.svg": "/night-owl/static/media/star.25b0edb2c7140796435aa32777ca63c6.svg",
     "index.html": "/night-owl/index.html",
-    "main.073c9b0a.css.map": "/night-owl/static/css/main.073c9b0a.css.map",
-    "main.fc36fce3.js.map": "/night-owl/static/js/main.fc36fce3.js.map",
-    "787.cdd87a9e.chunk.js.map": "/night-owl/static/js/787.cdd87a9e.chunk.js.map"
+    "static/media/icon-category-movie.svg": "/night-owl/static/media/icon-category-movie.6861d0ce9036ac864b87dc5aff6570c3.svg",
+    "static/media/icon-nav-bookmark.svg": "/night-owl/static/media/icon-nav-bookmark.a564501ebcbde752ebe044260a9206b8.svg",
+    "static/media/icon-nav-movies.svg": "/night-owl/static/media/icon-nav-movies.c347442f9a6fd2201f1abf8819aa4ef6.svg",
+    "static/media/icon-bookmark-full.svg": "/night-owl/static/media/icon-bookmark-full.361afed00144e45cd54d64697d9a877d.svg",
+    "static/media/icon-nav-home.svg": "/night-owl/static/media/icon-nav-home.8acf660248afc7a27879c9c9bf218722.svg",
+    "static/media/icon-search.svg": "/night-owl/static/media/icon-search.cbc8d670ebd27b023c9868d5850d79c5.svg",
+    "static/media/logo.svg": "/night-owl/static/media/logo.7d4aedc9f44f15655a966567c57a1f37.svg",
+    "static/media/icon-category-tv.svg": "/night-owl/static/media/icon-category-tv.75c9208553d35303e2f1b61b511ab387.svg",
+    "static/media/icon-nav-tv-series.svg": "/night-owl/static/media/icon-nav-tv-series.c22fe1629b446365f6f7829a014453f8.svg",
+    "static/media/icon-bookmark-empty.svg": "/night-owl/static/media/icon-bookmark-empty.20ce7177c045bbdbd7948bd9b4220c58.svg",
+    "main.fd3a32d8.css.map": "/night-owl/static/css/main.fd3a32d8.css.map",
+    "main.e3b80ff4.js.map": "/night-owl/static/js/main.e3b80ff4.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.fc36fce3.js"
+    "static/css/main.fd3a32d8.css",
+    "static/js/main.e3b80ff4.js"
   ]
 }
