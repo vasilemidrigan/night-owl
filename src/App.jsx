@@ -9,6 +9,7 @@ import Navbar from "./components/sections/Navbar";
 import SearchBar from "./components/sections/Search-bar";
 // - context
 import ContextProviders from "./context/Context-Config";
+import AuthContext from "./context/Auth-Context";
 // - utils
 import { fetchData } from "./utils/fetchData";
 import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
@@ -100,37 +101,39 @@ export default function App() {
   }, []);
 
   return (
-    <ContextProviders
-      configs={configs}
-      genres={{
-        genresMovie,
-        genresTv,
-      }}
-      bookmarkShows={{
-        bookmarkShows,
-        setBookmarkShows,
-        bookmarksTrace,
-        setBookmarksTrace,
-      }}
-      movies={{
-        trendingMovies,
-        popularMovies,
-        topRatedMovies,
-        upcomingMovies,
-        nowPlayingMovies,
-      }}
-      tv={{
-        popularTv,
-        topRatedTv,
-        airingTodayTv,
-        onTheAirTv,
-      }}
-    >
-      <div className="App">
-        <Navbar />
-        <SearchBar />
-        <Outlet />
-      </div>
-    </ContextProviders>
+    <AuthContext>
+      <ContextProviders
+        configs={configs}
+        genres={{
+          genresMovie,
+          genresTv,
+        }}
+        bookmarkShows={{
+          bookmarkShows,
+          setBookmarkShows,
+          bookmarksTrace,
+          setBookmarksTrace,
+        }}
+        movies={{
+          trendingMovies,
+          popularMovies,
+          topRatedMovies,
+          upcomingMovies,
+          nowPlayingMovies,
+        }}
+        tv={{
+          popularTv,
+          topRatedTv,
+          airingTodayTv,
+          onTheAirTv,
+        }}
+      >
+        <div className="App">
+          <Navbar />
+          <SearchBar />
+          <Outlet />
+        </div>
+      </ContextProviders>
+    </AuthContext>
   );
 }

@@ -9,7 +9,7 @@ import BookmarksPage from "./components/pages/Bookmarks-page";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/night-owl",
     element: <App />,
     children: [
       {
@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "sign-up",
+    path: "/sign-up",
     element: <SignUpPage />,
   },
 ]);

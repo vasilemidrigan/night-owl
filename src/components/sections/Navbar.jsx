@@ -16,26 +16,28 @@ export default function Navbar() {
   return (
     <div className="Navbar">
       <div className="Navbar__logo">
-        <NavLink to="/">
+        <NavLink to="/night-owl">
           <img src={logo} alt="Night Owl Logo" />
         </NavLink>
       </div>
       <div className="Navbar__pages">
-        <NavLink to="/">
+        <NavLink to="/night-owl">
           <img src={homeIcon} alt="home icon" />
         </NavLink>
-        <NavLink to="/movies">
+        <NavLink to="/night-owl/movies">
           <img src={moviesIcon} alt="movies icon" />
         </NavLink>
-        <NavLink to="/tv">
+        <NavLink to="/night-owl/tv">
           <img src={tvIcon} alt="tv icon" />
         </NavLink>
-        <NavLink to="/bookmarks">
+        <NavLink to="/night-owl/bookmarks">
           <img src={bookmarksIcon} alt="bookmarks icon" />
         </NavLink>
       </div>
       <div className="Navbar__account">
-        <img src={userProfileImg} alt="user profile image" />
+        <NavLink to="/sign-up">
+          <img src={userProfileImg} alt="user profile image" />
+        </NavLink>
       </div>
     </div>
   );
