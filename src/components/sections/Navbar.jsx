@@ -35,7 +35,7 @@ export default function Navbar() {
         </NavLink>
       </div>
       <div className="Navbar__account">
-        <NavLink to="/sign-up">
+        <NavLink to="auth/sign-up">
           <img src={userProfileImg} alt="user profile image" />
         </NavLink>
       </div>

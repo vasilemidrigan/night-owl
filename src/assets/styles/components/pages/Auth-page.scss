@@ -1,6 +1,6 @@
 // Sign-up styles
 
-.SignUp {
+.AuthPage {
   position: relative;
   background-color: $dark-blue;
   min-height: 100vh;
@@ -27,6 +27,7 @@
       margin: 0 auto;
       @include display-flex(unset, unset, column);
       width: 80%;
+
       label {
         height: 2.3125rem;
         border-bottom: 1px solid $light-blue;
@@ -58,7 +59,7 @@
         line-height: 19px;
       }
     }
-    &__sign-in {
+    &__login {
       text-align: center;
       margin-top: 1.5rem;
       color: $white;
@@ -68,7 +69,7 @@
         line-height: 19px;
         display: inline;
       }
-      span {
+      &__link {
         font-weight: 300;
         font-size: 15px;
         line-height: 19px;

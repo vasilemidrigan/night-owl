@@ -28,8 +28,12 @@ input:focus::placeholder {
 input {
   color: $white;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 19px;
+}
+// input password fields
+input[type="password"] {
+  font-size: 28px;
 }
 
 // fonts
@@ -76,4 +80,11 @@ img {
 // margins
 .wrppr-mrgn-mob {
   margin: 1.5rem 1rem;
+}
+
+// invalid inputs
+label.invalid {
+  input {
+    color: red;
+  }
 }

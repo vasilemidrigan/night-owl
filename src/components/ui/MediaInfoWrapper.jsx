@@ -9,13 +9,13 @@ import starIcon from "../../assets/img/star.svg";
 
 export default function MediaInfoWrapper(props) {
   const genres = useContext(GenresDataContext);
-  const genresMovie = genres.genresMovie[0].genres;
+  const genresMovie = genres?.genresMovie[0]?.genres;
   const elemGenres = props.el.genre_ids;
   // get genres
   function getGenres() {
     const genres = [];
     elemGenres.map((elId) => {
-      genresMovie.map((obj) => {
+      genresMovie?.map((obj) => {
         return obj.id === elId ? genres.push(obj.name) : false;
       });
     });
