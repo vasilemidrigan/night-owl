@@ -4,6 +4,8 @@ import BookmarkIcon from "./BookmarkIcon";
 import MediaInfoWrapper from "./MediaInfoWrapper";
 
 export default function ShowsRow(props) {
+  console.log(props);
+
   return (
     <div className="ShowsTemplate">
       <h2 className="ShowsTemplate__hdr shw-rw-hdr fnt-hdr-s">

@@ -2,7 +2,7 @@
 
 import TrendingBar from "../sections/Trending-bar";
 
-export default function HomePage(props) {
+export default function HomePage() {
   return (
     <div className="HomePage">
       <TrendingBar />

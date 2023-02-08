@@ -44,7 +44,6 @@ export default function AuthPage() {
   }
 
   function handlePassword(e) {
-    console.log(password.characters.length, password.characters);
     setPassword(() => {
       return {
         characters: e,
@@ -83,7 +82,7 @@ export default function AuthPage() {
               setPassword,
               setConfirmPassword
             );
-            navigate("/night-owl");
+            navigate("../../night-owl/account");
           }}
           noValidate
         >

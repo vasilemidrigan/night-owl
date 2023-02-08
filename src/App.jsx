@@ -1,20 +1,20 @@
 // App
 
-// imports
-// - npms
 import { useState, useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
-// - sections
+
 import Navbar from "./components/sections/Navbar";
 import SearchBar from "./components/sections/Search-bar";
-// - context
+
 import ContextProviders from "./context/Context-Config";
 import AuthContext from "./context/Auth-Context";
-// - utils
+
 import { fetchData } from "./utils/fetchData";
 import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
 import { getRTUpdates } from "./utils/functionalities";
-// - global constants
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 import { allUrls } from "./data/allUrls";
 
 export default function App() {
@@ -99,6 +99,10 @@ export default function App() {
     getRTUpdates(setAiringTodayTv, "airing_today_tv");
     getRTUpdates(setOnTheAirTv, "on_the_air_tv");
   }, []);
+
+  // ------------------------
+  // Authentication user data
+  // ------------------------
 
   return (
     <AuthContext>

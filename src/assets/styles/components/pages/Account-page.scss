@@ -1,0 +1,36 @@
+// Account page styles
+
+.AccountPage {
+  border: 1px solid grey;
+  &__avatar {
+    border: 1px solid grey;
+    margin: 10px auto;
+    width: 100px;
+    height: 100px;
+  }
+  &__username {
+    border: 1px solid grey;
+    color: $white;
+    text-align: center;
+    font-size: 23px;
+  }
+  &__bookmarks,
+  &__lists {
+    &__shows {
+      @include display-flex(unset, unset, row);
+      border: 1px solid grey;
+      height: 200px;
+      margin: 10px 0;
+      overflow-x: scroll;
+      &__show {
+        margin: 5px;
+        position: relative;
+      }
+    }
+    h3 {
+      border: 1px solid grey;
+      margin-left: 10px;
+      color: $white;
+    }
+  }
+}

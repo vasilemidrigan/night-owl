@@ -73,7 +73,11 @@ export default function BookmarkIcon(props) {
   return (
     <div
       className="BookmarkIcon"
-      onClick={() => updateBookmark(`show_${props.el.id}`, props.collectionID)}
+      onClick={
+        props.type == "account"
+          ? props.handleClick
+          : () => updateBookmark(`show_${props.el.id}`, props.collectionID)
+      }
     >
       <img
         className="BookmarkIcon__img"

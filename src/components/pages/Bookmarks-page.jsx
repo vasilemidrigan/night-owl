@@ -10,7 +10,7 @@ import ShowsGrid from "../ui/ShowsGrid";
 
 export default function BookmarksPage() {
   const configs = useContext(ConfigsDataContext);
-  const { bookmarkShows, setBookmarkShows } = useContext(BookmarkShowsContext);
+  const { bookmarkShows } = useContext(BookmarkShowsContext);
 
   return (
     <div className="BookmarksPage">
