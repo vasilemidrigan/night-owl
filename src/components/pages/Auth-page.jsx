@@ -1,14 +1,23 @@
 // Sign up page
 
-import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
+
 import { signUp } from "../../utils/auth-utils";
 import logo from "../../assets/img/logo.svg";
 
 export default function AuthPage() {
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const [username, setUsername] = useState({
+    name: "",
+    isValid: false,
+  });
+
+  const [usernameIsValid, setUsernameIsValid] = useState();
 
   const [email, setEmail] = useState({
     address: "",
@@ -24,7 +33,6 @@ export default function AuthPage() {
   });
 
   const [emailIsValid, setEmailIsValid] = useState(false);
-  const [passwordIsValid, setPasswordIsValid] = useState(false);
 
   useEffect(() => {
     const regexp = new RegExp(
@@ -34,11 +42,33 @@ export default function AuthPage() {
     setEmailIsValid(isValid);
   }, [email.address]);
 
+  useEffect(() => {
+    const regexp = new RegExp(
+      "^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+    );
+    const validation = regexp.test(username.name);
+    setUsername(() => {
+      return {
+        ...username,
+        isValid: validation,
+      };
+    });
+  }, [username.name]);
+
   function handleEmail(e) {
     setEmail(() => {
       return {
         address: e,
         isValid: emailIsValid ? true : false,
+      };
+    });
+  }
+
+  function handleUsername(e) {
+    setUsername(() => {
+      return {
+        ...username,
+        name: e,
       };
     });
   }
@@ -82,10 +112,25 @@ export default function AuthPage() {
               setPassword,
               setConfirmPassword
             );
-            navigate("../../night-owl/account");
+            navigate("../../night-owl/account", {
+              state: { username: username.name },
+            });
           }}
           noValidate
         >
+          <label
+            htmlFor="username"
+            className={username.isValid ? "" : "invalid"}
+          >
+            <input
+              type="text"
+              id="username"
+              value={username.name}
+              onChange={(e) => handleUsername(e.target.value)}
+              name="username"
+              placeholder="Username"
+            />
+          </label>
           <label htmlFor="email" className={email.isValid ? "" : "invalid"}>
             <input
               type="email"

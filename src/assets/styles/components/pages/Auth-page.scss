@@ -14,9 +14,10 @@
     @include position-absolute(20%, unset, unset, 50%);
     background-color: $semi-dark-blue;
     transform: translate(-50%);
-    height: 26.25rem;
+    height: 29.375rem;
     width: 340px;
     border-radius: 0.9375rem;
+    border: 0.5px solid darkred;
 
     &__hdr {
       margin: 32px;

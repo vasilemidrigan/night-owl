@@ -13,8 +13,6 @@ import { fetchData } from "./utils/fetchData";
 import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
 import { getRTUpdates } from "./utils/functionalities";
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 import { allUrls } from "./data/allUrls";
 
 export default function App() {

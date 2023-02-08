@@ -1,18 +1,20 @@
 // Navbar
 
-// imports
-// - react-router-dom
 import { NavLink } from "react-router-dom";
 
-// - icons
+import { AuthDataContext } from "../../context/Auth-Context";
+import { useContext } from "react";
+
 import logo from "../../assets/img/logo.svg";
 import homeIcon from "../../assets/img/icon-nav-home.svg";
 import moviesIcon from "../../assets/img/icon-nav-movies.svg";
 import tvIcon from "../../assets/img/icon-nav-tv-series.svg";
 import bookmarksIcon from "../../assets/img/icon-nav-bookmark.svg";
-import userProfileImg from "../../assets/img/image-avatar.png";
+import userAvatarDefault from "../../assets/img/user_avatar_default.png";
 
 export default function Navbar() {
+  const user = useContext(AuthDataContext);
+
   return (
     <div className="Navbar">
       <div className="Navbar__logo">
@@ -35,8 +37,8 @@ export default function Navbar() {
         </NavLink>
       </div>
       <div className="Navbar__account">
-        <NavLink to="auth/sign-up">
-          <img src={userProfileImg} alt="user profile image" />
+        <NavLink to={user ? "/night-owl/account" : "auth/sign-up"}>
+          <img src={userAvatarDefault} alt="user profile image" />
         </NavLink>
       </div>
     </div>

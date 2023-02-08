@@ -6,9 +6,8 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 export const AuthDataContext = createContext(null);
 
 export default function AuthContext({ children }) {
-  const [user, setUser] = useState(null);
-
   const auth = getAuth();
+  const [user, setUser] = useState(null);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
