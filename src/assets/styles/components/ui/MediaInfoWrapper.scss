@@ -18,10 +18,6 @@
     height: 3.75rem;
     @include display-flex(center, center, row);
   }
-  &__genres {
-  }
-  &__release-date {
-  }
   &__vote-average {
     position: relative;
     @include display-flex(center, center, row);

@@ -3,8 +3,6 @@
 // ----------------
 
 .ShowsGrid {
-  &__hdr {
-  }
   &__grid {
     padding: 5px;
     @include display-flex(center, unset, unset);
