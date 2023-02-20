@@ -1,11 +1,6 @@
+// ------
 // Mixins
-
-// typography
-
-@mixin font-heading-m {
-  font-size: 1.5rem;
-  font-weight: 300;
-}
+// ------
 
 // display-flex
 @mixin display-flex($j-c, $a-i, $flx-dir) {

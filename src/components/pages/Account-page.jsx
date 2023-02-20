@@ -46,15 +46,15 @@ export default function AccountPage() {
 
   return (
     <div className="AccountPage wrppr-mrgn-mob">
-      <div className="AccountPage__avatar">
+      <div className="AccountPage__avatar h-100px w-100px border-radius-50">
         <img src={userAvatarDefault} alt="user avatar" />
       </div>
-      <div className="AccountPage__username">
+      <div className="AccountPage__username txt-align-c f-23">
         {user ? username : "night_owl_user"}
       </div>
       <div className="AccountPage__bookmarks">
         <h3>Bookmarks</h3>
-        <div className="AccountPage__bookmarks__shows">
+        <div className="AccountPage__bookmarks__shows h-200px">
           {bookmarkShows.map((show) => {
             return (
               <div
@@ -81,12 +81,13 @@ export default function AccountPage() {
           <input
             type="text"
             id="add_list"
+            className="w-150px"
             name="list"
             placeholder="add list"
             value={list}
           />
-          <button>
-            <span>+</span>
+          <button className="f-32 border-none">
+            <span className="transf-transl-50-all">+</span>
           </button>
         </label>
       </div>

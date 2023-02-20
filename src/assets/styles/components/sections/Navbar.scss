@@ -1,12 +1,11 @@
+// --------------
 // Nabvbar styles
+// --------------
 
 .Navbar {
   @include display-flex(space-between, center, row);
   background-color: $semi-dark-blue;
   padding: 18px;
-  &__logo {
-    height: 1.5rem;
-  }
   &__pages {
     a {
       img {
@@ -22,10 +21,5 @@
   &__account {
     position: relative;
     border: 1.5px solid $white;
-    border-radius: 50%;
-    height: 1.5rem;
-    img {
-      border-radius: 50%;
-    }
   }
 }

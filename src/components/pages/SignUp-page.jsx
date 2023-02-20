@@ -36,7 +36,6 @@ export default function SignUpPage() {
 
   const signUp = async function (
     e,
-    auth,
     email,
     password,
     setEmail,
@@ -115,16 +114,16 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="AuthPage">
-      <div className="AuthPage__logo">
+    <div className="AuthPage min-h-100vh">
+      <div className="AuthPage__logo transf-transl-50 ">
         <NavLink to="/night-owl">
           <img src={logo} alt="logo" />
         </NavLink>
       </div>
-      <div className="AuthPage__wrapper">
-        <h2 className="AuthPage__wrapper__hdr fnt-hdr-l">Sign Up</h2>
+      <div className="AuthPage__wrapper transf-transl-50">
+        <h2 className="AuthPage__wrapper__hdr fnt-hdr-l m-32">Sign Up</h2>
         <form
-          className="AuthPage__wrapper__form"
+          className="AuthPage__wrapper__form m-auto"
           onSubmit={(e) => {
             signUp(
               e,
@@ -191,6 +190,7 @@ export default function SignUpPage() {
             />
           </label>
           <button
+            className="border-radius-7px-all border-none f-w-300 f-16"
             type="submit"
             disabled={
               !confirmPassword.isValid
@@ -203,9 +203,12 @@ export default function SignUpPage() {
             Create an account
           </button>
         </form>
-        <div className="AuthPage__wrapper__login">
-          <p>Already have an account? </p>
-          <NavLink className="AuthPage__wrapper__login__link" to="../log-in">
+        <div className="AuthPage__wrapper__login txt-align-c">
+          <p className="f-15">Already have an account? </p>
+          <NavLink
+            className="AuthPage__wrapper__login__link f-15"
+            to="../log-in"
+          >
             Log In
           </NavLink>
         </div>

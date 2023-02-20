@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <div className="Navbar">
-      <div className="Navbar__logo">
+      <div className="Navbar__logo h-24">
         <NavLink to="/night-owl">
           <img src={logo} alt="Night Owl Logo" />
         </NavLink>
@@ -45,8 +45,12 @@ export default function Navbar() {
           <img src={bookmarksIcon} alt="bookmarks icon" />
         </NavLink>
       </div>
-      <div className="Navbar__account" onClick={showMenu}>
-        <img src={userAvatarDefault} alt="user profile image" />
+      <div className="Navbar__account h-24 border-radius-50" onClick={showMenu}>
+        <img
+          className="border-radius-50"
+          src={userAvatarDefault}
+          alt="user profile image"
+        />
         <UserMenu activeMenu={activeMenu} />
       </div>
     </div>

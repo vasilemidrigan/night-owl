@@ -1,16 +1,14 @@
-// Account page styles
+// ------------
+// Account page
+// ------------
 
 .AccountPage {
   &__avatar {
     margin: 10px auto;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
     overflow: hidden;
   }
   &__username {
     color: $white;
-    text-align: center;
     font-size: 23px;
   }
   &__bookmarks,
@@ -18,7 +16,6 @@
     margin-top: 20px;
     &__shows {
       @include display-flex(unset, unset, row);
-      height: 200px;
       margin: 10px 0;
       overflow-x: scroll;
       &__show {
@@ -37,7 +34,6 @@
     label {
       @include display-flex(unset, center, unset);
       input {
-        width: 150px;
         color: red;
       }
       button {
@@ -45,16 +41,11 @@
         margin-left: 15px;
         width: 25px;
         height: 25px;
-        font-size: 2rem;
+        border-radius: 3px;
         color: $semi-dark-blue;
         background-color: $greyish-blue;
-        border: none;
-        border-radius: 3px;
         span {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          @include position-absolute(50%, unset, unset, 50%);
         }
       }
     }

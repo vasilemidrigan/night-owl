@@ -10,7 +10,7 @@ export default function SearchBar() {
       <img src={searchIcon} className="SearchBar__icon" alt="search icon" />
       <input
         type="search"
-        className="SearchBar__input"
+        className="SearchBar__input f-18 h-100"
         placeholder="Search from movies and TV series"
       />
     </div>

@@ -1,21 +1,21 @@
-// Shows row styles
+// --------------------
+// ShowsTemplate styles
+// --------------------
 
 .ShowsTemplate {
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
   &__hdr {
   }
   &__row {
     overflow-x: scroll;
     @include display-flex(space-between, center, row);
     &__card {
-      max-width: 190px;
       position: relative;
       margin: 10px;
       border-radius: 7px;
       box-shadow: 0px 0px 15px $dark-red;
       &__img {
         border-radius: 7px 7px 0px 0px;
-        min-width: 100%;
       }
     }
   }

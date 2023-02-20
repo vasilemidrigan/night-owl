@@ -1,4 +1,6 @@
+// --------------------
 // Bookmark Icon Styles
+// --------------------
 
 .BookmarkIcon {
   position: relative;
@@ -7,25 +9,18 @@
   border-radius: 50%;
   background-color: transparent;
   &__img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    @include position-absolute(50%, unset, unset, 50%);
     transform: translate(-50%, -50%);
-    width: 15px;
-    height: 15px;
+    width: 0.9375rem;
+    height: 0.9375rem;
   }
 }
 
-//  inside the trending bar
 .Trend__TrendingBar__element,
 .ShowsTemplate,
 .ShowsGrid,
 .AccountPage__bookmarks__shows__show {
   .BookmarkIcon {
     @include position-absolute(5px, 10px, unset, unset);
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 }

@@ -34,12 +34,12 @@ export default function LogInPage() {
 
   return (
     <div className="AuthPage">
-      <div className="AuthPage__logo">
+      <div className="AuthPage__logo transf-transl-50">
         <NavLink to="/night-owl">
           <img src={logo} alt="logo" />
         </NavLink>
       </div>
-      <div className="AuthPage__wrapper">
+      <div className="AuthPage__wrapper transf-transl-50">
         <h2 className="AuthPage__wrapper__hdr fnt-hdr-l">Log In</h2>
         <form
           className="AuthPage__wrapper__form"

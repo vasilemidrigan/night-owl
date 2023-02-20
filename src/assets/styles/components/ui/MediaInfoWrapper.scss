@@ -1,4 +1,6 @@
+// ------------------
 // Media Info Wrapper
+// ------------------
 
 .MediaInfoWrapper {
   height: 9.75rem;
@@ -12,7 +14,6 @@
   &__media-type {
     @include position-absolute(10px, unset, unset, 10px);
   }
-
   &__title {
     height: 3.75rem;
     @include display-flex(center, center, row);
