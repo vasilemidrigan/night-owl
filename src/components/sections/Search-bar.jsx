@@ -1,3 +1,7 @@
+// ------------------
+// Search bar section
+// ------------------
+
 import searchIcon from "../../assets/img/icon-search.svg";
 
 export default function SearchBar() {

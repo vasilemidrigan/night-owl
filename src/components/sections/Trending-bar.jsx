@@ -1,18 +1,22 @@
-// Trending Bar
+// --------------------
+// Trending Bar section
+// --------------------
 
+// react
 import { useContext } from "react";
+// context
 import {
   ConfigsDataContext,
   MoviesDataContext,
 } from "../../context/Context-Config";
+// components
 import BookmarkIcon from "../ui/BookmarkIcon";
 import MediaInfoWrapper from "../ui/MediaInfoWrapper";
 
 export default function TrendingBar() {
-  // context
+  const configs = useContext(ConfigsDataContext);
   const movies = useContext(MoviesDataContext);
   const trendingMovies = movies.trendingMovies;
-  const configs = useContext(ConfigsDataContext);
 
   return (
     <div className="Trend wrppr-mrgn-mob">

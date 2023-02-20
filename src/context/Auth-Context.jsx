@@ -1,6 +1,10 @@
-// Authentication Context
+// ------------
+// Auth Context
+// ------------
 
+// react
 import { createContext, useState } from "react";
+// firebase
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export const AuthDataContext = createContext(null);
@@ -13,12 +17,12 @@ export default function AuthContext({ children }) {
     if (user) {
       return setUser(user);
     } else {
-      return null;
+      return setUser(null);
     }
   });
 
   return (
-    <AuthDataContext.Provider value={user ? user : false}>
+    <AuthDataContext.Provider value={{ user, setUser }}>
       {children}
     </AuthDataContext.Provider>
   );

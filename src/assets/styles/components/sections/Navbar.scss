@@ -20,9 +20,12 @@
     }
   }
   &__account {
+    position: relative;
     border: 1.5px solid $white;
     border-radius: 50%;
     height: 1.5rem;
-    overflow: hidden;
+    img {
+      border-radius: 50%;
+    }
   }
 }

@@ -1,16 +1,21 @@
+// --------------
 // Bookmarks page
+// --------------
 
-// imports
-// - context
+// react
 import { useContext } from "react";
+// context
 import { ConfigsDataContext } from "../../context/Context-Config";
 import { BookmarkShowsContext } from "../../context/Context-Config";
-// - ui
+import { AuthDataContext } from "../../context/Auth-Context";
+// components
 import ShowsGrid from "../ui/ShowsGrid";
 
 export default function BookmarksPage() {
   const configs = useContext(ConfigsDataContext);
   const { bookmarkShows } = useContext(BookmarkShowsContext);
+
+  const { user } = useContext(AuthDataContext);
 
   return (
     <div className="BookmarksPage">
@@ -18,7 +23,7 @@ export default function BookmarksPage() {
         configs={configs}
         shows={bookmarkShows}
         showsCategory="Bookmarks"
-        collectionID="bookmarks"
+        collectionID={`${user?.email}_data/bookmarked_movies/bookmarks`}
       />
     </div>
   );

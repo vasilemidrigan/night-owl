@@ -1,16 +1,20 @@
-// Media info wrapper
+// ---------------------
+// Media info wrapper UI
+// ---------------------
 
+// react
 import { useContext } from "react";
+// context
 import { GenresDataContext } from "../../context/Context-Config";
-
+// assets
 import movieIcon from "../../assets/img/icon-category-movie.svg";
 import tvIcon from "../../assets/img/icon-category-tv.svg";
-import starIcon from "../../assets/img/star.svg";
 
 export default function MediaInfoWrapper(props) {
   const genres = useContext(GenresDataContext);
   const genresMovie = genres?.genresMovie[0]?.genres;
   const elemGenres = props.el.genre_ids;
+
   // get genres
   function getGenres() {
     const genres = [];

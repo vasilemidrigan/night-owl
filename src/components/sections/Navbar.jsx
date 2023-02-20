@@ -1,10 +1,15 @@
-// Navbar
+// --------------
+// Navbar section
+// --------------
 
+// react
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+// context
 import { AuthDataContext } from "../../context/Auth-Context";
-import { useContext } from "react";
-
+// components
+import UserMenu from "../ui/UserMenu";
+// assets
 import logo from "../../assets/img/logo.svg";
 import homeIcon from "../../assets/img/icon-nav-home.svg";
 import moviesIcon from "../../assets/img/icon-nav-movies.svg";
@@ -13,7 +18,11 @@ import bookmarksIcon from "../../assets/img/icon-nav-bookmark.svg";
 import userAvatarDefault from "../../assets/img/user_avatar_default.png";
 
 export default function Navbar() {
-  const user = useContext(AuthDataContext);
+  const [activeMenu, setActiveMenu] = useState(false);
+
+  const showMenu = function () {
+    return setActiveMenu(activeMenu === false ? true : false);
+  };
 
   return (
     <div className="Navbar">
@@ -36,10 +45,9 @@ export default function Navbar() {
           <img src={bookmarksIcon} alt="bookmarks icon" />
         </NavLink>
       </div>
-      <div className="Navbar__account">
-        <NavLink to={user ? "/night-owl/account" : "auth/sign-up"}>
-          <img src={userAvatarDefault} alt="user profile image" />
-        </NavLink>
+      <div className="Navbar__account" onClick={showMenu}>
+        <img src={userAvatarDefault} alt="user profile image" />
+        <UserMenu activeMenu={activeMenu} />
       </div>
     </div>
   );

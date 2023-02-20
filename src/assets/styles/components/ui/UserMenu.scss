@@ -1,0 +1,33 @@
+// User Menu styles
+
+.UserMenu {
+  @include display-flex(center, center, unset);
+  color: $white;
+  background-color: $light-blue;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 35px;
+  right: -13px;
+  border-radius: 4px;
+  z-index: 1;
+  &__triangle {
+    width: 20px;
+    height: 20px;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid $light-blue;
+    position: absolute;
+    top: -17px;
+    right: 13.5px;
+  }
+  &__options {
+    @include display-flex(center, center, column);
+    &__log-in {
+    }
+
+    &__log-out {
+    }
+  }
+}

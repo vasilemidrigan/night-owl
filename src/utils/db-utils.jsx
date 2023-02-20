@@ -1,5 +1,8 @@
-// Database utils functions
+// --------------------------
+// Database utility functions
+// --------------------------
 
+// firebase
 import { db } from "../firebase-config";
 import {
   doc,
@@ -9,10 +12,7 @@ import {
   getCountFromServer,
 } from "firebase/firestore";
 
-// -----------------
 // save data into db
-// -----------------
-
 export async function onStartIntoDB(fetchFunc, urls) {
   // fetch data
   const allData = await fetchFunc(urls);
@@ -57,9 +57,7 @@ export async function onStartIntoDB(fetchFunc, urls) {
   );
 }
 
-// ----------------------------------------------
 // get data from database and save it into states
-// ----------------------------------------------
 export async function getDataFromDB(collection_name, set_state) {
   await getDocs(collection(db, collection_name)).then((querySnapshot) => {
     const newData = querySnapshot.docs.map((doc) => ({

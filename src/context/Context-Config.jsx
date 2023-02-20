@@ -1,6 +1,8 @@
-// Context
+// ----------------
+// TMDB API Context
+// ----------------
 
-// imports
+// react
 import { createContext } from "react";
 
 export const ConfigsDataContext = createContext(null);

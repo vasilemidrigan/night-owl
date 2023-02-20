@@ -1,8 +1,14 @@
-import { createBrowserRouter } from "react-router-dom";
+// --------------
+// Router configs
+// --------------
 
+// react
+import { createBrowserRouter } from "react-router-dom";
+// components
 import App from "./App";
 import HomePage from "./components/pages/Home-page";
 import AuthPage from "./components/pages/Auth-page";
+import LogInPage from "./components/pages/LogIn-page";
 import TvPage from "./components/pages/Tv-page";
 import MoviePage from "./components/pages/Movie-page";
 import BookmarksPage from "./components/pages/Bookmarks-page";
@@ -30,17 +36,21 @@ export const router = createBrowserRouter([
         element: <BookmarksPage />,
       },
       {
-        path: "account",
-        element: <AccountPage />,
-      },
-    ],
-  },
-  {
-    path: "/night-owl/auth",
-    children: [
-      {
-        path: ":id",
-        element: <AuthPage />,
+        path: "auth",
+        children: [
+          {
+            path: "sign-up",
+            element: <AuthPage />,
+          },
+          {
+            path: "log-in",
+            element: <LogInPage />,
+          },
+          {
+            path: "account",
+            element: <AccountPage />,
+          },
+        ],
       },
     ],
   },

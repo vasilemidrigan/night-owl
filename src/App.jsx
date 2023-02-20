@@ -1,14 +1,17 @@
+// ---
 // App
+// ---
 
-import { useState, useEffect, useRef } from "react";
+// react
+import { useState, useEffect, useRef, useContext } from "react";
 import { Outlet } from "react-router-dom";
-
+// components
 import Navbar from "./components/sections/Navbar";
 import SearchBar from "./components/sections/Search-bar";
-
+// context
 import ContextProviders from "./context/Context-Config";
-import AuthContext from "./context/Auth-Context";
-
+import { AuthDataContext } from "./context/Auth-Context";
+// utils
 import { fetchData } from "./utils/fetchData";
 import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
 import { getRTUpdates } from "./utils/functionalities";
@@ -38,9 +41,10 @@ export default function App() {
   // Refs
   const effectRan = useRef(false);
 
-  // ---------------------------------------
+  // user
+  const { user } = useContext(AuthDataContext);
+
   // Fetch data from API and save it into db
-  // ---------------------------------------
   useEffect(() => {
     if (effectRan.current === false) {
       onStartIntoDB(fetchData, allUrls);
@@ -50,9 +54,7 @@ export default function App() {
     }
   }, []);
 
-  // --------------------------------------------------
   // Get data from database and save it into our states
-  // --------------------------------------------------
   useEffect(() => {
     if (effectRan.current === false) {
       async function getData() {
@@ -60,8 +62,6 @@ export default function App() {
           getDataFromDB("configs", setConfigs),
           getDataFromDB("genres_tv", setGenresTv),
           getDataFromDB("genres_movie", setGenresMovie),
-          getDataFromDB("bookmarks", setBookmarkShows),
-          getDataFromDB("bookmarksTrace", setBookmarksTrace),
           getDataFromDB("trending_movies", setTrendingMovies),
           getDataFromDB("popular_movies", setPopularMovies),
           getDataFromDB("top_rated_movies", setTopRatedMovies),
@@ -81,12 +81,16 @@ export default function App() {
     }
   }, []);
 
-  // --------------------------------------------------------
   // Get Real Time Updates from db and save them into our app
-  // --------------------------------------------------------
   useEffect(() => {
-    getRTUpdates(setBookmarkShows, "bookmarks");
-    getRTUpdates(setBookmarksTrace, "bookmarksTrace");
+    getRTUpdates(
+      setBookmarkShows,
+      `${user?.email}_data/bookmarked_movies/bookmarks`
+    );
+    getRTUpdates(
+      setBookmarksTrace,
+      `${user?.email}_data/bookmarked_movies/bookmarks_trace`
+    );
     getRTUpdates(setTrendingMovies, "trending_movies");
     getRTUpdates(setPopularMovies, "popular_movies");
     getRTUpdates(setTopRatedMovies, "top_rated_movies");
@@ -96,46 +100,40 @@ export default function App() {
     getRTUpdates(setTopRatedTv, "top_rated_tv");
     getRTUpdates(setAiringTodayTv, "airing_today_tv");
     getRTUpdates(setOnTheAirTv, "on_the_air_tv");
-  }, []);
-
-  // ------------------------
-  // Authentication user data
-  // ------------------------
+  }, [user]);
 
   return (
-    <AuthContext>
-      <ContextProviders
-        configs={configs}
-        genres={{
-          genresMovie,
-          genresTv,
-        }}
-        bookmarkShows={{
-          bookmarkShows,
-          setBookmarkShows,
-          bookmarksTrace,
-          setBookmarksTrace,
-        }}
-        movies={{
-          trendingMovies,
-          popularMovies,
-          topRatedMovies,
-          upcomingMovies,
-          nowPlayingMovies,
-        }}
-        tv={{
-          popularTv,
-          topRatedTv,
-          airingTodayTv,
-          onTheAirTv,
-        }}
-      >
-        <div className="App">
-          <Navbar />
-          <SearchBar />
-          <Outlet />
-        </div>
-      </ContextProviders>
-    </AuthContext>
+    <ContextProviders
+      configs={configs}
+      genres={{
+        genresMovie,
+        genresTv,
+      }}
+      bookmarkShows={{
+        bookmarkShows,
+        setBookmarkShows,
+        bookmarksTrace,
+        setBookmarksTrace,
+      }}
+      movies={{
+        trendingMovies,
+        popularMovies,
+        topRatedMovies,
+        upcomingMovies,
+        nowPlayingMovies,
+      }}
+      tv={{
+        popularTv,
+        topRatedTv,
+        airingTodayTv,
+        onTheAirTv,
+      }}
+    >
+      <div className="App">
+        <Navbar />
+        <SearchBar />
+        <Outlet />
+      </div>
+    </ContextProviders>
   );
 }

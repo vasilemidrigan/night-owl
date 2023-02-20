@@ -1,9 +1,13 @@
+// -------
 // Tv page
+// -------
 
+// react
 import { useContext } from "react";
+// context
 import { TvDataContext } from "../../context/Context-Config";
 import { ConfigsDataContext } from "../../context/Context-Config";
-
+// components
 import ShowsRow from "../ui/ShowsRow";
 
 export default function TvPage() {

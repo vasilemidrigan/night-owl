@@ -1,7 +1,8 @@
-// Shows Grid
+// -------------
+// Shows Grid UI
+// -------------
 
-// imports
-// - ui
+// components
 import MediaInfoWrapper from "./MediaInfoWrapper";
 import BookmarkIcon from "./BookmarkIcon";
 

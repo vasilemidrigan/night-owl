@@ -1,60 +1,56 @@
+// ------------
 // Account page
+// ------------
 
-import { db } from "../../firebase-config";
-import { doc, deleteDoc, updateDoc } from "firebase/firestore";
-
+// react
 import { useLocation } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
+// firebase
+import { getAuth, updateProfile } from "firebase/auth";
+// context
 import { AuthDataContext } from "../../context/Auth-Context";
 import {
   BookmarkShowsContext,
   ConfigsDataContext,
 } from "../../context/Context-Config";
+// assets
 import BookmarkIcon from "../ui/BookmarkIcon";
-
-import avatar from "../../assets/img/hellboy.jpeg";
-import { getAuth, updateProfile } from "firebase/auth";
+import userAvatarDefault from "../../assets/img/user_avatar_default.png";
 
 export default function AccountPage() {
   const configs = useContext(ConfigsDataContext);
-  const user = useContext(AuthDataContext);
+  const { user } = useContext(AuthDataContext);
   const auth = getAuth();
+
   const { state } = useLocation();
-  const username = state?.username;
+  const [username, setUsername] = useState("");
+  const [list, setList] = useState();
 
-  const { bookmarkShows, bookmarksTrace, setBookmarkShows, setBookmarkTrace } =
-    useContext(BookmarkShowsContext);
-
-  async function handleBookmark(showId) {
-    const target = bookmarksTrace.filter((el) => {
-      return el.id === showId;
-    });
-    const targetDocRef = doc(db, target[0]?.collection_id, `show_${showId}`);
-    await updateDoc(targetDocRef, {
-      bookmark: false,
-    });
-    await deleteDoc(doc(db, "bookmarks", `show_${showId}`));
-    await deleteDoc(doc(db, "bookmarksTrace", `show_${showId}`));
-  }
-
-  console.log(auth.currentUser);
+  const { bookmarkShows } = useContext(BookmarkShowsContext);
 
   useEffect(() => {
+    // update username into firebase, and then into account as well
     async function updateUsername() {
-      updateProfile(auth.currentUser, {
-        displayName: username,
-      }).catch((err) => console.error(err));
+      if (user) {
+        await updateProfile(auth.currentUser, {
+          displayName: state?.username,
+        })
+          .then(() => {
+            setUsername(user?.displayName);
+          })
+          .catch((err) => console.error(err));
+      }
     }
     updateUsername();
-  }, []);
+  }, [user]);
 
   return (
     <div className="AccountPage wrppr-mrgn-mob">
       <div className="AccountPage__avatar">
-        <img src={avatar} alt="user avatar" />
+        <img src={userAvatarDefault} alt="user avatar" />
       </div>
       <div className="AccountPage__username">
-        {user ? user.displayName : "night_owl_user"}
+        {user ? username : "night_owl_user"}
       </div>
       <div className="AccountPage__bookmarks">
         <h3>Bookmarks</h3>
@@ -72,7 +68,7 @@ export default function AccountPage() {
                 <BookmarkIcon
                   type={"account"}
                   el={show}
-                  handleClick={() => handleBookmark(show.id)}
+                  collectionID={`${user?.email}_data/bookmarked_movies/bookmarks`}
                 />
               </div>
             );
@@ -81,7 +77,18 @@ export default function AccountPage() {
       </div>
       <div className="AccountPage__lists">
         <h3>My lists</h3>
-        <button type="button">+</button>
+        <label htmlFor="add_list">
+          <input
+            type="text"
+            id="add_list"
+            name="list"
+            placeholder="add list"
+            value={list}
+          />
+          <button>
+            <span>+</span>
+          </button>
+        </label>
       </div>
     </div>
   );

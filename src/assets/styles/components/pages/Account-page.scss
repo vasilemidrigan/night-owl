@@ -1,24 +1,23 @@
 // Account page styles
 
 .AccountPage {
-  border: 1px solid grey;
   &__avatar {
-    border: 1px solid grey;
     margin: 10px auto;
     width: 100px;
     height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
   }
   &__username {
-    border: 1px solid grey;
     color: $white;
     text-align: center;
     font-size: 23px;
   }
   &__bookmarks,
   &__lists {
+    margin-top: 20px;
     &__shows {
       @include display-flex(unset, unset, row);
-      border: 1px solid grey;
       height: 200px;
       margin: 10px 0;
       overflow-x: scroll;
@@ -28,9 +27,36 @@
       }
     }
     h3 {
-      border: 1px solid grey;
-      margin-left: 10px;
+      margin: 0 15px 0 5px;
       color: $white;
+      display: inline-block;
+    }
+  }
+  &__lists {
+    @include display-flex(start, center, row);
+    label {
+      @include display-flex(unset, center, unset);
+      input {
+        width: 150px;
+        color: red;
+      }
+      button {
+        position: relative;
+        margin-left: 15px;
+        width: 25px;
+        height: 25px;
+        font-size: 2rem;
+        color: $semi-dark-blue;
+        background-color: $greyish-blue;
+        border: none;
+        border-radius: 3px;
+        span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
     }
   }
 }

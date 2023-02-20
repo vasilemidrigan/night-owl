@@ -1,23 +1,23 @@
+// ------------
 // Sign up page
+// ------------
 
+// react
 import { useEffect, useState } from "react";
-
-import { NavLink, useParams, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+// firebase
 import { auth } from "../../firebase-config";
-
-import { signUp } from "../../utils/auth-utils";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+// assets
 import logo from "../../assets/img/logo.svg";
 
 export default function AuthPage() {
   const navigate = useNavigate();
-  const { id } = useParams();
 
   const [username, setUsername] = useState({
     name: "",
     isValid: false,
   });
-
-  const [usernameIsValid, setUsernameIsValid] = useState();
 
   const [email, setEmail] = useState({
     address: "",
@@ -34,6 +34,42 @@ export default function AuthPage() {
 
   const [emailIsValid, setEmailIsValid] = useState(false);
 
+  const signUp = async function (
+    e,
+    auth,
+    email,
+    password,
+    setEmail,
+    setPassword,
+    setConfirmPassword
+  ) {
+    e.preventDefault();
+    try {
+      await createUserWithEmailAndPassword(auth, email, password).then(() => {
+        setEmail(() => {
+          return {
+            address: "",
+            isValid: true,
+          };
+        });
+        setPassword(() => {
+          return {
+            characters: "",
+            isValid: true,
+          };
+        });
+        setConfirmPassword(() => {
+          return {
+            characters: "",
+            isValid: true,
+          };
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const regexp = new RegExp(
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$/
@@ -41,19 +77,6 @@ export default function AuthPage() {
     const isValid = regexp.test(email.address);
     setEmailIsValid(isValid);
   }, [email.address]);
-
-  useEffect(() => {
-    const regexp = new RegExp(
-      "^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
-    );
-    const validation = regexp.test(username.name);
-    setUsername(() => {
-      return {
-        ...username,
-        isValid: validation,
-      };
-    });
-  }, [username.name]);
 
   function handleEmail(e) {
     setEmail(() => {
@@ -67,8 +90,8 @@ export default function AuthPage() {
   function handleUsername(e) {
     setUsername(() => {
       return {
-        ...username,
         name: e,
+        isValid: true,
       };
     });
   }
@@ -77,7 +100,7 @@ export default function AuthPage() {
     setPassword(() => {
       return {
         characters: e,
-        isValid: password.characters.length >= 6 ? true : false,
+        isValid: true,
       };
     });
   }
@@ -94,12 +117,12 @@ export default function AuthPage() {
   return (
     <div className="AuthPage">
       <div className="AuthPage__logo">
-        <img src={logo} alt="logo" />
+        <NavLink to="/night-owl">
+          <img src={logo} alt="logo" />
+        </NavLink>
       </div>
       <div className="AuthPage__wrapper">
-        <h2 className="AuthPage__wrapper__hdr fnt-hdr-l">
-          {id == "sign-up" ? "Sign Up" : "Log In"}
-        </h2>
+        <h2 className="AuthPage__wrapper__hdr fnt-hdr-l">Sign Up</h2>
         <form
           className="AuthPage__wrapper__form"
           onSubmit={(e) => {
@@ -112,7 +135,7 @@ export default function AuthPage() {
               setPassword,
               setConfirmPassword
             );
-            navigate("../../night-owl/account", {
+            navigate("../account", {
               state: { username: username.name },
             });
           }}
@@ -167,28 +190,23 @@ export default function AuthPage() {
               placeholder="Confirm password"
             />
           </label>
-          {id == "sign-up" && (
-            <button
-              type="submit"
-              disabled={
-                !confirmPassword.isValid
-                  ? true
-                  : false || !email.isValid
-                  ? true
-                  : false
-              }
-            >
-              Create an account
-            </button>
-          )}
+          <button
+            type="submit"
+            disabled={
+              !confirmPassword.isValid
+                ? true
+                : false || !email.isValid
+                ? true
+                : false
+            }
+          >
+            Create an account
+          </button>
         </form>
         <div className="AuthPage__wrapper__login">
-          <p>{id == "sign-up" ? "Already" : `Don't`} have an account? </p>
-          <NavLink
-            className="AuthPage__wrapper__login__link"
-            to={id == "sign-up" ? "../log-in" : "../sign-up"}
-          >
-            {id == "sign-up" ? "Log in" : "Sign up"}
+          <p>Already have an account? </p>
+          <NavLink className="AuthPage__wrapper__login__link" to="../log-in">
+            Log In
           </NavLink>
         </div>
       </div>

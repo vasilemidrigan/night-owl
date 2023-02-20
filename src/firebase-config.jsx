@@ -1,4 +1,6 @@
-// Firebase config
+// ----------------
+// Firebase configs
+// ----------------
 
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";

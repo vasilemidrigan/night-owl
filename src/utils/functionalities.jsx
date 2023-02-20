@@ -1,5 +1,8 @@
-// Other utils
+// -----------------------
+// Other utility functions
+// -----------------------
 
+// firebase
 import { db } from "../firebase-config";
 import { query, collection, onSnapshot } from "firebase/firestore";
 
