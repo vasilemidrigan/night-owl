@@ -11,7 +11,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 // assets
 import logo from "../../assets/img/logo.svg";
 
-export default function AuthPage() {
+export default function SignUpPage() {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState({
