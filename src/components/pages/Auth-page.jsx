@@ -255,9 +255,10 @@ export default function SignUpPage() {
             className={`border-radius-7px-all border-none f-w-300 f-16`}
             type="submit"
             disabled={
+              !username.isValid ||
+              !email.isValid ||
+              !password.isValid ||
               !confirmPassword.isValid
-                ? true
-                : false || !email.isValid
                 ? true
                 : false
             }
