@@ -1,0 +1,36 @@
+**username state**
+
+```
+const [username, setUsername] = useState({
+    name: "",
+    isValid: true,
+    error_message:
+      "start with a letter \n allowed characters: a-z A-Z 0-9 - and _ ",
+  });
+```
+
+**handle username function**
+
+```
+  function handleUsername(e) {
+    const regexp = new RegExp(/[a-zA-Z][a-zA-Z0-9-_]{5,32}/gi);
+    const name = e;
+    const isValid = regexp.test(name);
+    setUsername(() => {
+      return {
+        name: name,
+        isValid: isValid ? true : false,
+      };
+    });
+  }
+```
+
+**jsx**.
+
+```
+<div className={`error ${username.isValid ? "hidden" : ""}`}>
+                {username.error_message}
+              </div>
+```
+
+Where's the mistake in this case? How can I show the div depending on the username.isValid state, it seems like the condition in the className of the div doesn't react to the state changes.

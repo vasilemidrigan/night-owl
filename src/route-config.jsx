@@ -7,8 +7,7 @@ import { createBrowserRouter } from "react-router-dom";
 // components
 import App from "./App";
 import HomePage from "./components/pages/Home-page";
-import SignUpPage from "./components/pages/SignUp-page";
-import LogInPage from "./components/pages/LogIn-page";
+import AuthPage from "./components/pages/Auth-page";
 import TvPage from "./components/pages/Tv-page";
 import MoviePage from "./components/pages/Movie-page";
 import BookmarksPage from "./components/pages/Bookmarks-page";
@@ -40,11 +39,11 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "sign-up",
-            element: <SignUpPage />,
+            element: <AuthPage />,
           },
           {
             path: "log-in",
-            element: <LogInPage />,
+            element: <AuthPage />,
           },
           {
             path: "account",
