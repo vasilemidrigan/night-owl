@@ -1,13 +1,16 @@
-// ------------
-// Sign up page
-// ------------
+// -------------------
+// Authentication page
+// -------------------
 
 // react
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 // firebase
 import { auth } from "../../firebase-config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 // assets
 import logo from "../../assets/img/logo.svg";
 
@@ -37,6 +40,18 @@ export default function SignUpPage() {
     error_message: "passwords don't match",
   });
 
+  // log in
+  const logIn = async (e, email, password) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("../account");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // sign up
   const signUp = async function (
     e,
     email,
@@ -66,6 +81,9 @@ export default function SignUpPage() {
             isValid: true,
           };
         });
+      });
+      navigate("../account", {
+        state: { username: username.name },
       });
     } catch (error) {
       console.log(error);
@@ -122,8 +140,6 @@ export default function SignUpPage() {
     });
   }
 
-  console.log(confirmPassword);
-
   return (
     <div className="AuthPage min-h-100vh">
       <div className="AuthPage__logo transf-transl-50 ">
@@ -146,17 +162,16 @@ export default function SignUpPage() {
         <form
           className="AuthPage__wrapper__form m-auto"
           onSubmit={(e) => {
-            signUp(
-              e,
-              email.address,
-              password.characters,
-              setEmail,
-              setPassword,
-              setConfirmPassword
-            );
-            navigate("../account", {
-              state: { username: username.name },
-            });
+            location.pathname === "/night-owl/auth/sign-up"
+              ? signUp(
+                  e,
+                  email.address,
+                  password.characters,
+                  setEmail,
+                  setPassword,
+                  setConfirmPassword
+                )
+              : logIn(e, email.address, password.characters);
           }}
           noValidate
         >
@@ -255,10 +270,14 @@ export default function SignUpPage() {
             className={`border-radius-7px-all border-none f-w-300 f-16`}
             type="submit"
             disabled={
-              !username.isValid ||
-              !email.isValid ||
-              !password.isValid ||
-              !confirmPassword.isValid
+              location.pathname === "/night-owl/auth/sign-up"
+                ? !username.isValid ||
+                  !email.isValid ||
+                  !password.isValid ||
+                  !confirmPassword.isValid
+                  ? true
+                  : false
+                : !email.isValid || !password.isValid
                 ? true
                 : false
             }

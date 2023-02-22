@@ -44,6 +44,9 @@ export default function AccountPage() {
     updateUsername();
   }, [user]);
 
+  console.log(state);
+  console.log(user);
+
   return (
     <div className="AccountPage wrppr-mrgn-mob">
       <div className="AccountPage__avatar h-100px w-100px border-radius-50">
