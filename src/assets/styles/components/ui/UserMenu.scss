@@ -3,12 +3,12 @@
 .UserMenu {
   @include display-flex(center, center, unset);
   color: $white;
-  background-color: $light-blue;
-  width: 100px;
-  height: 100px;
+  background-color: $greyish-blue;
+  width: 50vw;
+  height: 25vh;
   position: absolute;
-  top: 35px;
-  right: -13px;
+  top: 41px;
+  right: -19px;
   border-radius: 4px;
   z-index: 1;
   &__triangle {
@@ -20,9 +20,14 @@
     border-bottom: 10px solid $light-blue;
     position: absolute;
     top: -17px;
-    right: 13.5px;
+    right: 19.5px;
   }
   &__options {
     @include display-flex(center, center, column);
+    gap: 20px;
+    &__link {
+      text-decoration: none;
+      color: $white;
+    }
   }
 }

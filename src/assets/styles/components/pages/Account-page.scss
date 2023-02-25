@@ -50,4 +50,14 @@
       }
     }
   }
+  &__footer {
+    margin-top: 25px;
+    text-align: center;
+    span {
+      padding: 3px;
+      border-radius: 3px;
+      border: 1px solid red;
+      color: $red;
+    }
+  }
 }

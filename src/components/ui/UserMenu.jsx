@@ -26,24 +26,28 @@ export default function UserMenu(props) {
       <div className="UserMenu__options">
         <NavLink
           to="/night-owl/auth/account"
-          className={`${!user ? "hidden" : ""}`}
+          className={`UserMenu__options__link f-23 ${!user ? "hidden" : ""}`}
         >
           profile
         </NavLink>
 
         <NavLink
-          className={`UserMenu__options__log-in ${user ? "hidden" : ""}`}
+          className={`UserMenu__options__link f-23  ${user ? "hidden" : ""}`}
           to="/night-owl/auth/log-in"
         >
           log in
         </NavLink>
         <span
           onClick={logOut}
-          className={`UserMenu__options__log-out ${!user ? "hidden" : ""}`}
+          className={`UserMenu__options__link f-23  ${!user ? "hidden" : ""}`}
         >
           log out
         </span>
-        {!user && <NavLink to="auth/sign-up">register</NavLink>}
+        {!user && (
+          <NavLink to="auth/sign-up" className={`UserMenu__options__link f-23`}>
+            register
+          </NavLink>
+        )}
       </div>
     </div>
   );

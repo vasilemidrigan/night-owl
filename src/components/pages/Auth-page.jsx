@@ -7,12 +7,15 @@ import { useContext, useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 // firebase
 import { auth } from "../../firebase-config";
+import { db } from "../../firebase-config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { doc } from "firebase/firestore";
 // assets
 import logo from "../../assets/img/logo.svg";
+import { setDoc } from "firebase/firestore";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -45,7 +48,9 @@ export default function SignUpPage() {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("../account");
+      navigate("../account", {
+        state: { username: username.name },
+      });
     } catch (err) {
       console.error(err);
     }
@@ -175,7 +180,8 @@ export default function SignUpPage() {
           }}
           noValidate
         >
-          {/* username */}
+          {/* 
+          username */}
           {location.pathname === "/night-owl/auth/sign-up" && (
             <label
               htmlFor="username"

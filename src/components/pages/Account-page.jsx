@@ -3,11 +3,13 @@
 // ------------
 
 // react
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 // firebase
-import { getAuth, updateProfile } from "firebase/auth";
+import { deleteUser, getAuth, updateProfile } from "firebase/auth";
 // context
+import { db } from "../../firebase-config";
+import { deleteDoc, getDocs, collection } from "firebase/firestore";
 import { AuthDataContext } from "../../context/Auth-Context";
 import {
   BookmarkShowsContext,
@@ -18,8 +20,9 @@ import BookmarkIcon from "../ui/BookmarkIcon";
 import userAvatarDefault from "../../assets/img/user_avatar_default.png";
 
 export default function AccountPage() {
+  const navigate = useNavigate();
   const configs = useContext(ConfigsDataContext);
-  const { user } = useContext(AuthDataContext);
+  const { user, setUser } = useContext(AuthDataContext);
   const auth = getAuth();
 
   const { state } = useLocation();
@@ -28,24 +31,47 @@ export default function AccountPage() {
 
   const { bookmarkShows } = useContext(BookmarkShowsContext);
 
+  // update username into db, and then into app as well
   useEffect(() => {
-    // update username into firebase, and then into account as well
     async function updateUsername() {
       if (user) {
-        await updateProfile(auth.currentUser, {
-          displayName: state?.username,
-        })
-          .then(() => {
-            setUsername(user?.displayName);
+        if (user?.displayName) {
+          setUsername(user?.displayName);
+        } else {
+          await updateProfile(auth.currentUser, {
+            displayName: state?.username,
           })
-          .catch((err) => console.error(err));
+            .then(() => {
+              setUsername(user?.displayName);
+            })
+            .catch((err) => console.error(err));
+        }
       }
     }
     updateUsername();
   }, [user]);
 
-  console.log(state);
-  console.log(user);
+  // delete account
+  const handleDelete = async function () {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const promises = [];
+    const userCollections = [
+      `${user.email}_data`,
+      `${user.email}_data/bookmarked_movies/bookmarks`,
+      `${user.email}_data/bookmarked_movies/bookmarks_trace`,
+    ];
+    userCollections.map(async (colRef) => {
+      const querySnapshot = await getDocs(collection(db, colRef));
+      querySnapshot.forEach((doc) => {
+        console.log(doc.data());
+        promises.push(deleteDoc(doc.ref));
+      });
+    });
+    await Promise.all(promises);
+
+    navigate("../../");
+  };
 
   return (
     <div className="AccountPage wrppr-mrgn-mob">
@@ -93,6 +119,9 @@ export default function AccountPage() {
             <span className="transf-transl-50-all">+</span>
           </button>
         </label>
+      </div>
+      <div className="AccountPage__footer">
+        <span onClick={handleDelete}>delete account</span>
       </div>
     </div>
   );
