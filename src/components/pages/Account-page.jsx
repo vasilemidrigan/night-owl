@@ -24,7 +24,6 @@ export default function AccountPage() {
   const configs = useContext(ConfigsDataContext);
   const { user, setUser } = useContext(AuthDataContext);
   const auth = getAuth();
-
   const { state } = useLocation();
   const [username, setUsername] = useState("");
   const [list, setList] = useState();
@@ -69,6 +68,17 @@ export default function AccountPage() {
       });
     });
     await Promise.all(promises);
+
+    deleteUser(auth.currentUser)
+      .then(() => {
+        console.log("Delete user");
+      })
+      .catch((err) => {
+        console.log(err);
+        prompt(
+          "Too much time left after your last logging into account,\n please log out and log in one more time \n and then proceed the deleting of the account!"
+        );
+      });
 
     navigate("../../");
   };
