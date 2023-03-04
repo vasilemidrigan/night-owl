@@ -19,3 +19,20 @@
     caret-color: $red;
   }
 }
+
+// search shows
+.search-shows {
+  z-index: 2;
+  position: absolute;
+  border: 1px solid blue;
+  margin: 0 13px;
+  width: 90vw;
+  @include display-flex(center, center, row);
+  flex-wrap: wrap;
+  gap: 10px;
+  &__show {
+    border: 1px solid red;
+    width: 30%;
+    height: 100px;
+  }
+}

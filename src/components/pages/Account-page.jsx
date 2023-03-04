@@ -75,7 +75,7 @@ export default function AccountPage() {
       })
       .catch((err) => {
         console.log(err);
-        prompt(
+        alert(
           "Too much time left after your last logging into account,\n please log out and log in one more time \n and then proceed the deleting of the account!"
         );
       });

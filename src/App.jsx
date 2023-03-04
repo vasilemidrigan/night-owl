@@ -37,12 +37,17 @@ export default function App() {
   const [onTheAirTv, setOnTheAirTv] = useState([]);
   const [popularTv, setPopularTv] = useState([]);
   const [topRatedTv, setTopRatedTv] = useState([]);
-
   // Refs
   const effectRan = useRef(false);
-
   // user
   const { user } = useContext(AuthDataContext);
+  // search
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
 
   // Fetch data from API and save it into db
   useEffect(() => {
@@ -83,14 +88,17 @@ export default function App() {
 
   // Get Real Time Updates from db and save them into our app
   useEffect(() => {
-    getRTUpdates(
-      setBookmarkShows,
-      `${user?.email}_data/bookmarked_movies/bookmarks`
-    );
-    getRTUpdates(
-      setBookmarksTrace,
-      `${user?.email}_data/bookmarked_movies/bookmarks_trace`
-    );
+    if (user) {
+      getRTUpdates(
+        setBookmarkShows,
+        `${user?.email}_data/bookmarked_movies/bookmarks`
+      );
+      getRTUpdates(
+        setBookmarksTrace,
+        `${user?.email}_data/bookmarked_movies/bookmarks_trace`
+      );
+    }
+
     getRTUpdates(setTrendingMovies, "trending_movies");
     getRTUpdates(setPopularMovies, "popular_movies");
     getRTUpdates(setTopRatedMovies, "top_rated_movies");
@@ -131,8 +139,8 @@ export default function App() {
     >
       <div className="App">
         <Navbar />
-        <SearchBar />
-        <Outlet />
+        <SearchBar searching={{ search, handleSearch, setFilter }} />
+        <Outlet context={filter} />
       </div>
     </ContextProviders>
   );

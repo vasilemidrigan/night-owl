@@ -19,93 +19,99 @@ export default function BookmarkIcon(props) {
   const { user } = useContext(AuthDataContext);
 
   const updateBookmark = async function (docID, collectionID) {
-    // create doc reference
-    let docRef;
+    if (user) {
+      // create doc reference
+      let docRef;
 
-    if (collectionID !== `${user?.email}_data/bookmarked_movies/bookmarks`) {
-      docRef = doc(db, collectionID, `show_${docID}`);
-    } else {
-      docRef = doc(db, collectionID, docID);
-    }
-
-    const docSnap = await getDoc(docRef);
-    const data = docSnap.data();
-
-    // update data into db
-    // if there's no bookmark property at all in the selected show,
-    // or it is false, then create one and set it to true, and then
-    // set a new doc into collection 'bookmarks', at the same time
-    // create a trace to our movies that are bookmarked (their coll-
-    // ection and doc reference)
-    if (data.bookmark === undefined || data.bookmark === false) {
-      await updateDoc(docRef, {
-        bookmark: true,
-      });
-      await setDoc(
-        doc(
-          db,
-          `${user?.email}_data`,
-          `bookmarked_movies/bookmarks/show_${docID}`
-        ),
-        {
-          ...props.el,
-          id: `show_${docID}`,
-          bookmark: true,
-        }
-      );
-      await setDoc(
-        doc(
-          db,
-          `${user?.email}_data`,
-          `bookmarked_movies/bookmarks_trace/show_${docID}`
-        ),
-        {
-          ...props.el,
-          bookmark: true,
-          id: `show_${docID}`,
-          collection_id: collectionID,
-        }
-      );
-      // else if there is bookmark property and it is setted to true,
-      // then delete the doc from 'bookmarks' collection, and as well
-      // we'll set the bookmark property of the show, back to false by
-      // using the trace reference that we already setted above.
-    } else if (data.bookmark === true) {
-      if (
-        props.collectionID !== `${user?.email}_data/bookmarked_movies/bookmarks`
-      ) {
-        await updateDoc(docRef, {
-          bookmark: false,
-        });
-        await deleteDoc(
-          doc(db, `${user.email}_data/bookmarked_movies/bookmarks/${docID}`)
-        );
-        await deleteDoc(
-          doc(
-            db,
-            `${user.email}_data/bookmarked_movies/bookmarks_trace/${docID}`
-          )
-        );
-      } else if (
-        props.collectionID === `${user?.email}_data/bookmarked_movies/bookmarks`
-      ) {
-        const target = bookmarksTrace.filter((show) => {
-          return show.id === props.el.id;
-        });
-        const targetDocRef = doc(db, target[0]?.collection_id, `${docID}`);
-        await updateDoc(targetDocRef, {
-          bookmark: false,
-        });
-        await deleteDoc(
-          doc(db, `${user.email}_data/bookmarked_movies/bookmarks/${docID}`)
-        );
-        await deleteDoc(
-          doc(
-            db,
-            `${user.email}_data/bookmarked_movies/bookmarks_trace/${docID}`
-          )
-        );
+      if (collectionID !== `${user?.email}_data/bookmarked_movies/bookmarks`) {
+        docRef = doc(db, collectionID, `show_${docID}`);
+      } else {
+        docRef = doc(db, collectionID, docID);
       }
+
+      const docSnap = await getDoc(docRef);
+      const data = docSnap.data();
+
+      // update data into db
+      // if there's no bookmark property at all in the selected show,
+      // or it is false, then create one and set it to true, and then
+      // set a new doc into collection 'bookmarks', at the same time
+      // create a trace to our movies that are bookmarked (their coll-
+      // ection and doc reference)
+      if (data.bookmark === undefined || data.bookmark === false) {
+        await updateDoc(docRef, {
+          bookmark: true,
+        });
+        await setDoc(
+          doc(
+            db,
+            `${user?.email}_data`,
+            `bookmarked_movies/bookmarks/show_${docID}`
+          ),
+          {
+            ...props.el,
+            id: `show_${docID}`,
+            bookmark: true,
+          }
+        );
+        await setDoc(
+          doc(
+            db,
+            `${user?.email}_data`,
+            `bookmarked_movies/bookmarks_trace/show_${docID}`
+          ),
+          {
+            ...props.el,
+            bookmark: true,
+            id: `show_${docID}`,
+            collection_id: collectionID,
+          }
+        );
+        // else if there is bookmark property and it is setted to true,
+        // then delete the doc from 'bookmarks' collection, and as well
+        // we'll set the bookmark property of the show, back to false by
+        // using the trace reference that we already setted above.
+      } else if (data.bookmark === true) {
+        if (
+          props.collectionID !==
+          `${user?.email}_data/bookmarked_movies/bookmarks`
+        ) {
+          await updateDoc(docRef, {
+            bookmark: false,
+          });
+          await deleteDoc(
+            doc(db, `${user.email}_data/bookmarked_movies/bookmarks/${docID}`)
+          );
+          await deleteDoc(
+            doc(
+              db,
+              `${user.email}_data/bookmarked_movies/bookmarks_trace/${docID}`
+            )
+          );
+        } else if (
+          props.collectionID ===
+          `${user?.email}_data/bookmarked_movies/bookmarks`
+        ) {
+          const target = bookmarksTrace.filter((show) => {
+            return show.id === props.el.id;
+          });
+          const targetDocRef = doc(db, target[0]?.collection_id, `${docID}`);
+          await updateDoc(targetDocRef, {
+            bookmark: false,
+          });
+          await deleteDoc(
+            doc(db, `${user.email}_data/bookmarked_movies/bookmarks/${docID}`)
+          );
+          await deleteDoc(
+            doc(
+              db,
+              `${user.email}_data/bookmarked_movies/bookmarks_trace/${docID}`
+            )
+          );
+        }
+      }
+    } else {
+      alert("Please authenticate in order to save shows!");
     }
   };
 

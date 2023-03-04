@@ -1,0 +1,9 @@
+// Search Results
+
+.SearchResults {
+  border: 1px solid red;
+  &__filter-show {
+    border: 1px solid blue;
+    color: white;
+  }
+}

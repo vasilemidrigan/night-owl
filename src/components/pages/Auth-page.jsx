@@ -3,19 +3,16 @@
 // -------------------
 
 // react
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 // firebase
 import { auth } from "../../firebase-config";
-import { db } from "../../firebase-config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { doc } from "firebase/firestore";
 // assets
 import logo from "../../assets/img/logo.svg";
-import { setDoc } from "firebase/firestore";
 
 export default function SignUpPage() {
   const navigate = useNavigate();

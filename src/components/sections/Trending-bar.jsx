@@ -3,13 +3,15 @@
 // --------------------
 
 // react
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 // context
 import {
   ConfigsDataContext,
   MoviesDataContext,
 } from "../../context/Context-Config";
 // components
+import SearchResults from "../ui/SearchResults";
 import BookmarkIcon from "../ui/BookmarkIcon";
 import MediaInfoWrapper from "../ui/MediaInfoWrapper";
 
@@ -18,8 +20,11 @@ export default function TrendingBar() {
   const movies = useContext(MoviesDataContext);
   const trendingMovies = movies.trendingMovies;
 
+  const filter = useOutletContext();
+
   return (
     <div className="Trend wrppr-mrgn-mob">
+      <SearchResults filter={filter} />
       <h1 className="pg-hdr fnt-hdr-l">Trending</h1>
       <div className="Trend__TrendingBar">
         {trendingMovies.map((el) => {
