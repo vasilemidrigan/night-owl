@@ -140,7 +140,7 @@ export default function App() {
       <div className="App">
         <Navbar />
         <SearchBar searching={{ search, handleSearch, setFilter }} />
-        <Outlet context={filter} />
+        <Outlet context={[filter, search.length > 0 ? true : false]} />
       </div>
     </ContextProviders>
   );

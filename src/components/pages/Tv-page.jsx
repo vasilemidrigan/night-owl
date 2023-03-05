@@ -4,13 +4,16 @@
 
 // react
 import { useContext } from "react";
+import { useOutletContext } from "react-router-dom";
 // context
 import { TvDataContext } from "../../context/Context-Config";
 import { ConfigsDataContext } from "../../context/Context-Config";
 // components
 import ShowsRow from "../ui/ShowsRow";
+import SearchResults from "../ui/SearchResults";
 
 export default function TvPage() {
+  const [filter, isSearchActive] = useOutletContext();
   const configs = useContext(ConfigsDataContext);
   const tv = useContext(TvDataContext);
   const popularTv = tv.popularTv;
@@ -20,6 +23,7 @@ export default function TvPage() {
 
   return (
     <div className="TvPage wrppr-mrgn-mob">
+      <SearchResults filter={filter} isSearchActive={isSearchActive} />
       <h1 className="pg-hdr fnt-hdr-l">Tv Shows</h1>
       <ShowsRow
         configs={configs}

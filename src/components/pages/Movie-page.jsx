@@ -4,11 +4,13 @@
 
 // react
 import { useContext } from "react";
+import { useOutletContext } from "react-router-dom";
 // context
 import { MoviesDataContext } from "../../context/Context-Config";
 import { ConfigsDataContext } from "../../context/Context-Config";
 // components
 import ShowsRow from "../ui/ShowsRow";
+import SearchResults from "../ui/SearchResults";
 
 export default function MoviePage() {
   const configs = useContext(ConfigsDataContext);
@@ -17,9 +19,11 @@ export default function MoviePage() {
   const topRatedMovies = movies.topRatedMovies;
   const upcomingMovies = movies.upcomingMovies;
   const nowPlayingMovies = movies.nowPlayingMovies;
+  const [filter, isSearchActive] = useOutletContext();
 
   return (
     <div className="MoviePage wrppr-mrgn-mob">
+      <SearchResults filter={filter} isSearchActive={isSearchActive} />
       <h1 className="pg-hdr fnt-hdr-l">Movies</h1>
       <ShowsRow
         configs={configs}
