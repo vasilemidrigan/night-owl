@@ -19,11 +19,15 @@ export default function MoviePage() {
   const topRatedMovies = movies.topRatedMovies;
   const upcomingMovies = movies.upcomingMovies;
   const nowPlayingMovies = movies.nowPlayingMovies;
-  const [filter, isSearchActive] = useOutletContext();
+  const [filter, isSearchActive, setClickOutside] = useOutletContext();
 
   return (
     <div className="MoviePage wrppr-mrgn-mob">
-      <SearchResults filter={filter} isSearchActive={isSearchActive} />
+      <SearchResults
+        filter={filter}
+        isSearchActive={isSearchActive}
+        setClickOutside={setClickOutside}
+      />
       <h1 className="pg-hdr fnt-hdr-l">Movies</h1>
       <ShowsRow
         configs={configs}

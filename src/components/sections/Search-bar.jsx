@@ -3,7 +3,7 @@
 // ------------------
 
 // react
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 // assets
 import searchIcon from "../../assets/img/icon-search.svg";
@@ -19,6 +19,33 @@ export default function SearchBar(props) {
   const trendMovies = movies?.trendingMovies;
   const bookmarks = useContext(BookmarkShowsContext);
   const bookmarkShows = bookmarks.bookmarkShows;
+
+  // hide search when click outside event is triggered
+  const handleClick = () => {
+    props.setClickOutside(false);
+  };
+
+  const handleClickOutside = () => {
+    props.setClickOutside(true);
+  };
+
+  const useOutsideClick = (callback) => {
+    const ref = useRef();
+    useEffect(() => {
+      const handleClick = (event) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+          callback();
+        }
+      };
+      document.addEventListener("click", handleClick, true);
+      return () => {
+        document.removeEventListener("click", handleClick, true);
+      };
+    }, [ref]);
+    return ref;
+  };
+
+  const ref = useOutsideClick(handleClickOutside);
 
   const applyFilter = () => {
     props.searching.setFilter(() => {
@@ -89,6 +116,8 @@ export default function SearchBar(props) {
               ? "Search for bookmarked movies"
               : ""
           }
+          onClick={handleClick}
+          ref={ref}
         />
       </div>
     </>

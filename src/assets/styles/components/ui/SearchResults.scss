@@ -1,4 +1,6 @@
+// --------------
 // Search Results
+// --------------
 
 .SearchResults {
   position: absolute;
@@ -7,7 +9,6 @@
   z-index: 1;
   background-color: rgba(2, 19, 51, 0.692);
   backdrop-filter: blur(5px);
-  height: 100vh;
   &__filter-show {
     @include display-flex(start, center, row);
     gap: 20px;

@@ -15,6 +15,10 @@ html {
   font-family: "Outfit";
 }
 
+a {
+  text-decoration: none;
+}
+
 // Cancel 'x' sign when search input is active
 [type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;

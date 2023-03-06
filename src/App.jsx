@@ -44,10 +44,19 @@ export default function App() {
   // search
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
+  const [clickOutside, setClickOutside] = useState();
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
+  // if clickOutside is true, then
+  // set search to an empty string so the search bar will hide
+  useEffect(() => {
+    console.log("!!!!!!!");
+    if (clickOutside) {
+      return setSearch("");
+    }
+  }, [clickOutside]);
 
   // Fetch data from API and save it into db
   useEffect(() => {
@@ -139,7 +148,10 @@ export default function App() {
     >
       <div className="App">
         <Navbar />
-        <SearchBar searching={{ search, handleSearch, setFilter }} />
+        <SearchBar
+          searching={{ search, handleSearch, setFilter }}
+          setClickOutside={setClickOutside}
+        />
         <Outlet context={[filter, search.length > 0 ? true : false]} />
       </div>
     </ContextProviders>
