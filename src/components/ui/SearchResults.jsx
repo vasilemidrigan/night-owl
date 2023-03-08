@@ -18,11 +18,8 @@ export default function SearchResults(props) {
         ? props.filter.length >= 1
           ? props.filter.map((show) => {
               return (
-                <NavLink to="../">
-                  <div
-                    className="SearchResults__filter-show"
-                    key={Math.random()}
-                  >
+                <NavLink to="../" key={Math.random()}>
+                  <div className="SearchResults__filter-show">
                     {configs[0]?.images && (
                       <img
                         src={`${configs[0]?.images.secure_base_url}${configs[0]?.images.logo_sizes[0]}${show.poster_path}`}

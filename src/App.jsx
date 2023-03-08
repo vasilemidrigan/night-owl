@@ -52,7 +52,6 @@ export default function App() {
   // if clickOutside is true, then
   // set search to an empty string so the search bar will hide
   useEffect(() => {
-    console.log("!!!!!!!");
     if (clickOutside) {
       return setSearch("");
     }
