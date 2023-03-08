@@ -15,7 +15,7 @@ export default function SearchResults(props) {
   return (
     <div className={`SearchResults ${props.isSearchActive ? "" : "hidden"}`}>
       {props.isSearchActive
-        ? props.filter.length >= 1
+        ? props.filter?.length >= 1
           ? props.filter.map((show) => {
               return (
                 <NavLink to="../" key={Math.random()}>
