@@ -21,6 +21,8 @@ export default function MoviePage() {
   const nowPlayingMovies = movies.nowPlayingMovies;
   const [filterSearch, isSearchActive, setClickOutside] = useOutletContext();
 
+  console.log(filterSearch);
+
   return (
     <div className="MoviePage wrppr-mrgn-mob">
       <SearchResults

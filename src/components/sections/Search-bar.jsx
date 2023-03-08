@@ -52,7 +52,7 @@ export default function SearchBar(props) {
       if (location.pathname === "/night-owl") {
         const results = [];
         results.push(
-          trendMovies.filter((show) => {
+          ...trendMovies.filter((show) => {
             return show.original_title
               .toLowerCase()
               .includes(props.searching.search);

@@ -3,22 +3,26 @@
 // --------------
 
 .SearchResults {
+  margin: 0 auto;
+  max-width: 430px;
+  max-height: 100vh;
+  overflow: scroll;
   position: absolute;
   left: 0;
   right: 0;
   z-index: 1;
   background-color: rgba(2, 19, 51, 0.692);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(0.3125rem);
   &__filter-show {
     @include display-flex(start, center, row);
-    gap: 20px;
-    margin: 10px;
-    padding: 3px;
-    border-radius: 5px;
+    gap: 1.25rem;
+    margin: 0.625rem;
+    padding: 0.1875rem;
+    border-radius: 0.3125rem;
     color: $grey;
     background-color: rgba(0, 124, 226, 0.192);
     img {
-      border-radius: 5px;
+      border-radius: 0.3125rem;
     }
   }
 }
