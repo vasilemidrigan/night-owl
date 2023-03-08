@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/night-owl/static/css/main.4a3a35da.css",
-    "main.js": "/night-owl/static/js/main.7d98f249.js",
+    "main.js": "/night-owl/static/js/main.b45b032e.js",
     "static/media/star.svg": "/night-owl/static/media/star.25b0edb2c7140796435a.svg",
     "index.html": "/night-owl/index.html",
     "static/media/icon-category-movie.svg": "/night-owl/static/media/icon-category-movie.6861d0ce9036ac864b87dc5aff6570c3.svg",
@@ -15,10 +15,10 @@
     "static/media/icon-nav-tv-series.svg": "/night-owl/static/media/icon-nav-tv-series.c22fe1629b446365f6f7829a014453f8.svg",
     "static/media/icon-bookmark-empty.svg": "/night-owl/static/media/icon-bookmark-empty.20ce7177c045bbdbd7948bd9b4220c58.svg",
     "main.4a3a35da.css.map": "/night-owl/static/css/main.4a3a35da.css.map",
-    "main.7d98f249.js.map": "/night-owl/static/js/main.7d98f249.js.map"
+    "main.b45b032e.js.map": "/night-owl/static/js/main.b45b032e.js.map"
   },
   "entrypoints": [
     "static/css/main.4a3a35da.css",
-    "static/js/main.7d98f249.js"
+    "static/js/main.b45b032e.js"
   ]
 }
