@@ -49,7 +49,10 @@ export default function SearchBar(props) {
 
   const applyFilter = () => {
     props.searching.setFilterSearch(() => {
-      if (location.pathname === "/night-owl") {
+      if (
+        location.pathname === "/night-owl" ||
+        location.pathname === "/night-owl/"
+      ) {
         const results = [];
         results.push(
           ...trendMovies.filter((show) => {
