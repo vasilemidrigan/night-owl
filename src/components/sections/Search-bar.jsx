@@ -58,7 +58,8 @@ export default function SearchBar(props) {
           ...trendMovies.filter((show) => {
             return show.original_title
               .toLowerCase()
-              .includes(props.searching.search);
+              .includes(props.searching.search)
+              .toLowerCase();
           })
         );
         return results;
@@ -69,7 +70,7 @@ export default function SearchBar(props) {
             ...movies[property].filter((show) => {
               return show.original_title
                 .toLowerCase()
-                .includes(props.searching.search);
+                .includes(props.searching.search.toLowerCase());
             })
           );
         }
@@ -81,7 +82,7 @@ export default function SearchBar(props) {
             ...tv[property].filter((show) => {
               return show.original_name
                 .toLowerCase()
-                .includes(props.searching.search);
+                .includes(props.searching.search.toLowerCase());
             })
           );
         }
@@ -95,7 +96,7 @@ export default function SearchBar(props) {
               ? show.original_name
               : show.original_title
                   .toLowerCase()
-                  .includes(props.searching.search);
+                  .includes(props.searching.search.toLowerCase());
           })
         );
         return results;
