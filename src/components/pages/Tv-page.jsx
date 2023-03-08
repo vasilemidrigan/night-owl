@@ -11,6 +11,7 @@ import { ConfigsDataContext } from "../../context/Context-Config";
 // components
 import ShowsRow from "../ui/ShowsRow";
 import SearchResults from "../ui/SearchResults";
+import Footer from "../sections/Footer";
 
 export default function TvPage() {
   const [filterSearch, isSearchActive] = useOutletContext();
@@ -52,6 +53,7 @@ export default function TvPage() {
         showsCategory={"On The Air Tv Shows"}
         collectionID={"on_the_air_tv"}
       />
+      <Footer />
     </div>
   );
 }

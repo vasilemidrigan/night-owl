@@ -11,6 +11,7 @@ import { ConfigsDataContext } from "../../context/Context-Config";
 // components
 import ShowsRow from "../ui/ShowsRow";
 import SearchResults from "../ui/SearchResults";
+import Footer from "../sections/Footer";
 
 export default function MoviePage() {
   const configs = useContext(ConfigsDataContext);
@@ -53,6 +54,7 @@ export default function MoviePage() {
         showsCategory={"Now Playing Movies"}
         collectionID={"now_playing_movies"}
       />
+      <Footer />
     </div>
   );
 }

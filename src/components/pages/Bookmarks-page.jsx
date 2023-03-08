@@ -12,6 +12,7 @@ import { AuthDataContext } from "../../context/Auth-Context";
 // components
 import ShowsGrid from "../ui/ShowsGrid";
 import SearchResults from "../ui/SearchResults";
+import Footer from "../sections/Footer";
 
 export default function BookmarksPage() {
   const configs = useContext(ConfigsDataContext);
@@ -29,6 +30,12 @@ export default function BookmarksPage() {
         showsCategory="Bookmarks"
         collectionID={`${user?.email}_data/bookmarked_movies/bookmarks`}
       />
+      {bookmarkShows.length == 0 && (
+        <span className="BookmarksPage__message">
+          ! you didn't bookmarked any shows yet
+        </span>
+      )}
+      <Footer />
     </div>
   );
 }

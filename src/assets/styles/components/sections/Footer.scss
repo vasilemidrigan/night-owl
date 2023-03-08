@@ -1,0 +1,15 @@
+// Footer
+
+.Footer {
+  margin: 20px auto;
+  width: 90%;
+  hr {
+    border-color: grey;
+  }
+  span {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  color: $grey;
+}
