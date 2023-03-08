@@ -12,6 +12,7 @@ import TvPage from "./components/pages/Tv-page";
 import MoviePage from "./components/pages/Movie-page";
 import BookmarksPage from "./components/pages/Bookmarks-page";
 import AccountPage from "./components/pages/Account-page";
+import ShowPage from "./components/pages/Show-page";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "bookmarks",
         element: <BookmarksPage />,
+      },
+      {
+        path: "show/:id",
+        element: <ShowPage />,
       },
       {
         path: "auth",

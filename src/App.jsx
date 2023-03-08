@@ -4,10 +4,11 @@
 
 // react
 import { useState, useEffect, useRef, useContext } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 // components
 import Navbar from "./components/sections/Navbar";
 import SearchBar from "./components/sections/Search-bar";
+import ShowPage from "./components/pages/Show-page";
 // context
 import ContextProviders from "./context/Context-Config";
 import { AuthDataContext } from "./context/Auth-Context";
@@ -15,7 +16,7 @@ import { AuthDataContext } from "./context/Auth-Context";
 import { fetchData } from "./utils/fetchData";
 import { onStartIntoDB, getDataFromDB } from "./utils/db-utils";
 import { getRTUpdates } from "./utils/functionalities";
-
+// data
 import { allUrls } from "./data/allUrls";
 
 export default function App() {
@@ -45,6 +46,8 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [filterSearch, setFilterSearch] = useState("");
   const [clickOutside, setClickOutside] = useState();
+  // location
+  const location = useLocation();
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -151,7 +154,11 @@ export default function App() {
           searching={{ search, handleSearch, setFilterSearch }}
           setClickOutside={setClickOutside}
         />
-        <Outlet context={[filterSearch, search.length > 0 ? true : false]} />
+
+        {location.pathname.includes("show") && <ShowPage />}
+        {!location.pathname.includes("show") && (
+          <Outlet context={[filterSearch, search.length > 0 ? true : false]} />
+        )}
       </div>
     </ContextProviders>
   );

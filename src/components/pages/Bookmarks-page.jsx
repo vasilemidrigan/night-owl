@@ -19,11 +19,14 @@ export default function BookmarksPage() {
   const { bookmarkShows } = useContext(BookmarkShowsContext);
 
   const { user } = useContext(AuthDataContext);
-  const [filter, isSearchActive] = useOutletContext();
+  const [filterSearch, isSearchActive] = useOutletContext();
 
   return (
     <div className="BookmarksPage">
-      <SearchResults filter={filter} isSearchActive={isSearchActive} />
+      <SearchResults
+        filterSearch={filterSearch}
+        isSearchActive={isSearchActive}
+      />
       <ShowsGrid
         configs={configs}
         shows={bookmarkShows}
