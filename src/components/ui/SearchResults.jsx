@@ -12,11 +12,14 @@ export default function SearchResults(props) {
   const configs = useContext(ConfigsDataContext);
   const location = useLocation();
 
+  console.log(props);
+
   return (
     <div className={`SearchResults ${props.isSearchActive ? "" : "hidden"}`}>
       {props.isSearchActive
-        ? props.filter?.length >= 1
-          ? props.filter.map((show) => {
+        ? props.filterSearch[0]?.length >= 1
+          ? props.filterSearch[0].map((show) => {
+              console.log(show);
               return (
                 <NavLink to="../" key={Math.random()}>
                   <div className="SearchResults__filter-show">

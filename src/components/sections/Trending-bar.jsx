@@ -20,11 +20,14 @@ export default function TrendingBar() {
   const movies = useContext(MoviesDataContext);
   const trendingMovies = movies.trendingMovies;
 
-  const [filter, isSearchActive] = useOutletContext();
+  const [filterSearch, isSearchActive] = useOutletContext();
 
   return (
     <div className="Trend wrppr-mrgn-mob">
-      <SearchResults filter={filter} isSearchActive={isSearchActive} />
+      <SearchResults
+        filterSearch={filterSearch}
+        isSearchActive={isSearchActive}
+      />
       <h1 className="pg-hdr fnt-hdr-l">Trending</h1>
       <div className="Trend__TrendingBar">
         {trendingMovies.map((el) => {

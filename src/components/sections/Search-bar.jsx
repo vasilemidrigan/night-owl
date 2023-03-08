@@ -48,11 +48,17 @@ export default function SearchBar(props) {
   const ref = useOutsideClick(handleClickOutside);
 
   const applyFilter = () => {
-    props.searching.setFilter(() => {
+    props.searching.setFilterSearch(() => {
       if (location.pathname === "/night-owl") {
-        return trendMovies.filter((show) =>
-          show.original_title.toLowerCase().includes(props.searching.search)
+        const results = [];
+        results.push(
+          trendMovies.filter((show) => {
+            return show.original_title
+              .toLowerCase()
+              .includes(props.searching.search);
+          })
         );
+        return results;
       } else if (location.pathname === "/night-owl/movies") {
         const results = [];
         for (const property in movies) {

@@ -13,7 +13,7 @@ import ShowsRow from "../ui/ShowsRow";
 import SearchResults from "../ui/SearchResults";
 
 export default function TvPage() {
-  const [filter, isSearchActive] = useOutletContext();
+  const [filterSearch, isSearchActive] = useOutletContext();
   const configs = useContext(ConfigsDataContext);
   const tv = useContext(TvDataContext);
   const popularTv = tv.popularTv;
@@ -23,7 +23,10 @@ export default function TvPage() {
 
   return (
     <div className="TvPage wrppr-mrgn-mob">
-      <SearchResults filter={filter} isSearchActive={isSearchActive} />
+      <SearchResults
+        filterSearch={filterSearch}
+        isSearchActive={isSearchActive}
+      />
       <h1 className="pg-hdr fnt-hdr-l">Tv Shows</h1>
       <ShowsRow
         configs={configs}

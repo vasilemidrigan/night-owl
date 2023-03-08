@@ -19,12 +19,12 @@ export default function MoviePage() {
   const topRatedMovies = movies.topRatedMovies;
   const upcomingMovies = movies.upcomingMovies;
   const nowPlayingMovies = movies.nowPlayingMovies;
-  const [filter, isSearchActive, setClickOutside] = useOutletContext();
+  const [filterSearch, isSearchActive, setClickOutside] = useOutletContext();
 
   return (
     <div className="MoviePage wrppr-mrgn-mob">
       <SearchResults
-        filter={filter}
+        filterSearch={filterSearch}
         isSearchActive={isSearchActive}
         setClickOutside={setClickOutside}
       />

@@ -43,7 +43,7 @@ export default function App() {
   const { user } = useContext(AuthDataContext);
   // search
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("");
+  const [filterSearch, setFilterSearch] = useState("");
   const [clickOutside, setClickOutside] = useState();
 
   const handleSearch = (e) => {
@@ -148,10 +148,10 @@ export default function App() {
       <div className="App">
         <Navbar />
         <SearchBar
-          searching={{ search, handleSearch, setFilter }}
+          searching={{ search, handleSearch, setFilterSearch }}
           setClickOutside={setClickOutside}
         />
-        <Outlet context={[filter, search.length > 0 ? true : false]} />
+        <Outlet context={[filterSearch, search.length > 0 ? true : false]} />
       </div>
     </ContextProviders>
   );
