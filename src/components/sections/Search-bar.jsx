@@ -58,8 +58,7 @@ export default function SearchBar(props) {
           ...trendMovies.filter((show) => {
             return show.original_title
               .toLowerCase()
-              .includes(props.searching.search)
-              .toLowerCase();
+              .includes(props.searching.search.toLowerCase());
           })
         );
         return results;
