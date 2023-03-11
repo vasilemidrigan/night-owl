@@ -150,10 +150,12 @@ export default function App() {
     >
       <div className="App">
         <Navbar />
-        <SearchBar
-          searching={{ search, handleSearch, setFilterSearch }}
-          setClickOutside={setClickOutside}
-        />
+        {location.pathname !== "/night-owl/auth/account" && (
+          <SearchBar
+            searching={{ search, handleSearch, setFilterSearch }}
+            setClickOutside={setClickOutside}
+          />
+        )}
 
         {location.pathname.includes("show") && <ShowPage />}
         {!location.pathname.includes("show") && (

@@ -30,6 +30,7 @@ export default function BookmarkIcon(props) {
       }
 
       const docSnap = await getDoc(docRef);
+
       const data = docSnap.data();
 
       // update data into db

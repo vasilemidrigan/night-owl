@@ -22,7 +22,6 @@ export default function UserMenu(props) {
 
   return (
     <div className={`UserMenu ${props.activeMenu === false ? "hidden" : ""}`}>
-      <div className="UserMenu__triangle"></div>
       <div className="UserMenu__options">
         <NavLink
           to="/night-owl/auth/account"
