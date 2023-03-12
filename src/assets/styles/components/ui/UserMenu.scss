@@ -25,3 +25,16 @@
     }
   }
 }
+
+.Navbar {
+  position: relative;
+  .UserMenu {
+    @media (min-width: 431px) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+    }
+  }
+}
