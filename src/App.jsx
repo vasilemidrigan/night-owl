@@ -109,7 +109,6 @@ export default function App() {
         `${user?.email}_data/bookmarked_movies/bookmarks_trace`
       );
     }
-
     getRTUpdates(setTrendingMovies, "trending_movies");
     getRTUpdates(setPopularMovies, "popular_movies");
     getRTUpdates(setTopRatedMovies, "top_rated_movies");
@@ -150,7 +149,7 @@ export default function App() {
     >
       <div className="App">
         <Navbar />
-        {location.pathname !== "/night-owl/auth/account" && (
+        {!location.pathname.includes("/night-owl/auth") && (
           <SearchBar
             searching={{ search, handleSearch, setFilterSearch }}
             setClickOutside={setClickOutside}

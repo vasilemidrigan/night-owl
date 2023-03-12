@@ -13,8 +13,6 @@ import { ConfigsDataContext } from "../../context/Context-Config";
 export default function ShowsGrid(props) {
   const configs = useContext(ConfigsDataContext);
 
-  console.log(props);
-
   return (
     <div className="ShowsGrid wrppr-mrgn-mob">
       <h2 className="ShowsGrid__hdr shw-rw-hdr fnt-hdr-s">

@@ -39,6 +39,7 @@ export default function SignUpPage() {
     isValid: false,
     error_message: "passwords don't match",
   });
+  const [authError, setAuthError] = useState("");
 
   // log in
   const logIn = async (e, email, password) => {
@@ -48,9 +49,7 @@ export default function SignUpPage() {
       navigate("../account", {
         state: { username: username.name },
       });
-    } catch (err) {
-      console.error(err);
-    }
+    } catch (err) {}
   };
 
   // sign up

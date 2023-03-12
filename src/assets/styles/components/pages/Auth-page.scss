@@ -9,10 +9,10 @@
     @include position-absolute(9%, unset, unset, 50%);
   }
   &__wrapper {
-    width: 21.25rem;
+    width: 340px;
     background-color: $semi-dark-blue;
-    border-radius: 0.9375rem;
-    border: 0.5px solid darkred;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px $dark-red;
     @include position-absolute(20%, unset, unset, 50%);
     &__hdr {
       color: $white;
@@ -21,34 +21,34 @@
       @include display-flex(unset, unset, column);
       width: 80%;
       label {
-        height: 2.3125rem;
-        border-bottom: 1px solid $light-blue;
+        height: 37px;
+        border-bottom: 0.0625rem solid $light-blue;
         &:not(:last-of-type) {
-          margin-bottom: 3rem;
+          margin-bottom: 48px;
         }
         div.error {
           color: red;
-          margin-top: 17px;
+          margin-top: 1.0625rem;
         }
       }
       input {
         background-color: inherit;
         &::placeholder {
           color: grey;
-          font-size: 19px;
-          line-height: 19px;
+          font-size: 1.1875rem;
+          line-height: 1.1875rem;
         }
       }
       button {
-        margin-top: 2.5rem;
-        width: 17.4375rem;
-        height: 48px;
+        margin-top: 3.125rem;
+        width: 273px;
+        height: 3rem;
         background-color: $red;
         color: $white;
       }
     }
     &__login {
-      margin-top: 1.5rem;
+      margin-top: 24px;
       color: $white;
       p {
         display: inline;

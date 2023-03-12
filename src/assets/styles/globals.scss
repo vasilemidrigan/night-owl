@@ -40,9 +40,10 @@ input {
   border: none;
   outline: none;
 }
-// input password fields
+
 input[type="password"] {
-  font-size: 28px;
+  font-size: 23px;
+  line-height: 24px;
 }
 
 // text

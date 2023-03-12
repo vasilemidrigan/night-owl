@@ -34,9 +34,7 @@ export default function BookmarksPage() {
         collectionID={`${user?.email}_data/bookmarked_movies/bookmarks`}
       />
       {bookmarkShows.length == 0 && (
-        <span className="BookmarksPage__message">
-          ! you didn't bookmarked any shows yet
-        </span>
+        <span className="BookmarksPage__message">No bookmarked shows yet.</span>
       )}
       <Footer />
     </div>
