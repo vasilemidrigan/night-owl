@@ -19,6 +19,9 @@
     }
   }
   &__account {
+    @media (max-width: 430px) {
+      position: relative;
+    }
     border: 1.5px solid $white;
   }
 }

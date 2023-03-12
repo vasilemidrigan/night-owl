@@ -27,7 +27,9 @@
 }
 
 .Navbar {
-  position: relative;
+  @media (min-width: 431px) {
+    position: relative;
+  }
   .UserMenu {
     @media (min-width: 431px) {
       position: absolute;
