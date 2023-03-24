@@ -46,6 +46,13 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [filterSearch, setFilterSearch] = useState("");
   const [clickOutside, setClickOutside] = useState();
+  // avatar icon
+  const [avatar, setAvatar] = useState(null);
+  // change avatar
+  function onAvatarChange(e) {
+    setAvatar(URL.createObjectURL(e.target.files[0]));
+  }
+
   // location
   const location = useLocation();
 
@@ -146,9 +153,10 @@ export default function App() {
         airingTodayTv,
         onTheAirTv,
       }}
+      avatar={{ avatar, onAvatarChange }}
     >
       <div className="App">
-        <Navbar />
+        <Navbar avatar={avatar} />
         {!location.pathname.includes("/night-owl/auth") && (
           <SearchBar
             searching={{ search, handleSearch, setFilterSearch }}

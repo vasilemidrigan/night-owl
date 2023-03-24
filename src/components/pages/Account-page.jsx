@@ -15,6 +15,8 @@ import {
   BookmarkShowsContext,
   ConfigsDataContext,
 } from "../../context/Context-Config";
+import { AvatarDataContext } from "../../context/Context-Config";
+
 // assets
 import BookmarkIcon from "../ui/BookmarkIcon";
 import userAvatarDefault from "../../assets/img/user_avatar_default.png";
@@ -29,6 +31,9 @@ export default function AccountPage() {
   const [list, setList] = useState();
 
   const { bookmarkShows } = useContext(BookmarkShowsContext);
+  const { avatar, onAvatarChange } = useContext(AvatarDataContext);
+
+  console.log(avatar);
 
   // update username into db, and then into app as well
   useEffect(() => {
@@ -85,9 +90,15 @@ export default function AccountPage() {
 
   return (
     <div className="AccountPage wrppr-mrgn-mob">
-      <div className="AccountPage__avatar h-100px w-100px border-radius-50">
-        <img src={userAvatarDefault} alt="user avatar" />
+      <div className="AccountPage__avatar h-100px w-100px">
+        <img src={avatar ? avatar : userAvatarDefault} alt="user avatar" />
       </div>
+      <input
+        type="file"
+        className="AccountPage__avatar__input"
+        accept="image/*"
+        onChange={onAvatarChange}
+      />
       <div className="AccountPage__username txt-align-c f-23">
         {user ? username : "night_owl_user"}
       </div>

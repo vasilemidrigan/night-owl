@@ -17,12 +17,14 @@ import tvIcon from "../../assets/img/icon-nav-tv-series.svg";
 import bookmarksIcon from "../../assets/img/icon-nav-bookmark.svg";
 import userAvatarDefault from "../../assets/img/user_avatar_default.png";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [activeMenu, setActiveMenu] = useState(false);
 
   const showMenu = function () {
     return setActiveMenu(activeMenu === false ? true : false);
   };
+
+  console.log(props);
 
   return (
     <div className="Navbar">
@@ -48,7 +50,7 @@ export default function Navbar() {
       <div className="Navbar__account h-24 border-radius-50" onClick={showMenu}>
         <img
           className="border-radius-50"
-          src={userAvatarDefault}
+          src={props.avatar ? props.avatar : userAvatarDefault}
           alt="user profile image"
         />
         <UserMenu activeMenu={activeMenu} />

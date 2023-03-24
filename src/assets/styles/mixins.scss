@@ -18,3 +18,21 @@
   bottom: $b;
   left: $l;
 }
+
+// breakpoints
+$screen-size: (
+  mob: 23.4375rem,
+  tablet: 48rem,
+  laptop: 80rem,
+  desktop: 120rem,
+);
+// loop through our screen sizes and apply corresponding media queries
+@mixin query($screen) {
+  @each $key, $value in $screen-size {
+    @if ($screen == $key) {
+      @media (max-width: $value) {
+        @content;
+      }
+    }
+  }
+}

@@ -18,7 +18,11 @@ export default function SearchResults(props) {
         ? props.filterSearch?.length >= 1
           ? props.filterSearch?.map((show) => {
               return (
-                <NavLink to={`/night-owl/show/${show.id}`} key={Math.random()}>
+                <NavLink
+                  to={`/night-owl/show/${show.id}`}
+                  state={{}}
+                  key={Math.random()}
+                >
                   <div className="SearchResults__filter-show">
                     {configs[0]?.images && (
                       <img

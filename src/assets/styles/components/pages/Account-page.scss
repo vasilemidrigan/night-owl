@@ -5,7 +5,17 @@
 .AccountPage {
   &__avatar {
     margin: 10px auto;
-    overflow: hidden;
+    // styles upload input
+    &__input::-webkit-file-selector-button {
+      visibility: hidden;
+    }
+    &__input::file-upload-button {
+      visibility: hidden;
+    }
+    &__input::before {
+      border: 1px solid red;
+      content: "select photo";
+    }
   }
   &__username {
     color: $white;

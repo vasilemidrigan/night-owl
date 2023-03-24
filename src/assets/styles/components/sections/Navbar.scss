@@ -22,6 +22,10 @@
     @media (max-width: 430px) {
       position: relative;
     }
-    border: 1.5px solid $white;
+    img {
+      width: 25px;
+      height: 25px;
+      border: 1px solid $red;
+    }
   }
 }
