@@ -89,22 +89,22 @@ export default function AccountPage() {
   };
 
   return (
-    <div className="AccountPage wrppr-mrgn-mob">
-      <div className="AccountPage__avatar h-100px w-100px">
+    <div className="AccountPage">
+      <div className="AccountPage__avatar">
         <img src={avatar ? avatar : userAvatarDefault} alt="user avatar" />
       </div>
       <input
         type="file"
-        className="AccountPage__avatar__input"
+        className="AccountPage__avatar-input"
         accept="image/*"
         onChange={onAvatarChange}
       />
-      <div className="AccountPage__username txt-align-c f-23">
+      <div className="AccountPage__username">
         {user ? username : "night_owl_user"}
       </div>
       <div className="AccountPage__bookmarks">
         <h3>Bookmarks</h3>
-        <div className="AccountPage__bookmarks__shows h-200px">
+        <div className="AccountPage__bookmarks__shows">
           {bookmarkShows.map((show) => {
             return (
               <div
@@ -127,17 +127,16 @@ export default function AccountPage() {
       </div>
       <div className="AccountPage__lists">
         <h3>My lists</h3>
-        <label htmlFor="add_list">
+        <label htmlFor="add_list" className="AccountPage__lists__label">
           <input
             type="text"
             id="add_list"
-            className="w-150px"
             name="list"
             placeholder="add list"
             value={list}
           />
-          <button className="f-32 border-none">
-            <span className="transf-transl-50-all">+</span>
+          <button className="AccountPage__lists__label__button">
+            <span>+</span>
           </button>
         </label>
       </div>

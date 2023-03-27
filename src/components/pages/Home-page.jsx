@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <div className="HomePage">
       <TrendingBar />
-      <h1 className="pg-hdr fnt-hdr-l wrppr-mrgn-mob">Recomended:</h1>
+      <h1>Recomended:</h1>
       <ShowsGrid shows={movies.popularMovies} collectionID={"popular_movies"} />
       <Footer />
     </div>

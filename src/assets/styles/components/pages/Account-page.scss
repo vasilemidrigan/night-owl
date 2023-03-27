@@ -3,8 +3,12 @@
 // ------------
 
 .AccountPage {
+  margin: 1.5rem 1rem;
   &__avatar {
+    @include h-w(100px, 100px);
     margin: 10px auto;
+  }
+  &__avatar-input {
     // styles upload input
     &__input::-webkit-file-selector-button {
       visibility: hidden;
@@ -18,8 +22,9 @@
     }
   }
   &__username {
+    text-align: center;
     color: $white;
-    font-size: 23px;
+    font-size: 1.4375rem;
   }
   &__bookmarks,
   &__lists {
@@ -32,6 +37,17 @@
         margin: 5px;
         position: relative;
       }
+    }
+    &__label {
+      &__button {
+        border: none;
+        span {
+          @include translate50all;
+        }
+      }
+    }
+    input {
+      width: 9.375rem;
     }
     h3 {
       margin: 0 15px 0 5px;

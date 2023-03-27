@@ -3,6 +3,7 @@
 // ----------------
 
 .ShowsGrid {
+  margin: 1.5rem 1rem;
   &__grid {
     padding: 5px;
     @include display-flex(center, unset, unset);

@@ -36,3 +36,59 @@ $screen-size: (
     }
   }
 }
+
+// heights widths
+@mixin h-w($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+// translate
+@mixin translate50all() {
+  transform: translate(-50%, -50%);
+}
+@mixin translate50() {
+  transform: translate(-50%);
+}
+
+// fonts
+
+$f-sizes: (
+  f-13: 0.8125rem,
+  f-15: 0.9375rem,
+  f-16: 1rem,
+  f-18: 1.125rem,
+  f-23: 1.4375rem,
+  f-32: 2rem,
+);
+
+$f-weight: (
+  s: 300,
+  m: 500,
+  l: 800,
+);
+
+@mixin f-size($font-size, $font-weight) {
+  @each $key, $value in $f-sizes {
+    @if ($font-size == $key) {
+      font-size: $value;
+    }
+  }
+  @each $key, $value in $f-weight {
+    @if ($font-weight == $key) {
+      font-weight: $value;
+    }
+  }
+}
+
+@mixin f-l() {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+// header style
+@mixin page-header() {
+  color: $red;
+  font-weight: 300;
+  margin-bottom: 10px;
+}

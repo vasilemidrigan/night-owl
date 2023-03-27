@@ -3,6 +3,7 @@
 // -----------------
 
 .SearchBar {
+  margin: 1.5rem 1rem;
   position: relative;
   height: 1.5rem;
   background-color: $dark-blue;
@@ -11,6 +12,8 @@
   }
   &__input {
     @include position-absolute(0, unset, unset, 2.5rem);
+    @include f-size(f-18, unset);
+    height: 100%;
     width: 16.0625rem;
     border: none;
     outline: none;

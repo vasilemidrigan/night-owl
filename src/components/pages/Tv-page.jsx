@@ -23,12 +23,12 @@ export default function TvPage() {
   const onTheAirTv = tv.onTheAirTv;
 
   return (
-    <div className="TvPage wrppr-mrgn-mob">
+    <div className="TvPage">
       <SearchResults
         filterSearch={filterSearch}
         isSearchActive={isSearchActive}
       />
-      <h1 className="pg-hdr fnt-hdr-l">Tv Shows</h1>
+      <h1 className="TvPage__header">Tv Shows</h1>
       <ShowsRow
         configs={configs}
         shows={popularTv}

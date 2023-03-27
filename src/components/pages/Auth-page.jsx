@@ -142,8 +142,8 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="AuthPage min-h-100vh">
-      <div className="AuthPage__logo transf-transl-50 ">
+    <div className="AuthPage">
+      <div className="AuthPage__logo">
         <NavLink to="/night-owl">
           <img src={logo} alt="logo" />
         </NavLink>
@@ -155,13 +155,13 @@ export default function SignUpPage() {
             : "h-380px"
         } transf-transl-50`}
       >
-        <h2 className="AuthPage__wrapper__hdr fnt-hdr-l m-32">
+        <h2 className="AuthPage__wrapper__hdr">
           {location.pathname === "/night-owl/auth/sign-up"
             ? "Sign Up"
             : "Log In"}
         </h2>
         <form
-          className="AuthPage__wrapper__form m-auto"
+          className="AuthPage__wrapper__form"
           onSubmit={(e) => {
             location.pathname === "/night-owl/auth/sign-up"
               ? signUp(
@@ -269,7 +269,7 @@ export default function SignUpPage() {
           )}
           {/* submit */}
           <button
-            className={`border-radius-7px-all border-none f-w-300 f-16`}
+            className={`AuthPage__wrapper__form__submit`}
             type="submit"
             disabled={
               location.pathname === "/night-owl/auth/sign-up"
@@ -289,14 +289,14 @@ export default function SignUpPage() {
               : "Log into your account"}
           </button>
         </form>
-        <div className="AuthPage__wrapper__login txt-align-c">
-          <p className="f-15">
+        <div className="AuthPage__wrapper__login">
+          <p>
             {location.pathname === "/night-owl/auth/sign-up"
               ? "Already have an account? "
               : "Don't have an account? "}
           </p>
           <NavLink
-            className="AuthPage__wrapper__login__link f-15"
+            className="AuthPage__wrapper__login__link"
             to={
               location.pathname === "/night-owl/auth/sign-up"
                 ? "../log-in"

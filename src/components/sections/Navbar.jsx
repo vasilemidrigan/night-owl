@@ -24,11 +24,9 @@ export default function Navbar(props) {
     return setActiveMenu(activeMenu === false ? true : false);
   };
 
-  console.log(props);
-
   return (
     <div className="Navbar">
-      <div className="Navbar__logo h-24">
+      <div className="Navbar__logo">
         <NavLink to="/night-owl">
           <img src={logo} alt="Night Owl Logo" />
         </NavLink>
@@ -47,9 +45,8 @@ export default function Navbar(props) {
           <img src={bookmarksIcon} alt="bookmarks icon" />
         </NavLink>
       </div>
-      <div className="Navbar__account h-24 border-radius-50" onClick={showMenu}>
+      <div className="Navbar__account" onClick={showMenu}>
         <img
-          className="border-radius-50"
           src={props.avatar ? props.avatar : userAvatarDefault}
           alt="user profile image"
         />

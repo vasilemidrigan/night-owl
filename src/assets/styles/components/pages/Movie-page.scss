@@ -1,0 +1,10 @@
+// ----------
+// Movie page
+// ----------
+
+.MoviePage {
+  margin: 1.5rem 1rem;
+  &__header {
+    @include page-header;
+  }
+}

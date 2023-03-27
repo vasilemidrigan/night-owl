@@ -9,9 +9,7 @@ import MediaInfoWrapper from "./MediaInfoWrapper";
 export default function ShowsRow(props) {
   return (
     <div className="ShowsTemplate">
-      <h2 className="ShowsTemplate__hdr shw-rw-hdr fnt-hdr-s">
-        {props.showsCategory}
-      </h2>
+      <h2>{props.showsCategory}</h2>
       <div className="ShowsTemplate__row">
         {props.shows.map((show) => {
           return (

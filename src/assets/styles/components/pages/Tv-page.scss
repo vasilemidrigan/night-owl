@@ -1,0 +1,11 @@
+// -------
+// Tv page
+// -------
+
+.TvPage {
+  margin: 1.5rem 1rem;
+  &__header {
+    @include f-size(f-32, m);
+    @include page-header;
+  }
+}

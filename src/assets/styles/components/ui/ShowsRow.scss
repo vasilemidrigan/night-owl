@@ -4,6 +4,9 @@
 
 .ShowsTemplate {
   margin-bottom: 3.125rem;
+  h2 {
+    @include page-header;
+  }
   &__row {
     overflow-x: scroll;
     @include display-flex(space-between, center, row);

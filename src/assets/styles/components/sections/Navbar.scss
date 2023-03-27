@@ -5,7 +5,10 @@
 .Navbar {
   @include display-flex(space-between, center, row);
   background-color: $semi-dark-blue;
-  padding: 18px;
+  padding: 1.125rem;
+  &__logo {
+    height: 1.5rem;
+  }
   &__pages {
     a {
       img {
@@ -19,10 +22,12 @@
     }
   }
   &__account {
+    height: 1.5rem;
     @media (max-width: 430px) {
       position: relative;
     }
     img {
+      border-radius: 50%;
       width: 25px;
       height: 25px;
       border: 1px solid $red;

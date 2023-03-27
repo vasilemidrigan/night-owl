@@ -23,19 +23,16 @@ export default function TrendingBar() {
   const [filterSearch, isSearchActive] = useOutletContext();
 
   return (
-    <div className="Trend wrppr-mrgn-mob">
+    <div className="Trend">
       <SearchResults
         filterSearch={filterSearch}
         isSearchActive={isSearchActive}
       />
-      <h1 className="pg-hdr fnt-hdr-l">Trending</h1>
+      <h1>Trending</h1>
       <div className="Trend__TrendingBar">
         {trendingMovies.map((el) => {
           return (
-            <div
-              className="Trend__TrendingBar__element border-radius-7px-all"
-              key={el.id}
-            >
+            <div className="Trend__TrendingBar__element" key={el.id}>
               {configs[0]?.images && (
                 <img
                   className="border-radius-7px-t-r"

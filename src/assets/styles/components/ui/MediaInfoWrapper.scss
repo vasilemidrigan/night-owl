@@ -17,6 +17,7 @@
   &__title {
     height: 3.75rem;
     @include display-flex(center, center, row);
+    @include f-size(f-18, unset);
   }
   &__vote-average {
     position: relative;

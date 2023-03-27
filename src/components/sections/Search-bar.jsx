@@ -105,7 +105,7 @@ export default function SearchBar(props) {
 
   return (
     <>
-      <div className="SearchBar wrppr-mrgn-mob">
+      <div className="SearchBar">
         <img src={searchIcon} className="SearchBar__icon" alt="search icon" />
         <input
           type="search"
@@ -113,7 +113,7 @@ export default function SearchBar(props) {
           onChange={(e) => {
             return applyFilter(e), props.searching.handleSearch(e);
           }}
-          className="SearchBar__input f-18 h-100"
+          className="SearchBar__input"
           placeholder={
             location.pathname === "/night-owl"
               ? "Search for trending shows"

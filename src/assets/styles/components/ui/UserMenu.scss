@@ -16,6 +16,7 @@
     @include display-flex(center, center, column);
     gap: 40px;
     &__link {
+      @include f-size(f-23, unset);
       border: 1px solid $dark-red;
       box-shadow: 0px 3px 0px $dark-red;
       border-radius: 7px;

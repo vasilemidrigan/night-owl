@@ -23,13 +23,13 @@ export default function MoviePage() {
   const [filterSearch, isSearchActive, setClickOutside] = useOutletContext();
 
   return (
-    <div className="MoviePage wrppr-mrgn-mob">
+    <div className="MoviePage">
       <SearchResults
         filterSearch={filterSearch}
         isSearchActive={isSearchActive}
         setClickOutside={setClickOutside}
       />
-      <h1 className="pg-hdr fnt-hdr-l">Movies</h1>
+      <h1 className="MoviePage__header">Movies</h1>
       <ShowsRow
         configs={configs}
         shows={popularMovies}

@@ -3,10 +3,12 @@
 // -------------------
 
 .AuthPage {
+  min-height: 100vh;
   position: relative;
   background-color: $dark-blue;
   &__logo {
     @include position-absolute(9%, unset, unset, 50%);
+    @include translate50;
   }
   &__wrapper {
     width: 340px;
@@ -16,8 +18,11 @@
     @include position-absolute(20%, unset, unset, 50%);
     &__hdr {
       color: $white;
+      margin: 2rem;
+      @include f-l;
     }
     &__form {
+      margin: 0 auto;
       @include display-flex(unset, unset, column);
       width: 80%;
       label {
@@ -39,7 +44,11 @@
           line-height: 1.1875rem;
         }
       }
-      button {
+      &__submit {
+        font-size: 16px;
+        font-weight: 300;
+        border: none;
+        border-radius: 7px;
         margin-top: 3.125rem;
         width: 273px;
         height: 3rem;
@@ -48,12 +57,15 @@
       }
     }
     &__login {
+      text-align: center;
       margin-top: 24px;
       color: $white;
       p {
         display: inline;
+        @include f-size(f-15, unset);
       }
       &__link {
+        font-size: 0.9375rem;
         color: $red;
       }
     }

@@ -14,10 +14,8 @@ export default function ShowsGrid(props) {
   const configs = useContext(ConfigsDataContext);
 
   return (
-    <div className="ShowsGrid wrppr-mrgn-mob">
-      <h2 className="ShowsGrid__hdr shw-rw-hdr fnt-hdr-s">
-        {props.showsCategory}
-      </h2>
+    <div className="ShowsGrid">
+      <h2 className="ShowsGrid__hdr">{props.showsCategory}</h2>
       <div className="ShowsGrid__grid">
         {props.shows?.map((show) => {
           return (

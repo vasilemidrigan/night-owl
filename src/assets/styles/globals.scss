@@ -46,85 +46,12 @@ input[type="password"] {
   line-height: 24px;
 }
 
-// text
-.txt-align-c {
-  text-align: center;
-}
-.l-h-19 {
-  line-height: 1.1875rem;
-}
-
 // fonts
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap");
-
-.fnt-s {
-  font-size: 0.8125rem;
-  font-weight: 300;
-}
-.f-15 {
-  font-size: 0.9375rem;
-}
-.f-16 {
-  font-size: 1rem;
-}
-.f-18 {
-  font-size: 1.125rem;
-}
-.f-23 {
-  font-size: 1.4375rem;
-}
-.f-32 {
-  font-size: 2rem;
-}
-
-.f-w-300 {
-  font-weight: 18.75rem;
-}
-
-.fnt-xs {
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
-.fnt-hdr-s {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.fnt-hdr-m {
-  font-size: 1.5rem;
-  font-weight: 300;
-}
-
-.fnt-hdr-l {
-  font-size: 2rem;
-  font-weight: 300;
-}
-
-// page and shows row headers
-.pg-hdr,
-.shw-rw-hdr {
-  color: $red;
-  font-weight: 300;
-  margin-bottom: 10px;
-}
 
 // tags
 img {
   height: 100%;
-}
-
-// margins
-.wrppr-mrgn-mob {
-  margin: 1.5rem 1rem;
-}
-
-.m-32 {
-  margin: 32px;
-}
-
-.m-auto {
-  margin: 0 auto;
 }
 
 // invalid inputs
@@ -138,63 +65,4 @@ label.invalid {
 .hidden {
   display: none;
   visibility: hidden;
-}
-
-// border-radius
-.border-radius-50 {
-  border-radius: 50%;
-}
-.border-radius-7px-all {
-  border-radius: 7px;
-}
-.border-radius-7px-t-r {
-  border-radius: 7px 7px 0 0;
-}
-.border-none {
-  border: none;
-  outline: none;
-}
-
-// height
-.h-100 {
-  height: 100%;
-}
-.h-100px {
-  height: 6.25rem;
-}
-.h-200px {
-  height: 12.5rem;
-}
-.h-380px {
-  height: 380px;
-}
-.h-550px {
-  height: 550px;
-}
-.h-24 {
-  height: 24px;
-}
-.min-h-100vh {
-  min-height: 100vh;
-}
-
-// width
-.w-100px {
-  width: 6.25rem;
-}
-.w-150px {
-  width: 9.375rem;
-}
-
-// transform
-.transf-transl-50 {
-  transform: translate(-50%);
-}
-.transf-transl-50-all {
-  transform: translate(-50%, -50%);
-}
-
-// border test mode
-.b {
-  border: 1px solid red;
 }
