@@ -35,7 +35,6 @@ export default function TrendingBar() {
             <div className="Trend__TrendingBar__element" key={el.id}>
               {configs[0]?.images && (
                 <img
-                  className="border-radius-7px-t-r"
                   src={`${configs[0]?.images.secure_base_url}${configs[0]?.images.profile_sizes[1]}${el.poster_path}`}
                   alt="Trending element image"
                 />
