@@ -37,12 +37,6 @@ $screen-size: (
   }
 }
 
-// heights widths
-@mixin h-w($height, $width) {
-  height: $height;
-  width: $width;
-}
-
 // translate
 @mixin translate50all() {
   transform: translate(-50%, -50%);
@@ -52,7 +46,6 @@ $screen-size: (
 }
 
 // fonts
-
 $f-sizes: (
   f-13: 0.8125rem,
   f-15: 0.9375rem,
@@ -61,13 +54,11 @@ $f-sizes: (
   f-23: 1.4375rem,
   f-32: 2rem,
 );
-
 $f-weight: (
   s: 300,
   m: 500,
   l: 800,
 );
-
 @mixin f-size($font-size, $font-weight) {
   @each $key, $value in $f-sizes {
     @if ($font-size == $key) {
@@ -80,12 +71,6 @@ $f-weight: (
     }
   }
 }
-
-@mixin f-l() {
-  font-size: 2rem;
-  font-weight: 300;
-}
-
 // header style
 @mixin page-header() {
   color: $red;

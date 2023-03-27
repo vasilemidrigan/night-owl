@@ -16,10 +16,11 @@
     border-radius: 15px;
     box-shadow: 0px 0px 10px $dark-red;
     @include position-absolute(20%, unset, unset, 50%);
+    @include translate50;
     &__hdr {
       color: $white;
       margin: 2rem;
-      @include f-l;
+      @include f-size(f-32, s);
     }
     &__form {
       margin: 0 auto;
@@ -58,11 +59,12 @@
     }
     &__login {
       text-align: center;
-      margin-top: 24px;
+      margin: 24px 0 24px 0;
+
       color: $white;
       p {
         display: inline;
-        @include f-size(f-15, unset);
+        @include f-size(f-15, s);
       }
       &__link {
         font-size: 0.9375rem;

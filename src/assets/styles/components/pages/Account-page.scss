@@ -5,7 +5,8 @@
 .AccountPage {
   margin: 1.5rem 1rem;
   &__avatar {
-    @include h-w(100px, 100px);
+    width: 6.25rem;
+    height: 6.25rem;
     margin: 10px auto;
   }
   &__avatar-input {
