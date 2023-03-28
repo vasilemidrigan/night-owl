@@ -15,6 +15,13 @@
   &__avatar-input {
     margin: 0 auto;
     display: block;
+    width: 20%;
+    height: 80px;
+    padding: 80px 0 0 0;
+    background: url(../../../img/upload.png);
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position: center;
   }
   &__username {
     text-align: center;
