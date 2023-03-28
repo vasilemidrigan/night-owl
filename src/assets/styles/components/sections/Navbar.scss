@@ -34,6 +34,20 @@
   @include query(tablet) {
     margin: 16px;
     border-radius: 7px;
+    &__pages {
+      a {
+        img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+    &__account {
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
   }
   // media queries for laptops
   @include query(laptop) {
@@ -58,18 +72,6 @@
           margin-right: 0;
           margin-bottom: 3rem;
         }
-      }
-      a {
-        img {
-          width: 30px;
-          height: 30px;
-        }
-      }
-    }
-    &__account {
-      img {
-        width: 40px;
-        height: 40px;
       }
     }
   }

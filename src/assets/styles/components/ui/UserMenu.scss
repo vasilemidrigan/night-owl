@@ -26,14 +26,19 @@
       color: $red;
     }
   }
-  // media queries for laptops
-  @include query(laptop) {
+  // media queries for tablets
+  @include query(tablet) {
     min-width: unset;
     width: 20rem;
     height: 30%;
-    top: 32rem;
-    left: 5rem;
+    top: 7.5rem;
+    right: 1rem;
     border-radius: 15px;
     box-shadow: 3px 3px 300px darkred;
+  }
+  // media queries for laptops
+  @include query(laptop) {
+    top: 32rem;
+    left: 5rem;
   }
 }
