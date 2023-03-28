@@ -1,7 +1,6 @@
 // User Menu styles
 
 .UserMenu {
-  border: 1px solid green;
   @include display-flex(center, start, unset);
   color: $white;
   background-color: $dark-blue;
@@ -26,5 +25,15 @@
       text-decoration: none;
       color: $red;
     }
+  }
+  // media queries for laptops
+  @include query(laptop) {
+    min-width: unset;
+    width: 20rem;
+    height: 30%;
+    top: 32rem;
+    left: 5rem;
+    border-radius: 15px;
+    box-shadow: 3px 3px 300px darkred;
   }
 }
