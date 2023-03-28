@@ -41,6 +41,11 @@
           height: 30px;
         }
       }
+      a:not(:last-child) {
+        img {
+          margin-right: 3.5rem;
+        }
+      }
     }
     &__account {
       img {
