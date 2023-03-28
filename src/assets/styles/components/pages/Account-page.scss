@@ -3,6 +3,7 @@
 // ------------
 
 .AccountPage {
+  min-height: 100vh;
   margin: 1.5rem 1rem;
   &__avatar {
     height: 6.25rem;
@@ -28,6 +29,7 @@
     color: $white;
     @include f-size(f-32, s);
   }
+
   &__bookmarks,
   &__lists {
     margin-top: 20px;
@@ -56,6 +58,10 @@
       color: $white;
       display: inline-block;
     }
+    // media queries for laptops
+    @include query(laptop) {
+      margin-left: 6.25rem;
+     }
   }
   &__lists {
     @include display-flex(start, center, row);
