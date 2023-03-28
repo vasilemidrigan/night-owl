@@ -6,11 +6,6 @@
   @include display-flex(space-between, center, row);
   background-color: $semi-dark-blue;
   padding: 1.125rem;
-  // media queries for tablets
-  @include query(tablet) {
-    margin: 16px;
-    border-radius: 7px;
-  }
   &__logo {
     height: 1.5rem;
   }
@@ -33,6 +28,49 @@
       width: 25px;
       height: 25px;
       border: 1px solid $red;
+    }
+  }
+  // media queries for tablets
+  @include query(tablet) {
+    margin: 16px;
+    border-radius: 7px;
+  }
+  // media queries for laptops
+  @include query(laptop) {
+    padding: unset;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 100vh;
+    @include display-flex(start, center, column);
+    gap: 200px;
+    &__logo {
+      width: 30px;
+      height: 30px;
+      margin: 10px 7px 0 0;
+    }
+    &__pages {
+      @include display-flex(center, center, column);
+      a:not(:last-child) {
+        img {
+          margin-right: 0;
+          margin-bottom: 3rem;
+        }
+      }
+      a {
+        img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+    &__account {
+      img {
+        width: 40px;
+        height: 40px;
+      }
     }
   }
 }

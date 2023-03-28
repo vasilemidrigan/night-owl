@@ -1,9 +1,14 @@
 // Bookmarks Page
 
 .BookmarksPage {
+  height: 100vh;
   &__message {
     color: $yellow-lime;
     display: block;
     text-align: center;
+  }
+  // media queries for laptops
+  @include query(laptop) {
+    margin-left: 100px;
   }
 }

@@ -5,7 +5,9 @@
 .App {
   background-color: $dark-blue;
   margin: 0 auto;
-  min-height: 100vh;
   min-width: 23.4375rem;
-  border: 1px solid red;
+  // media queries for tablets
+  @include query(tablet) {
+    padding-top: 16px;
+  }
 }

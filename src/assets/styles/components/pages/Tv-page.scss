@@ -8,4 +8,8 @@
     @include f-size(f-32, m);
     @include page-header;
   }
+  // media queries for laptops
+  @include query(laptop) {
+    margin-left: 100px;
+  }
 }

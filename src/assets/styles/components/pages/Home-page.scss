@@ -7,4 +7,8 @@
   h1 {
     @include page-header;
   }
+  // media queries for laptops
+  @include query(laptop) {
+    margin-left: 100px;
+  }
 }

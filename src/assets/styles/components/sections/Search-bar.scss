@@ -21,6 +21,14 @@
     color: $white;
     caret-color: $red;
   }
+  // media queries for tablets
+  @include query(tablet) {
+    margin: 1.5rem 2rem;
+  }
+  // media queries for laptops
+  @include query(laptop) {
+    margin-left: 37.5rem;
+  }
 }
 
 // search shows
