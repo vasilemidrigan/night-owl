@@ -30,7 +30,7 @@ $screen-size: (
 @mixin query($screen) {
   @each $key, $value in $screen-size {
     @if ($screen == $key) {
-      @media (max-width: $value) {
+      @media (min-width: $value) {
         @content;
       }
     }

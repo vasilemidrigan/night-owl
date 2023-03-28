@@ -5,22 +5,16 @@
 .AccountPage {
   margin: 1.5rem 1rem;
   &__avatar {
-    width: 6.25rem;
     height: 6.25rem;
     margin: 10px auto;
+    > img {
+      display: block;
+      margin: 0 auto;
+    }
   }
   &__avatar-input {
-    // styles upload input
-    &__input::-webkit-file-selector-button {
-      visibility: hidden;
-    }
-    &__input::file-upload-button {
-      visibility: hidden;
-    }
-    &__input::before {
-      border: 1px solid red;
-      content: "select photo";
-    }
+    margin: 0 auto;
+    display: block;
   }
   &__username {
     text-align: center;

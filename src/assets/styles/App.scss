@@ -7,11 +7,5 @@
   margin: 0 auto;
   min-height: 100vh;
   min-width: 23.4375rem;
-  max-width: 26.875rem;
-  overflow-y: scroll;
-  // media queries for tablets
-  @include query(tablet) {
-    border: 1px solid red;
-    max-width: 1000px;
-  }
+  border: 1px solid red;
 }

@@ -6,6 +6,12 @@
   @include display-flex(space-between, center, row);
   background-color: $semi-dark-blue;
   padding: 1.125rem;
+  // media queries for tablets
+  @include query(tablet) {
+    margin: 16px;
+    border-radius: 7px;
+  }
+
   &__logo {
     height: 1.5rem;
   }
