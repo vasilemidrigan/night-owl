@@ -1,7 +1,7 @@
 // Bookmarks Page
 
 .BookmarksPage {
-  height: 100vh;
+  min-height: 100vh;
   &__message {
     color: $yellow-lime;
     display: block;

@@ -11,9 +11,19 @@
   }
   &__pages {
     a {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       img {
         height: 1rem;
       }
+    }
+    a:focus {
+      outline: none;
     }
     a:not(:last-child) {
       img {
@@ -27,7 +37,6 @@
       border-radius: 50%;
       width: 25px;
       height: 25px;
-      border: 1px solid $red;
     }
   }
   // media queries for tablets
@@ -37,8 +46,8 @@
     &__pages {
       a {
         img {
-          width: 30px;
-          height: 30px;
+          width: 20px;
+          height: 20px;
         }
       }
       a:not(:last-child) {
@@ -49,15 +58,14 @@
     }
     &__account {
       img {
-        width: 40px;
-        height: 40px;
+        width: 25px;
+        height: 25px;
       }
     }
   }
   // media queries for laptops
   @include query(laptop) {
     padding: unset;
-
     position: absolute;
     top: 0;
     left: 0;
@@ -66,8 +74,6 @@
     @include display-flex(start, center, column);
     gap: 200px;
     &__logo {
-      width: 30px;
-      height: 30px;
       margin: 10px 7px 0 0;
     }
     &__pages {
