@@ -85,5 +85,10 @@
         }
       }
     }
+    &__account {
+      img:hover {
+        cursor: pointer;
+      }
+    }
   }
 }
