@@ -6,12 +6,42 @@ html {
   background-color: $dark-blue;
 }
 
+/* Works on Firefox */
+// * {
+//   scrollbar-width: thin;
+//   scrollbar-color: blue orange;
+// }
+
+// /* Works on Chrome, Edge, and Safari */
+// *::-webkit-scrollbar {
+//   width: 12px;
+// }
+
+// *::-webkit-scrollbar-track {
+//   background: orange;
+// }
+
+// *::-webkit-scrollbar-thumb {
+//   background-color: blue;
+//   border-radius: 20px;
+//   border: 3px solid orange;
+// }
+
 // general
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Outfit";
+  // hide scrollbar
+  // chrome/safari
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  // ms
+  -ms-overflow-style: none;
+  // firefox
+  scrollbar-width: none;
 }
 
 a {
