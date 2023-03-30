@@ -42,8 +42,6 @@ export default function ShowsRow(props) {
     });
   }, [width]);
 
-  console.log(scrollStep);
-
   return (
     <div className="ShowsTemplate">
       <h2>{props.showsCategory}</h2>

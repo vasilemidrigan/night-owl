@@ -29,6 +29,9 @@
     }
     &__scroll-btn:first-child {
       left: 30px;
+      @include query(laptop) {
+        left: 120px;
+      }
     }
     &__scroll-btn:last-child {
       right: 30px;
