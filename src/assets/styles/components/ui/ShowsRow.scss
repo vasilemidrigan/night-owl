@@ -8,6 +8,7 @@
     @include page-header;
   }
   &__row {
+    scroll-behavior: smooth;
     overflow-x: scroll;
     @include display-flex(space-between, center, row);
     &__card {
@@ -27,10 +28,10 @@
       cursor: pointer;
     }
     &__scroll-btn:first-child {
-      left: 10px;
+      left: 30px;
     }
     &__scroll-btn:last-child {
-      right: 10px;
+      right: 30px;
     }
   }
 }
