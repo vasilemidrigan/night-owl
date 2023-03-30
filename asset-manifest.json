@@ -1,10 +1,12 @@
 {
   "files": {
-    "main.css": "/night-owl/static/css/main.a605623d.css",
-    "main.js": "/night-owl/static/js/main.967b3631.js",
+    "main.css": "/night-owl/static/css/main.db9335d7.css",
+    "main.js": "/night-owl/static/js/main.39dc95db.js",
     "static/media/star.svg": "/night-owl/static/media/star.25b0edb2c7140796435a.svg",
     "index.html": "/night-owl/index.html",
     "static/media/icon-category-movie.svg": "/night-owl/static/media/icon-category-movie.6861d0ce9036ac864b87dc5aff6570c3.svg",
+    "static/media/arrow-right.svg": "/night-owl/static/media/arrow-right.94559a8a0451a974623b2c1422106ae7.svg",
+    "static/media/arrow-left.svg": "/night-owl/static/media/arrow-left.3b94bc6375543b2b4daaff50a99eecfe.svg",
     "static/media/icon-nav-bookmark.svg": "/night-owl/static/media/icon-nav-bookmark.a564501ebcbde752ebe044260a9206b8.svg",
     "static/media/icon-nav-movies.svg": "/night-owl/static/media/icon-nav-movies.c347442f9a6fd2201f1abf8819aa4ef6.svg",
     "static/media/icon-bookmark-full.svg": "/night-owl/static/media/icon-bookmark-full.361afed00144e45cd54d64697d9a877d.svg",
@@ -14,11 +16,11 @@
     "static/media/icon-category-tv.svg": "/night-owl/static/media/icon-category-tv.75c9208553d35303e2f1b61b511ab387.svg",
     "static/media/icon-nav-tv-series.svg": "/night-owl/static/media/icon-nav-tv-series.c22fe1629b446365f6f7829a014453f8.svg",
     "static/media/icon-bookmark-empty.svg": "/night-owl/static/media/icon-bookmark-empty.20ce7177c045bbdbd7948bd9b4220c58.svg",
-    "main.a605623d.css.map": "/night-owl/static/css/main.a605623d.css.map",
-    "main.967b3631.js.map": "/night-owl/static/js/main.967b3631.js.map"
+    "main.db9335d7.css.map": "/night-owl/static/css/main.db9335d7.css.map",
+    "main.39dc95db.js.map": "/night-owl/static/js/main.39dc95db.js.map"
   },
   "entrypoints": [
-    "static/css/main.a605623d.css",
-    "static/js/main.967b3631.js"
+    "static/css/main.db9335d7.css",
+    "static/js/main.39dc95db.js"
   ]
 }
