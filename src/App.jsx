@@ -3,7 +3,13 @@
 // ---
 
 // react
-import { useState, useEffect, useRef, useContext } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  useLayoutEffect,
+} from "react";
 import { Outlet, useLocation } from "react-router-dom";
 // components
 import Navbar from "./components/sections/Navbar";
@@ -46,6 +52,36 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [filterSearch, setFilterSearch] = useState("");
   const [clickOutside, setClickOutside] = useState();
+
+  // ------------------------------------------
+  // data for scroll buttons
+  // -----------------------
+  const width = useWindowSize();
+  const [scrollStep, setScrollStep] = useState(0);
+
+  // resize listener
+  function useWindowSize() {
+    const [size, setSize] = useState(0);
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize(window.innerWidth);
+      }
+      window.addEventListener("resize", updateSize);
+      updateSize();
+      return () => window.removeEventListener("resize", updateSize);
+    }, []);
+    return size;
+  }
+
+  // change scroll step depending on the screen size
+  useEffect(() => {
+    setScrollStep(() => {
+      return width < 768 ? 400 : width < 1280 ? 600 : 900;
+    });
+  }, [width]);
+
+  // --------------------------------------------
+
   // avatar icon
   const [avatar, setAvatar] = useState(null);
   // change avatar
@@ -154,6 +190,7 @@ export default function App() {
         onTheAirTv,
       }}
       avatar={{ avatar, onAvatarChange }}
+      scroll={scrollStep}
     >
       <div className="App">
         <Navbar avatar={avatar} />

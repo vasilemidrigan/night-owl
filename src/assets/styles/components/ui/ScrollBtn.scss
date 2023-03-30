@@ -1,0 +1,31 @@
+// Scroll Wrapper
+
+.ScrollBtn {
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  cursor: pointer;
+}
+.left {
+  left: 30px;
+  @include query(laptop) {
+    left: 120px;
+  }
+}
+.right {
+  right: 30px;
+}
+
+// ScrollBtn inside Trending bar
+.Trend__TrendingBar {
+  .ScrollBtn {
+    top: 25rem;
+  }
+  .left {
+    left: 50px;
+  }
+  .right {
+    right: 50px;
+  }
+}

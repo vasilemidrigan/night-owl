@@ -14,7 +14,7 @@ export const ScrollBtn = forwardRef(function (props, ref) {
 
   return (
     <div
-      className="ScrollWrapper__btn"
+      className={`ScrollBtn ${props.type == "left" ? "left" : "right"}`}
       onClick={() =>
         scroll(props.type == "left" ? -props.scrollStep : props.scrollStep)
       }

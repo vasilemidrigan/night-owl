@@ -7,33 +7,13 @@ import BookmarkIcon from "./BookmarkIcon";
 import MediaInfoWrapper from "./MediaInfoWrapper";
 import { ScrollBtn } from "./ScrollBtn";
 // react
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useContext, useRef } from "react";
+// context
+import { ScrollContext } from "../../context/Context-Config";
 
 export default function ShowsRow(props) {
   const ref = useRef();
-  const width = useWindowSize();
-  const [scrollStep, setScrollStep] = useState(0);
-
-  // resize listener
-  function useWindowSize() {
-    const [size, setSize] = useState(0);
-    useLayoutEffect(() => {
-      function updateSize() {
-        setSize(window.innerWidth);
-      }
-      window.addEventListener("resize", updateSize);
-      updateSize();
-      return () => window.removeEventListener("resize", updateSize);
-    }, []);
-    return size;
-  }
-
-  // change scroll step depending on the screen size
-  useEffect(() => {
-    setScrollStep(() => {
-      return width < 768 ? 400 : width < 1280 ? 600 : 900;
-    });
-  }, [width]);
+  const scrollStep = useContext(ScrollContext);
 
   return (
     <div className="ShowsTemplate">

@@ -11,6 +11,7 @@ export const BookmarkShowsContext = createContext(null);
 export const MoviesDataContext = createContext(null);
 export const TvDataContext = createContext(null);
 export const AvatarDataContext = createContext(null);
+export const ScrollContext = createContext(null);
 
 export default function ContextProviders({
   children,
@@ -20,6 +21,7 @@ export default function ContextProviders({
   movies,
   tv,
   avatar,
+  scroll,
 }) {
   return (
     <ConfigsDataContext.Provider value={configs}>
@@ -28,7 +30,9 @@ export default function ContextProviders({
           <MoviesDataContext.Provider value={movies}>
             <TvDataContext.Provider value={tv}>
               <AvatarDataContext.Provider value={avatar}>
-                {children}
+                <ScrollContext.Provider value={scroll}>
+                  {children}
+                </ScrollContext.Provider>
               </AvatarDataContext.Provider>
             </TvDataContext.Provider>
           </MoviesDataContext.Provider>

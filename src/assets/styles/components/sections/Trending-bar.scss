@@ -8,6 +8,7 @@
     @include page-header;
   }
   &__TrendingBar {
+    scroll-behavior: smooth;
     @include display-flex(space-between, start, row);
     overflow-x: scroll;
     &__element {
