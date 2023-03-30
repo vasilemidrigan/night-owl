@@ -33,6 +33,7 @@
   }
   &__account {
     height: 1.5rem;
+    cursor: pointer;
     img {
       border-radius: 50%;
       width: 25px;
@@ -83,11 +84,6 @@
           margin-right: 0;
           margin-bottom: 3rem;
         }
-      }
-    }
-    &__account {
-      img:hover {
-        cursor: pointer;
       }
     }
   }
