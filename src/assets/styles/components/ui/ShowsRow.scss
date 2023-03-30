@@ -20,21 +20,5 @@
         border-radius: 7px 7px 0px 0px;
       }
     }
-    &__scroll-btn {
-      z-index: 1;
-      width: 50px;
-      height: 50px;
-      position: absolute;
-      cursor: pointer;
-    }
-    &__scroll-btn:first-child {
-      left: 30px;
-      @include query(laptop) {
-        left: 120px;
-      }
-    }
-    &__scroll-btn:last-child {
-      right: 30px;
-    }
   }
 }

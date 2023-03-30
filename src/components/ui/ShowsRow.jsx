@@ -5,28 +5,21 @@
 // components
 import BookmarkIcon from "./BookmarkIcon";
 import MediaInfoWrapper from "./MediaInfoWrapper";
-// assets
-import arrowRight from "../../assets/img/arrow-right.svg";
-import arrowLeft from "../../assets/img/arrow-left.svg";
+import { ScrollBtn } from "./ScrollBtn";
 // react
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export default function ShowsRow(props) {
   const ref = useRef();
-  const [width, height] = useWindowSize();
+  const width = useWindowSize();
   const [scrollStep, setScrollStep] = useState(0);
-
-  // horizontall scroll buttons
-  const scroll = (scrollOffset) => {
-    ref.current.scrollLeft += scrollOffset;
-  };
 
   // resize listener
   function useWindowSize() {
-    const [size, setSize] = useState([0, 0]);
+    const [size, setSize] = useState(0);
     useLayoutEffect(() => {
       function updateSize() {
-        setSize([window.innerWidth, window.innerHeight]);
+        setSize(window.innerWidth);
       }
       window.addEventListener("resize", updateSize);
       updateSize();
@@ -47,12 +40,7 @@ export default function ShowsRow(props) {
       <h2>{props.showsCategory}</h2>
 
       <div className="ShowsTemplate__row" ref={ref}>
-        <div
-          className="ShowsTemplate__row__scroll-btn"
-          onClick={() => scroll(-scrollStep)}
-        >
-          <img src={arrowLeft} alt="left arrow" />
-        </div>
+        <ScrollBtn ref={ref} type="left" scrollStep={scrollStep} />
         {props.shows.map((show) => {
           return (
             <div className="ShowsTemplate__row__card" key={show.id}>
@@ -66,12 +54,7 @@ export default function ShowsRow(props) {
             </div>
           );
         })}
-        <div
-          className="ShowsTemplate__row__scroll-btn"
-          onClick={() => scroll(scrollStep)}
-        >
-          <img src={arrowRight} alt="right arrow" />
-        </div>
+        <ScrollBtn ref={ref} type="right" scrollStep={scrollStep} />
       </div>
     </div>
   );
