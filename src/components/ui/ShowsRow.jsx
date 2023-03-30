@@ -9,14 +9,40 @@ import MediaInfoWrapper from "./MediaInfoWrapper";
 import arrowRight from "../../assets/img/arrow-right.svg";
 import arrowLeft from "../../assets/img/arrow-left.svg";
 // react
-import { useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export default function ShowsRow(props) {
   const ref = useRef();
+  const [width, height] = useWindowSize();
+  const [scrollStep, setScrollStep] = useState(0);
+
   // horizontall scroll buttons
   const scroll = (scrollOffset) => {
     ref.current.scrollLeft += scrollOffset;
   };
+
+  // resize listener
+  function useWindowSize() {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize([window.innerWidth, window.innerHeight]);
+      }
+      window.addEventListener("resize", updateSize);
+      updateSize();
+      return () => window.removeEventListener("resize", updateSize);
+    }, []);
+    return size;
+  }
+
+  // change scroll step depending on the screen size
+  useEffect(() => {
+    setScrollStep(() => {
+      return width < 768 ? 400 : width < 1280 ? 600 : 900;
+    });
+  }, [width]);
+
+  console.log(scrollStep);
 
   return (
     <div className="ShowsTemplate">
@@ -25,7 +51,7 @@ export default function ShowsRow(props) {
       <div className="ShowsTemplate__row" ref={ref}>
         <div
           className="ShowsTemplate__row__scroll-btn"
-          onClick={() => scroll(-400)}
+          onClick={() => scroll(-scrollStep)}
         >
           <img src={arrowLeft} alt="left arrow" />
         </div>
@@ -44,7 +70,7 @@ export default function ShowsRow(props) {
         })}
         <div
           className="ShowsTemplate__row__scroll-btn"
-          onClick={() => scroll(400)}
+          onClick={() => scroll(scrollStep)}
         >
           <img src={arrowRight} alt="right arrow" />
         </div>
