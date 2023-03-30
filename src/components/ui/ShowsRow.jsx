@@ -5,12 +5,25 @@
 // components
 import BookmarkIcon from "./BookmarkIcon";
 import MediaInfoWrapper from "./MediaInfoWrapper";
+// react
+import { useRef } from "react";
+// assets
+import arrowRight from "../../assets/img/arrow-right.svg";
+import arrowLeft from "../../assets/img/arrow-left.svg";
 
 export default function ShowsRow(props) {
+  useRef.current = "some value";
+
+  const scroll = () => {};
+
   return (
     <div className="ShowsTemplate">
       <h2>{props.showsCategory}</h2>
+
       <div className="ShowsTemplate__row">
+        <div className="ShowsTemplate__row__scroll-btn">
+          <img src={arrowLeft} alt="left arrow" />
+        </div>
         {props.shows.map((show) => {
           return (
             <div className="ShowsTemplate__row__card" key={show.id}>
@@ -24,6 +37,9 @@ export default function ShowsRow(props) {
             </div>
           );
         })}
+        <div className="ShowsTemplate__row__scroll-btn">
+          <img src={arrowRight} alt="right arrow" />
+        </div>
       </div>
     </div>
   );
