@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/night-owl/static/css/main.d3c498ca.css",
-    "main.js": "/night-owl/static/js/main.b23ba557.js",
+    "main.css": "/night-owl/static/css/main.35d3dc89.css",
+    "main.js": "/night-owl/static/js/main.85d01569.js",
     "static/media/star.svg": "/night-owl/static/media/star.25b0edb2c7140796435a.svg",
     "index.html": "/night-owl/index.html",
     "static/media/icon-category-movie.svg": "/night-owl/static/media/icon-category-movie.6861d0ce9036ac864b87dc5aff6570c3.svg",
@@ -16,11 +16,11 @@
     "static/media/icon-category-tv.svg": "/night-owl/static/media/icon-category-tv.75c9208553d35303e2f1b61b511ab387.svg",
     "static/media/icon-nav-tv-series.svg": "/night-owl/static/media/icon-nav-tv-series.c22fe1629b446365f6f7829a014453f8.svg",
     "static/media/icon-bookmark-empty.svg": "/night-owl/static/media/icon-bookmark-empty.20ce7177c045bbdbd7948bd9b4220c58.svg",
-    "main.d3c498ca.css.map": "/night-owl/static/css/main.d3c498ca.css.map",
-    "main.b23ba557.js.map": "/night-owl/static/js/main.b23ba557.js.map"
+    "main.35d3dc89.css.map": "/night-owl/static/css/main.35d3dc89.css.map",
+    "main.85d01569.js.map": "/night-owl/static/js/main.85d01569.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3c498ca.css",
-    "static/js/main.b23ba557.js"
+    "static/css/main.35d3dc89.css",
+    "static/js/main.85d01569.js"
   ]
 }
