@@ -22,8 +22,17 @@
   .ScrollBtn {
     top: 25rem;
   }
+  .left,
+  .right {
+    @include query(laptop) {
+      top: 20rem;
+    }
+  }
   .left {
     left: 50px;
+    @include query(laptop) {
+      left: 9.0625rem;
+    }
   }
   .right {
     right: 50px;
