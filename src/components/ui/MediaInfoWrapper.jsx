@@ -28,14 +28,14 @@ export default function MediaInfoWrapper(props) {
 
   function formatTitle() {
     if (props.el.title) {
-      if (props.el.title.length > 30) {
-        return `${props.el.title.slice(0, 30)} ...`;
+      if (props.el.title.length > 25) {
+        return `${props.el.title.slice(0, 25)} ...`;
       } else {
         return props.el.title;
       }
     } else if (props.el.original_name) {
-      if (props.el.original_name.length > 30) {
-        return `${props.el.original_name.slice(0, 30)} ...`;
+      if (props.el.original_name.length > 25) {
+        return `${props.el.original_name.slice(0, 25)} ...`;
       } else {
         return props.el.original_name;
       }

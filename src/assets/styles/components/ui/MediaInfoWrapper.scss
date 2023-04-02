@@ -15,8 +15,10 @@
     @include position-absolute(10px, unset, unset, 10px);
   }
   &__title {
+    padding: 3px;
     color: white;
     height: 3.75rem;
+    line-height: 1.3rem;
     @include display-flex(center, center, row);
     @include f-size(f-15, unset);
   }
