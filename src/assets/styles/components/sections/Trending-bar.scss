@@ -12,11 +12,12 @@
     @include display-flex(space-between, start, row);
     overflow-x: scroll;
     &__element {
-      border-radius: 7px;
-      margin: 10px;
+      border-radius: 0.4375rem;
+      margin: 0.4375rem;
       box-shadow: 0 0 15px $dark-red;
       position: relative; // ! for MovieDataWrapper child
       & > img {
+        height: 12.5rem;
         border-radius: 7px 7px 0 0;
       }
     }
