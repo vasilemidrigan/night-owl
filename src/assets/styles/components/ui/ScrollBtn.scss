@@ -8,13 +8,13 @@
   cursor: pointer;
 }
 .left {
-  left: 30px;
+  left: 20px;
   @include query(laptop) {
     left: 120px;
   }
 }
 .right {
-  right: 30px;
+  right: 20px;
 }
 
 // ScrollBtn inside Trending bar
@@ -29,12 +29,12 @@
     }
   }
   .left {
-    left: 50px;
+    left: 20px;
     @include query(laptop) {
       left: 9.0625rem;
     }
   }
   .right {
-    right: 50px;
+    right: 20px;
   }
 }
