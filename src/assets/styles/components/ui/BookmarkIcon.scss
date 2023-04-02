@@ -21,6 +21,6 @@
 .ShowsGrid,
 .AccountPage__bookmarks__shows__show {
   .BookmarkIcon {
-    @include position-absolute(5px, 10px, unset, unset);
+    @include position-absolute(10px, 10px, unset, unset);
   }
 }

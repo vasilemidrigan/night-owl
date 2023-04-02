@@ -15,9 +15,10 @@
     @include position-absolute(10px, unset, unset, 10px);
   }
   &__title {
+    color: white;
     height: 3.75rem;
     @include display-flex(center, center, row);
-    @include f-size(f-18, unset);
+    @include f-size(f-15, unset);
   }
   &__vote-average {
     position: relative;
