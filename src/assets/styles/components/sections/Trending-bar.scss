@@ -12,6 +12,7 @@
     @include display-flex(space-between, start, row);
     overflow-x: scroll;
     &__element {
+      cursor: pointer;
       border-radius: 0.4375rem;
       margin: 0.4375rem;
       box-shadow: 0 0 15px $dark-red;

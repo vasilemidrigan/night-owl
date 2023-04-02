@@ -59,7 +59,7 @@ export default function App() {
   const width = useWindowSize();
   const [scrollStep, setScrollStep] = useState(0);
 
-  // resize listener
+  // screen resize listener
   function useWindowSize() {
     const [size, setSize] = useState(0);
     useLayoutEffect(() => {

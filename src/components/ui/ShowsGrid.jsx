@@ -4,6 +4,7 @@
 
 // react
 import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 // components
 import MediaInfoWrapper from "./MediaInfoWrapper";
 import BookmarkIcon from "./BookmarkIcon";
@@ -19,15 +20,17 @@ export default function ShowsGrid(props) {
       <div className="ShowsGrid__grid">
         {props.shows?.map((show) => {
           return (
-            <div className="ShowsGrid__grid__card" key={show.id}>
-              <img
-                className="ShowsGrid__grid__card__img"
-                src={`${configs[0]?.images.secure_base_url}${configs[0]?.images.profile_sizes[1]}${show.poster_path}`}
-                alt="show img"
-              />
-              <BookmarkIcon el={show} collectionID={props.collectionID} />
-              <MediaInfoWrapper el={show} />
-            </div>
+            <NavLink to={`show/${show.id}`} key={show.id}>
+              <div className="ShowsGrid__grid__card">
+                <img
+                  className="ShowsGrid__grid__card__img"
+                  src={`${configs[0]?.images.secure_base_url}${configs[0]?.images.profile_sizes[1]}${show.poster_path}`}
+                  alt="show img"
+                />
+                <BookmarkIcon el={show} collectionID={props.collectionID} />
+                <MediaInfoWrapper el={show} />
+              </div>
+            </NavLink>
           );
         })}
       </div>

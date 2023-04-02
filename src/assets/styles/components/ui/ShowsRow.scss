@@ -12,6 +12,7 @@
     overflow-x: scroll;
     @include display-flex(space-between, center, row);
     &__card {
+      cursor: pointer;
       position: relative;
       margin: 10px;
       border-radius: 7px;

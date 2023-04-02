@@ -16,5 +16,10 @@ export default function ShowPage(props) {
   const movies = useContext(MoviesDataContext);
   const tv = useContext(TvDataContext);
 
-  return <div className="ShowPage">Show Page</div>;
+  return (
+    <div className="ShowPage">
+      <div className="ShowPage__poster"></div>
+      <div className="ShowPage__title"></div>
+    </div>
+  );
 }

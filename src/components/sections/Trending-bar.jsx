@@ -4,7 +4,7 @@
 
 // react
 import { useContext, useRef } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, NavLink } from "react-router-dom";
 // context
 import {
   ConfigsDataContext,
@@ -41,16 +41,18 @@ export default function TrendingBar() {
         <ScrollBtn ref={ref} type="left" scrollStep={scrollStep} />
         {trendingMovies.map((el) => {
           return (
-            <div className="Trend__TrendingBar__element" key={el.id}>
-              {configs[0]?.images && (
-                <img
-                  src={`${configs[0]?.images.secure_base_url}${configs[0]?.images.profile_sizes[1]}${el.poster_path}`}
-                  alt="Trending element image"
-                />
-              )}
-              <BookmarkIcon el={el} collectionID={"trending_movies"} />
-              <MediaInfoWrapper el={el} />
-            </div>
+            <NavLink to={`show/${el.id}`} key={el.id}>
+              <div className="Trend__TrendingBar__element">
+                {configs[0]?.images && (
+                  <img
+                    src={`${configs[0]?.images.secure_base_url}${configs[0]?.images.profile_sizes[1]}${el.poster_path}`}
+                    alt="Trending element image"
+                  />
+                )}
+                <BookmarkIcon el={el} collectionID={"trending_movies"} />
+                <MediaInfoWrapper el={el} />
+              </div>
+            </NavLink>
           );
         })}
         <ScrollBtn ref={ref} type="right" scrollStep={scrollStep} />
