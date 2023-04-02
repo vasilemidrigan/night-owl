@@ -88,6 +88,10 @@ export default function AccountPage() {
     navigate("../../");
   };
 
+  function alertUnderConstruction() {
+    alert("Functionality under construction!");
+  }
+
   return (
     <div className="AccountPage">
       <div className="AccountPage__avatar">
@@ -136,7 +140,7 @@ export default function AccountPage() {
             value={list}
           />
           <button className="AccountPage__lists__label__button">
-            <span>+</span>
+            <span onClick={alertUnderConstruction}>+</span>
           </button>
         </label>
       </div>
