@@ -9,14 +9,16 @@ import { useLocation } from "react-router-dom";
 // context
 import { ConfigsDataContext } from "../../context/Context-Config";
 import { GenresDataContext } from "../../context/Context-Config";
+// utils
+import { getGenres } from "../../utils/functionalities";
 
 export default function ShowPage() {
   const configs = useContext(ConfigsDataContext);
   const genres = useContext(GenresDataContext);
   const location = useLocation();
   const show = location?.state?.el;
-
-  console.log(genres);
+  const genresMovie = genres?.genresMovie[0]?.genres;
+  const elemGenres = show?.genre_ids;
 
   console.log(show);
 
@@ -29,13 +31,28 @@ export default function ShowPage() {
           alt="movie poster"
         />
       </div>
-      <div className="ShowPage__title">{show.original_title}</div>
-      <div className="ShowPage__release date">{show.release_date}</div>
-      <div className="ShowPage__popularity">{show.popularity}</div>
-      <div className="ShowPage__vote-average">{show.vote_average}</div>
-      <div className="ShowPage__vote-count">{show.vote_count}</div>
-      <div className="ShowPage__genres">{show.genres}</div>
-      <div className="ShowPage__overview">{show.overview}</div>
+      <div className="ShowPage__grid">
+        <div className="ShowPage__grid__title">{show.original_title}</div>
+        <div className="ShowPage__grid__release-date">
+          Release Date: {show.release_date}
+        </div>
+        <div className="ShowPage__grid__popularity">
+          Popularity: {show.popularity}
+        </div>
+        <div className="ShowPage__grid__vote-average">
+          Vote average: {show.vote_average}
+        </div>
+        <div className="ShowPage__grid__vote-count">
+          Vote count: {show.vote_count}
+        </div>
+        <div className="ShowPage__grid__genres">
+          Genres: {getGenres(elemGenres, genresMovie)}
+        </div>
+        <div className="ShowPage__grid__overview">
+          Overview: <br />
+          {show.overview}
+        </div>
+      </div>
     </div>
   );
 }

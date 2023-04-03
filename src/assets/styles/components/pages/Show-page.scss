@@ -12,4 +12,40 @@
       display: block;
     }
   }
+  &__grid {
+    display: grid;
+    gap: 5px;
+    grid-template: repeat(3, 1fr), repeat(3, 1fr);
+    grid-template-areas:
+      "title title"
+      "release-date genres"
+      "popularity vote-average"
+      "vote-count vote-count"
+      "overview overview";
+
+    & > div {
+      justify-self: center;
+    }
+    &__title {
+      grid-area: title;
+    }
+    &__release-date {
+      grid-area: release-date;
+    }
+    &__popularity {
+      grid-area: popularity;
+    }
+    &__vote-average {
+      grid-area: vote-average;
+    }
+    &__vote-count {
+      grid-area: vote-count;
+    }
+    &__genres {
+      grid-area: genres;
+    }
+    &__overview {
+      grid-area: overview;
+    }
+  }
 }
