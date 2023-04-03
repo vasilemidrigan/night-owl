@@ -9,22 +9,13 @@ import { GenresDataContext } from "../../context/Context-Config";
 // assets
 import movieIcon from "../../assets/img/icon-category-movie.svg";
 import tvIcon from "../../assets/img/icon-category-tv.svg";
+// utils
+import { getGenres } from "../../utils/functionalities";
 
 export default function MediaInfoWrapper(props) {
   const genres = useContext(GenresDataContext);
   const genresMovie = genres?.genresMovie[0]?.genres;
-  const elemGenres = props.el.genre_ids;
-
-  // get genres
-  function getGenres() {
-    const genres = [];
-    elemGenres.map((elId) => {
-      genresMovie?.map((obj) => {
-        return obj.id === elId ? genres.push(obj.name) : false;
-      });
-    });
-    return genres[0];
-  }
+  const elemGenres = props?.el?.genre_ids;
 
   function formatTitle() {
     if (props.el.title) {
@@ -50,7 +41,9 @@ export default function MediaInfoWrapper(props) {
         <img src={props.el.media_type === "movie" ? movieIcon : tvIcon} />
       </div>
       <div className="MediaInfoWrapper__title ">{formatTitle()}</div>
-      <div className="MediaInfoWrapper__genres">{getGenres()}</div>
+      <div className="MediaInfoWrapper__genres">
+        {getGenres(elemGenres, genresMovie)}
+      </div>
       <div className="MediaInfoWrapper__release-date">
         {props.el.release_date
           ? props.el.release_date

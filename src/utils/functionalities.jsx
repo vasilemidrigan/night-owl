@@ -17,3 +17,14 @@ export function getRTUpdates(setState, collectionId) {
     setState(updArr);
   });
 }
+
+// get genres
+export function getGenres(showGenres, genres) {
+  const genresArr = [];
+  showGenres.map((elId) => {
+    genres?.map((obj) => {
+      return obj.id === elId ? genresArr.push(obj.name) : false;
+    });
+  });
+  return genresArr[0];
+}
