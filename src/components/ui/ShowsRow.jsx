@@ -24,7 +24,7 @@ export default function ShowsRow(props) {
         <ScrollBtn ref={ref} type="left" scrollStep={scrollStep} />
         {props.shows.map((show) => {
           return (
-            <NavLink to={`../show/${show.id}`} key={show.id}>
+            <NavLink to={`../show/${show.id}`} state={show} key={show.id}>
               <div className="ShowsTemplate__row__card">
                 <img
                   className="ShowsTemplate__row__card__img"

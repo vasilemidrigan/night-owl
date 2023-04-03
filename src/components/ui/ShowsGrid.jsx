@@ -4,7 +4,7 @@
 
 // react
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 // components
 import MediaInfoWrapper from "./MediaInfoWrapper";
 import BookmarkIcon from "./BookmarkIcon";
@@ -13,6 +13,9 @@ import { ConfigsDataContext } from "../../context/Context-Config";
 
 export default function ShowsGrid(props) {
   const configs = useContext(ConfigsDataContext);
+  const location = useLocation();
+
+  console.log(location);
 
   return (
     <div className="ShowsGrid">
@@ -20,7 +23,15 @@ export default function ShowsGrid(props) {
       <div className="ShowsGrid__grid">
         {props.shows?.map((show) => {
           return (
-            <NavLink to={`show/${show.id}`} key={show.id}>
+            <NavLink
+              to={
+                location.pathname == "/night-owl"
+                  ? `show/${show.id}`
+                  : `../show/${show.id}`
+              }
+              state={show}
+              key={show.id}
+            >
               <div className="ShowsGrid__grid__card">
                 <img
                   className="ShowsGrid__grid__card__img"

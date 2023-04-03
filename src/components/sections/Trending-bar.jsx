@@ -4,7 +4,7 @@
 
 // react
 import { useContext, useRef } from "react";
-import { useOutletContext, NavLink } from "react-router-dom";
+import { useOutletContext, NavLink, useNavigate } from "react-router-dom";
 // context
 import {
   ConfigsDataContext,
@@ -28,7 +28,13 @@ export default function TrendingBar() {
   const movies = useContext(MoviesDataContext);
   const trendingMovies = movies.trendingMovies;
 
+  const navigate = useNavigate();
+
   const [filterSearch, isSearchActive] = useOutletContext();
+
+  function goToReceiver(show) {
+    return navigate(show, { state: { status: "RECEIVED" } });
+  }
 
   return (
     <div className="Trend">
@@ -41,7 +47,7 @@ export default function TrendingBar() {
         <ScrollBtn ref={ref} type="left" scrollStep={scrollStep} />
         {trendingMovies.map((el) => {
           return (
-            <NavLink to={`show/${el.id}`} key={el.id}>
+            <NavLink to={`show/${el.id}`} key={el.id} state={{ el }}>
               <div className="Trend__TrendingBar__element">
                 {configs[0]?.images && (
                   <img
