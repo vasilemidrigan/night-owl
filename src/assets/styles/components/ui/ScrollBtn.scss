@@ -24,6 +24,12 @@
   }
   .left,
   .right {
+    @include query(tablet) {
+      top: 23rem;
+    }
+  }
+  .left,
+  .right {
     @include query(laptop) {
       top: 20rem;
     }
@@ -31,7 +37,7 @@
   .left {
     left: 20px;
     @include query(laptop) {
-      left: 9.0625rem;
+      left: 8.125rem;
     }
   }
   .right {
