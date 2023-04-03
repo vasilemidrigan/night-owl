@@ -5,6 +5,7 @@
 .ShowPage {
   color: $grey;
   &__poster {
+    margin-top: 20px;
     &__img {
       width: 80%;
       height: 300px;
@@ -27,7 +28,12 @@
       justify-self: center;
     }
     &__title {
+      color: $red;
       grid-area: title;
+      max-width: 95%;
+      h2 {
+        margin: 10px 0 10px 0;
+      }
     }
     &__release-date {
       grid-area: release-date;

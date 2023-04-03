@@ -32,7 +32,9 @@ export default function ShowPage() {
         />
       </div>
       <div className="ShowPage__grid">
-        <div className="ShowPage__grid__title">{show.original_title}</div>
+        <div className="ShowPage__grid__title">
+          <h2>{show.original_title}</h2>
+        </div>
         <div className="ShowPage__grid__release-date">
           Release Date: {show.release_date}
         </div>
