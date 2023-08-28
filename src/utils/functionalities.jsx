@@ -21,7 +21,7 @@ export function getRTUpdates(setState, collectionId) {
 // get genres
 export function getGenres(showGenres, genres) {
   const genresArr = [];
-  showGenres.map((elId) => {
+  showGenres?.map((elId) => {
     genres?.map((obj) => {
       return obj.id === elId ? genresArr.push(obj.name) : false;
     });

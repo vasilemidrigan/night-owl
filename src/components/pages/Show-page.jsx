@@ -25,35 +25,40 @@ export default function ShowPage() {
   return (
     <div className="ShowPage">
       <div className="ShowPage__poster">
+        <div className="ShowPage__poster__shadow"></div>
         <img
           className="ShowPage__poster__img"
-          src={`${configs[0]?.images.secure_base_url}${configs[0]?.images.profile_sizes[3]}${show.poster_path}`}
+          src={`${configs[0]?.images.secure_base_url}${configs[0]?.images.profile_sizes[3]}${show?.poster_path}`}
           alt="movie poster"
         />
       </div>
       <div className="ShowPage__grid">
         <div className="ShowPage__grid__title">
-          <h2>{show.original_title}</h2>
+          <h2>{show?.original_title}</h2>
+        </div>
+        <div className="ShowPage__grid__play-btn">
+          <button>Play</button>
         </div>
         <div className="ShowPage__grid__release-date">
-          Release Date: {show.release_date}
+          <span>Release Date:</span> {show?.release_date}
         </div>
         <div className="ShowPage__grid__popularity">
-          Popularity: {show.popularity}
+          <span>Popularity:</span> {show?.popularity}
         </div>
         <div className="ShowPage__grid__vote-average">
-          Vote average: {show.vote_average}
+          <span>Vote average:</span> {show?.vote_average}
         </div>
         <div className="ShowPage__grid__vote-count">
-          Vote count: {show.vote_count}
+          <span>Vote count:</span> {show?.vote_count}
         </div>
         <div className="ShowPage__grid__genres">
-          Genres: {getGenres(elemGenres, genresMovie)}
+          <span>Genres:</span> {getGenres(elemGenres, genresMovie)}
         </div>
         <div className="ShowPage__grid__overview">
-          Overview: <br />
-          {show.overview}
+          <span>Overview:</span> <br />
+          {show?.overview}
         </div>
+        <div className="ShowPage__grid__trailer">Trailer</div>
       </div>
     </div>
   );

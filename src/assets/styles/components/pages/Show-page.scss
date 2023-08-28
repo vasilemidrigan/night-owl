@@ -5,35 +5,48 @@
 .ShowPage {
   color: $grey;
   &__poster {
-    margin-top: 20px;
+    width: 100%;
+    aspect-ratio: 1/1.2;
+    position: relative;
+    &__shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0) 0,
+          $dark-blue
+        ),
+        no-repeat;
+    }
     &__img {
-      width: 80%;
-      height: 300px;
+      width: 100%;
       margin: 0 auto;
       display: block;
     }
   }
   &__grid {
+    margin: 10px;
     display: grid;
-    gap: 5px;
-    grid-template: repeat(3, 1fr), repeat(3, 1fr);
+    grid-template: repeat(6, 1fr) repeat(3, 1fr);
     grid-template-areas:
-      "title title"
-      "release-date genres"
-      "popularity vote-average"
-      "vote-count vote-count"
-      "overview overview";
-
+      "popularity vote-average vote-count"
+      "title title title"
+      "genres release-date vote-average"
+      "play-btn play-btn play-btn"
+      "overview overview overview"
+      "trailer trailer trailer";
     & > div {
-      justify-self: center;
+      border: 1px solid grey;
     }
     &__title {
       color: $red;
       grid-area: title;
-      max-width: 95%;
-      h2 {
-        margin: 10px 0 10px 0;
-      }
+    }
+    &__play-btn {
+      grid-area: play-btn;
     }
     &__release-date {
       grid-area: release-date;
@@ -52,6 +65,9 @@
     }
     &__overview {
       grid-area: overview;
+    }
+    &__trailer {
+      grid-area: trailer;
     }
   }
 }
