@@ -12,10 +12,6 @@ other functionalities.
 
 Open the application [here](https://vasilemidrigan.github.io/night-owl)
 
-## Links
-
-Github repo: [here](https://github.com/vasilemidrigan/night-owl)
-
 ## Features
 
 - Search for a movie by name
