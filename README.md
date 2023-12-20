@@ -21,14 +21,6 @@ Open the application [here](https://vasilemidrigan.github.io/night-owl)
 - Delete Profile
 - Add User Avatar
 
-## How to Contribute
-
-1. Fork the repository
-2. Create a new branch
-3. Make your changes
-4. Test your changes
-5. Submit a pull request
-
 ## Technologies
 
 - Flexbox
