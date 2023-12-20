@@ -36,7 +36,3 @@ Open the application [here](https://vasilemidrigan.github.io/night-owl)
 - React.js
 - Firebase - Cloud Firestore (database)
 - Firebase - Authentication
-
-## Author
-
-- Vasile Midrigan - [visit LinkedIn profile](https://www.linkedin.com/in/vasile-midrigan/)
