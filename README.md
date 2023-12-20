@@ -1,8 +1,6 @@
 # Night Owl
 
-Entertainment web application, for movie enthusiasts to search,
-discover, rate movies and tv shows, save them in a list, and many
-other functionalities.
+Movie review web application.
 
 ## Screenshots
 
